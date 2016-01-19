@@ -7,6 +7,7 @@ class CreateExercises < ActiveRecord::Migration
       t.integer :repetition_duration_seconds
       t.integer :rest_duration_seconds
       t.boolean :complete
+      t.belongs_to :workout
 
       t.timestamps null: false
     end

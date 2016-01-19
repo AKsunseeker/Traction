@@ -4,8 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :handle
-      t.integer :age
-      t.float :weight
 
       t.timestamps null: false
     end
