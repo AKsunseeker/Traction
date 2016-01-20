@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118232859) do
+ActiveRecord::Schema.define(version: 20160119233115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,11 +42,19 @@ ActiveRecord::Schema.define(version: 20160118232859) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "group_id"
-    t.integer  "workout_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "category_exercises", force: :cascade do |t|
+    t.integer  "exercise_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "category_exercises", ["category_id"], name: "index_category_exercises_on_category_id", using: :btree
+  add_index "category_exercises", ["exercise_id"], name: "index_category_exercises_on_exercise_id", using: :btree
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
@@ -75,15 +83,18 @@ ActiveRecord::Schema.define(version: 20160118232859) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "workout_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "locations", ["addressable_type", "addressable_id"], name: "index_locations_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.date     "join_date"
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,16 +103,33 @@ ActiveRecord::Schema.define(version: 20160118232859) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "handle"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "roles"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "workouts", force: :cascade do |t|
     t.integer  "creator_id"
     t.string   "name"
     t.boolean  "complete"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "category_exercises", "categories"
+  add_foreign_key "category_exercises", "exercises"
 end

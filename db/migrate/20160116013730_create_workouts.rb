@@ -4,6 +4,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.integer :creator_id
       t.string :name
       t.boolean :complete
+      t.belongs_to :user
 
       t.timestamps null: false
     end

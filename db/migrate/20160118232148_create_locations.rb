@@ -7,9 +7,7 @@ class CreateLocations < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip
-      t.belongs_to :user
-      t.belongs_to :group
-      t.belongs_to :workout
+      t.references :addressable, polymorphic: true, index: true
 
       t.timestamps null: false
     end
