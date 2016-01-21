@@ -1,0 +1,6 @@
+= render(partial: 'layouts/nav_bar')
+
+%h3 Edit #{@workout.name}
+= render(partial: 'form')
+
+= link_to 'Back', workouts_path

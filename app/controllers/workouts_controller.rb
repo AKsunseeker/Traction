@@ -18,16 +18,11 @@ class WorkoutsController < ApplicationController
     @workouts = Workout.all
   end
 
-  def new
-    @workout = Workout.new(workout_params)
-  end
-
   def show
-    @workout = Workout.find(workout_params)
   end
 
-  def edit
-    
+  def new
+    @workout = Workout.new
   end
 
   def create
@@ -37,6 +32,9 @@ class WorkoutsController < ApplicationController
     else
       redirect_to :new
     end
+  end
+
+  def edit    
   end
 
   def update
@@ -61,7 +59,7 @@ class WorkoutsController < ApplicationController
     params.require(:workout).permit(:name, :complete)
   end
 
-  def find_workouts
-    @workout = Workout.find(workout_params)
+  def find_workout
+    @workout = Workout.find(params[:id])
   end
 end

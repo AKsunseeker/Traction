@@ -22,7 +22,7 @@
 #
 
 class UsersController < ApplicationController
-  access all: [:index], trainer: :all
+  access all: [:index], trainer: :all, user: :all
 
   def index
     @users = User.all
@@ -41,9 +41,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    binding.pry
     @user = User.find(params[:id])
     if @user.save
-      redirect_to :index
+      redirect_to user_path(@user)
     else
       redirect_to :edit
     end

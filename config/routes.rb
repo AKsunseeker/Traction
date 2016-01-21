@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations'}
   
 
   resources :users do 
@@ -18,6 +18,6 @@ Rails.application.routes.draw do
 
  
   root 'welcome#index'
-
+  get 'about_us', to: 'welcome#about_us'
   
 end

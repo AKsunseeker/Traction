@@ -1,0 +1,17 @@
+= render(partial: 'layouts/nav_bar')
+
+%h2 Workouts
+
+- if @workouts.any?
+  %ul 
+    - @workouts.each do |workout|
+      %li
+        / TODO add in checkbox to check, REACT
+        = link_to workout.name, workout_path(workout)
+        %br
+- else
+  %h4 
+    Unfortunately we do not have any workouts right now. Add your own or check back later!
+
+- if current_user
+  = link_to 'New Workout', new_workout_path
