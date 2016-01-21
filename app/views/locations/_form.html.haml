@@ -1,0 +1,9 @@
+= form_for @location do |f|
+  = f.text_field :date, autofocus: true, placeholder: 'City'
+  %br
+  = f.text_field :weight, autofocus: true, placeholder: 'State'
+  %br
+  = f.text_field :body_fat_percentage, autofocus: true, placeholder: 'Zip '
+  %br
+
+  = f.submit

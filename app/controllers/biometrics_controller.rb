@@ -28,6 +28,7 @@
 class BiometricsController < ApplicationController
   before_action :find_user
   before_action :find_biometric, only: [:show, :edit, :destroy, :update]
+  before_action :find_date, only: [:create, :update]
   
   def index
     @biometrics = @user.biometrics.all
@@ -37,13 +38,13 @@ class BiometricsController < ApplicationController
   end
 
   def new
-    @biometric = Biometric.new
+    @biometric = @user.biometrics.new
   end
 
   def create
-    @biometric = Biometric.new(biometric_params)
+    @biometric = @user.biometrics.new(biometric_params)
     if @biometric.save
-      redirect_to user_path(@user)
+      redirect_to user_biometrics_path(@user, @biometric)
     else
       render :new
     end
@@ -54,7 +55,7 @@ class BiometricsController < ApplicationController
 
   def update
     if @biometric.update(biometric_params)
-      redirect_to user_path(@user)
+      redirect_to user_biometrics_path(@user, @biometric)
     else
       render :edit
     end
@@ -62,11 +63,11 @@ class BiometricsController < ApplicationController
 
   def destroy
     @biometric.destroy
-    redirect_to user_path
+    redirect_to user_path(@user)
   end
 
   private
-    def location_params
+    def biometric_params
       params.require(:biometric).permit(:dateof_birth, :weight, :gender, :body_fat_percentage, :chest, 
                                         :height, :waist, :shoulder, :hips, :biceps, :ape_index, 
                                         :thigh, :calf, :forearm, :wrist, :neck, :date, :exercise_id)
@@ -79,5 +80,8 @@ class BiometricsController < ApplicationController
     def find_biometric
       @biometric = @user.biometrics.find(params[:id])
     end
-end
+
+    def find_date
+      @date = Date.today
+    end
 end

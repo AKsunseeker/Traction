@@ -1,0 +1,33 @@
+= form_for [@user, @biometric] do |f|
+  = f.date_field :date, autofocus: true, placeholder: @date
+  %br
+  = f.number_field :weight, autofocus: true, placeholder: 'weight'
+  %br
+  = f.number_field :body_fat_percentage, autofocus: true, placeholder: 'body fat percentage '
+  %br
+  = f.number_field :chest, autofocus: true, placeholder: 'chest'
+  %br
+  = f.number_field :height, autofocus: true, placeholder: 'height'
+  %br
+  = f.number_field :waist, autofocus: true, placeholder: 'waist'
+  %br
+  = f.number_field :shoulder, autofocus: true, placeholder: 'shoulder'
+  %br
+  = f.number_field :hips, autofocus: true, placeholder: 'hips'
+  %br
+  = f.number_field :biceps, autofocus: true, placeholder: 'biceps'
+  %br
+  = f.number_field :thigh, autofocus: true, placeholder: 'thigh'
+  %br
+  = f.number_field :calf, autofocus: true, placeholder: 'calf'
+  %br
+  = f.number_field :forearm, autofocus: true, placeholder: 'forearm'
+  %br
+  = f.number_field :wrist, autofocus: true, placeholder: 'wrist'
+  %br
+  = f.number_field :neck, autofocus: true, placeholder: 'neck'
+  %br
+
+  = f.submit 
+
+/ left off :dateof_birth, :gender, :body_fat_percentage, :height, :exercise_id, :ape_index

@@ -1,0 +1,21 @@
+= render(partial: 'layouts/nav_bar')
+= link_to 'Biometrics', user_biometrics_path(current_user)
+= link_to 'Current User', user_path(current_user)
+%h2 Biometric from #{@biometric.date}
+= link_to 'Edit', edit_user_biometric_path(current_user, @biometric)
+= link_to 'Delete', user_biometric_path(current_user, @biometric), method: :delete
+
+%p Weight: #{@biometric.weight}
+%p Body fat %: #{@biometric.body_fat_percentage}
+%p Chest: #{@biometric.chest}
+%p Height: #{@biometric.height}
+%p Waist: #{@biometric.waist}
+%p Shoulder: #{@biometric.shoulder}
+%p Hips: #{@biometric.hips}
+%p Biceps: #{@biometric.biceps}
+%p Thigh: #{@biometric.thigh}
+%p Calf: #{@biometric.calf}
+%p Forearm: #{@biometric.forearm}
+%p Wrist: #{@biometric.wrist}
+%p Neck: #{@biometric.neck}
+
