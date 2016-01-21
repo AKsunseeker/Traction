@@ -1,16 +1,19 @@
 %nav
   .nav-wrapper
-    %a.brand-logo 
-      = link_to "Traction", root_path
-    %ul#nav-mobile.right.hide-on-med-and-down
-      %li= link_to 'Workouts', workouts_path
-      %li= link_to 'Company', about_us_path
-      - if current_user
-        %li= link_to 'Profile', user_path(current_user)
-        %li= link_to 'Log Out', destroy_user_session_path, method: :delete
-      -else
-        %li= link_to 'Log In', new_user_session_path
-        %li= link_to 'Sign Up', new_user_registration_path
+    .row
+      .col.s5.offset-s1
+        %a.brand-logo
+          = link_to "Traction", root_path, class: 'grey-text text-lighten-2 logo-font'
+      .col.s4.offset-s1
+        %ul#nav-mobile.right.hide-on-med-and-down
+          %li= link_to 'Workouts', workouts_path, class: 'grey-text text-lighten-2'
+          %li= link_to 'Company', about_us_path, class: 'grey-text text-lighten-2'
+          - if current_user
+            %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
+            %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
+          -else
+            %li= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
+            %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
 / TODO add link to products? 
 / TODO add in validations!!!!
 / TODO fix routes for users and devise
