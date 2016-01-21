@@ -57,6 +57,11 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'better_errors'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -18,7 +18,7 @@ class ExercisesController < ApplicationController
   before_action :find_workout
   before_action :find_exercise, except: [:index, :new, :create]
   def index
-    @exercises = Exercises.all
+    @exercises = Exercise.all
   end
 
   def show
