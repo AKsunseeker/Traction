@@ -6,11 +6,11 @@
   %ul 
     - @locations.each do |location|
       %li
-        = link_to biometric.id, location_path(location)
+        = link_to location.street, location_path(location)
         %br
 - else
   %h4 
     Unfortunately we do not have any locations right now. Please add one!
 
 - if current_user
-  = link_to 'Add New Location', new_user_biometric_path(current_user)
+  = link_to 'Add New Location', new_location_path
