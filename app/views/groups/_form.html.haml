@@ -1,0 +1,15 @@
+= form_for @group do |f|
+  = f.text_field :name, autofocus: true, placeholder: 'Group Name'
+  %br
+  = f.date_field :founding_date, placeholder: 'Founding Date'
+  %br
+  = f.label :status
+  = f.radio_button(:status, "StatusActive")
+  = f.label(:status, "Active")
+  = f.radio_button(:status, "StatusInactive")
+  = f.label(:status, "Inactive")
+  %br
+%hr
+  = f.submit 
+
+/ has_many locations: as: addressable. Do we want a field???

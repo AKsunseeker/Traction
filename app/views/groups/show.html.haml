@@ -1,0 +1,8 @@
+= render(partial: 'layouts/nav_bar')
+= link_to 'Groups', groups_path
+= link_to 'Current User', user_path(current_user)
+%h2 Group Name:  #{@group.name}
+= link_to 'Edit', edit_group_path(@group)
+
+%p Status: #{@group.status}
+%p Founding Date: #{@group.founding_date}
