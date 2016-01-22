@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = Group.new(group_params)
+    @group = Group.new
   end
 
   def create
@@ -30,6 +30,7 @@ class GroupsController < ApplicationController
     else
       render :new
     end
+    
   end
 
   def edit
