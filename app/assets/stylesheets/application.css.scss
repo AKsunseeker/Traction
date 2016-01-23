@@ -20,3 +20,9 @@ $primary-color: color("grey", "darken-4") !default;
 .logo-font {
   font-size: 30px;
 }
+
+.logo-size {
+  border-radius: 20px;
+  height: 50px;
+  margin-top: 2.5px;
+}

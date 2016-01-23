@@ -2,19 +2,21 @@
   %nav
     .nav-wrapper
       .row 
-        .col.m4.offset-m1
-          %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-font'} Traction
+        .col.l4.offset-l1
+          %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
+            = image_tag 'Logo.png', class: 'logo-size'
           %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
             %i.material-icons menu
-        %ul.right.hide-on-med-and-down.col.s6
-          %li= link_to 'Workouts', workouts_path, class: 'grey-text text-lighten-2'
-          %li= link_to 'Company', about_us_path, class: 'grey-text text-lighten-2'
-          - if current_user
-            %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
-            %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
-          -else
-            %li= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
-            %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
+        .col.l4.offset-l2.right
+          %ul.hide-on-med-and-down
+            %li= link_to 'Workouts', workouts_path, class: 'grey-text text-lighten-2'
+            %li= link_to 'Company', about_us_path, class: 'grey-text text-lighten-2'
+            - if current_user
+              %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
+              %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
+            -else
+              %li= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
+              %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
         %ul#mobile-demo.side-nav
           %li= link_to 'Workouts', workouts_path
           %li= link_to 'Company', about_us_path

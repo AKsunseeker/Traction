@@ -1,13 +1,19 @@
 .container
-  %h1 Welcome Back #{current_user.email}
-  = link_to 'Create Workout', new_workout_path, class: 'btn'
-  %h3 Your Workouts Plans
-  - current_user.workouts.each do |workout|
-    %ul
-      %li
-        .card.grey.darken-2
-          .card-content.white-text
-            .card-title.red-text
-              = workout.name
-            .card-link
-              = link_to 'Do Workout', do_workout_path(id: workout), method: :post
+  %h1.center Welcome Back #{current_user.email}
+  .row
+    .col.s6
+      %h3.center Your Workouts Plans
+      .center
+        = link_to 'Create Workout', new_workout_path, class: 'btn'
+      - current_user.workouts.each do |workout|
+        %ul
+          %li
+            .card.grey.darken-2
+              .card-content.white-text
+                .card-title.red-text
+                  = workout.name
+                .card-link
+                  = link_to 'Do Workout', do_workout_path(id: workout), method: :post
+    .col.s6
+      %h3.center Progress 
+      / todo: put in charts
