@@ -15,12 +15,12 @@
           -else
             %li= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
             %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
-          %ul#mobile-demo.side-nav
-            %li= link_to 'Workouts', workouts_path
-            %li= link_to 'Company', about_us_path
-            - if current_user
-              %li= link_to 'Profile', user_path(current_user)
-              %li= link_to 'Log Out', destroy_user_session_path, method: :delete
-            -else
-              %li= link_to 'Log In', new_user_session_path
-              %li= link_to 'Sign Up', new_user_registration_path
+        %ul#mobile-demo.side-nav
+          %li= link_to 'Workouts', workouts_path
+          %li= link_to 'Company', about_us_path
+          - if current_user
+            %li= link_to 'Profile', user_path(current_user)
+            %li= link_to 'Log Out', destroy_user_session_path, method: :delete
+          -else
+            %li= link_to 'Log In', new_user_session_path
+            %li= link_to 'Sign Up', new_user_registration_path
