@@ -1,5 +1,5 @@
+.container
+  %h3 Edit #{@workout.name}
+  = render(partial: 'form')
 
-%h3 Edit #{@workout.name}
-= render(partial: 'form')
-
-= link_to 'Back', workouts_path
+  = link_to 'Back', workouts_path

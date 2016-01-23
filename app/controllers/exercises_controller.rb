@@ -41,7 +41,6 @@ class ExercisesController < ApplicationController
   end
   
   def update
-    binding.pry
     if @exercise.update(exercise_params)
       redirect_to workout_path(@workout)
     else
