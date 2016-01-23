@@ -1,7 +1,12 @@
-%h1 Welcome Back #{current_user}
-%h3 Your Workouts Plans
-- current_user.workouts.each do |workout|
-  %ul
-    %li
-      = workout.name
-      = link_to 'Do Workout', do_workout_path(id: workout), method: :post
+= render(partial: 'layouts/nav_bar')
+.container
+  %h1 Welcome Back #{current_user.email}
+  %h3 Your Workouts Plans
+  - current_user.workouts.each do |workout|
+    %ul
+      %li
+        .card.green
+          .card-title
+            = workout.name
+          .card-link
+            = link_to 'Do Workout', do_workout_path(id: workout), method: :post
