@@ -1,5 +1,5 @@
 .container 
-  %h3 #{@workout.name}
+  %h3.center #{@workout.name}
 
   - if @workout.exercises.any?
     %ul
@@ -20,6 +20,7 @@
     %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
 
   - if current_user
-    = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn'
-    = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn'
-    = link_to 'Complete Workout', do_workout_path(@workout), class: 'btn'
+    .center
+      = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn'
+      = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn'
+      = link_to 'Complete Workout', do_workout_path(@workout), class: 'btn'
