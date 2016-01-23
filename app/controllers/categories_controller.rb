@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    binding.pry
     @category = Category.new
   end
 
