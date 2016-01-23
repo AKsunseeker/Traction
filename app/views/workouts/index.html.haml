@@ -8,7 +8,8 @@
       %li
         / TODO add in checkbox to check, REACT
         = link_to workout.name, workout_path(workout)
-        = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
+        - if current_user
+          = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
         %br
 
 - else

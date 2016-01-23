@@ -41,8 +41,9 @@ class ExercisesController < ApplicationController
   end
   
   def update
-    if @exercise.update
-      redirect_to workout_exercise_path(@workout, @exercise)
+    binding.pry
+    if @exercise.update(exercise_params)
+      redirect_to workout_path(@workout)
     else
       render :edit
     end
@@ -56,13 +57,13 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:name, :weight, :repitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id)
+    params.require(:exercise).permit(:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id)
   end
 
   def find_workout
     @workout = Workout.find(params[:workout_id])
   end
   def find_exercise
-    @exercise = @workout.exercises.find(params[:id])
+    @exercise = Exercise.find(params[:id])
   end
 end
