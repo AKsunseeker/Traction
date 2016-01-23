@@ -9,11 +9,9 @@
   %br
   = f.number_field :rest_duration_seconds, placeholder: 'Rest Duration in seconds'
   %br
-  = f.check_box :complete 
-  %br
   = f.hidden_field :workout_id, value: @workout.id
   %br
-  = f.submit 
+  = f.submit class: 'btn'
 
 
 

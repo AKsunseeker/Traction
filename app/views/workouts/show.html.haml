@@ -1,24 +1,25 @@
-= render(parti
-%h3 #{@workout.name}
+.container 
+  %h3 #{@workout.name}
 
-- if @workout.exercises.any?
-  %ul
-    - @workout.exercises.each do |exercise|
-      %li
-        = exercise.name
-        |
-        Weight: #{exercise.weight}
-        |
-        Reps: #{exercise.repetitions}
-        |
-        Time: #{exercise.repetition_duration_seconds} s
-        |
-        Rest: #{exercise.rest_duration_seconds} s
-        = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
-        %hr
--else
-  %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
+  - if @workout.exercises.any?
+    %ul
+      - @workout.exercises.each do |exercise|
+        %li
+          = exercise.name
+          |
+          Weight: #{exercise.weight}
+          |
+          Reps: #{exercise.repetitions}
+          |
+          Time: #{exercise.repetition_duration_seconds} s
+          |
+          Rest: #{exercise.rest_duration_seconds} s
+          = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
+          %hr
+  -else
+    %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
 
-- if current_user
-  = link_to 'Add Exercise', new_workout_exercise_path(@workout)
-  = link_to 'Edit Workout', edit_workout_path(@workout)
+  - if current_user
+    = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn'
+    = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn'
+    = link_to 'Complete Workout', do_workout_path(@workout), class: 'btn'

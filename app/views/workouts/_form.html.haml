@@ -1,8 +1,5 @@
 = form_for @workout do |f|
   = f.text_field :name, autofocus: true, placeholder: 'Workout Name'
   %br
-  = f.label :complete
-  = f.check_box :complete
-  %br
 
-  = f.submit 
+  = f.submit class: 'btn'
