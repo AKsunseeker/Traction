@@ -31,7 +31,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = @workout.exercises.new(exercise_params)
     if @exercise.save
-      redirect_to workout_exercise_path(@workout, @exercise)
+      redirect_to workout_path(@workout)
     else
       render :new
     end

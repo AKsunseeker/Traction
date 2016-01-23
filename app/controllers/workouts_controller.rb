@@ -13,7 +13,7 @@
 #
 
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:show, :update, :edit, :destroy]
+  before_action :find_workout, only: [:show, :update, :edit, :destroy, :complete_workout]
   def index
     @workouts = Workout.all
   end
@@ -51,6 +51,10 @@ class WorkoutsController < ApplicationController
     else
       redirect_to workout_path(@workout)
     end
+  end
+
+  def complete_workout
+    new_workout = current_user.workouts.create(workout_params)
   end
 
   private
