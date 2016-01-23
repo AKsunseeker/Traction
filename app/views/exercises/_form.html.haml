@@ -1,17 +1,17 @@
 = form_for [@workout, @exercise] do |f|
   = f.text_field :name, autofocus: true, placeholder: 'Name'
   %br
-  = f.number_field :weight, autofocus: true, placeholder: 'Weight'
+  = f.number_field :weight, placeholder: 'Weight'
   %br
-  = f.number_field :repetitions, autofocus: true, placeholder: 'Repetitions'
+  = f.number_field :repetitions, placeholder: 'Repetitions'
   %br
-  = f.number_field :repetition_duration_seconds, autofocus: true, placeholder: 'Duration in seconds for Repetition'
+  = f.number_field :repetition_duration_seconds, placeholder: 'Duration in seconds for Repetition'
   %br
-  = f.number_field :rest_duration_seconds, autofocus: true, placeholder: 'Rest Duration in seconds'
+  = f.number_field :rest_duration_seconds, placeholder: 'Rest Duration in seconds'
   %br
   = f.check_box :complete 
   %br
-  = f.hidden_field :workout_id, value: @workout
+  = f.hidden_field :workout_id, value: @workout.id
   %br
   = f.submit 
 

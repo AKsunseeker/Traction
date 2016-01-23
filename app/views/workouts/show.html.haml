@@ -14,6 +14,7 @@
         Time: #{exercise.repetition_duration_seconds} s
         |
         Rest: #{exercise.rest_duration_seconds} s
+        = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
         %hr
 -else
   %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
