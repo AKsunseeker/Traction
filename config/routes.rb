@@ -19,5 +19,6 @@ Rails.application.routes.draw do
  
   root 'welcome#index'
   get 'about_us', to: 'welcome#about_us'
+  post 'add_workout', to: 'workouts#add_workout'
   
 end

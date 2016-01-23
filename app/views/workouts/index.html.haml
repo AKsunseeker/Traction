@@ -8,7 +8,9 @@
       %li
         / TODO add in checkbox to check, REACT
         = link_to workout.name, workout_path(workout)
+        = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
         %br
+
 - else
   %h4 
     Unfortunately we do not have any workouts right now. Add your own or check back later!

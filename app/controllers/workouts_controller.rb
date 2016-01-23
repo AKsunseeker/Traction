@@ -13,7 +13,7 @@
 #
 
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:show, :update, :edit, :destroy, :complete_workout]
+  before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout]
   def index
     @workouts = Workout.all
   end
@@ -53,8 +53,18 @@ class WorkoutsController < ApplicationController
     end
   end
 
-  def complete_workout
-    new_workout = current_user.workouts.create(workout_params)
+  def add_workout
+    new_workout = current_user.workouts.create(name: @workout.name)
+    new_exercises = @workout.exercises.all
+    new_exercises.each do |exercise|
+      new_exercise = new_workout.exercises.new
+      new_exercise.name = exercise.name 
+      new_exercise.weight = exercise.weight
+      new_exercise.repetitions = exercise.repetitions
+      new_exercise.repetition_duration_seconds = exercise.repetition_duration_seconds
+      new_exercise.rest_duration_seconds = exercise.rest_duration_seconds
+      new_exercise.save
+    end
   end
 
   private
