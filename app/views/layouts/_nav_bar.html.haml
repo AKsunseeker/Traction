@@ -2,27 +2,30 @@
   %nav
     .nav-wrapper
       .row 
-        .col.l4.offset-l1
+        .col.m4.l4.offset-l1
           %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
             = image_tag 'Logo.png', class: 'logo-size'
           %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
             %i.material-icons menu
-        .col.l4.offset-l2.right
+        .col.m4.l6.right
           %ul.hide-on-med-and-down
-            %li= link_to 'Workouts', workouts_path, class: 'grey-text text-lighten-2'
-            %li= link_to 'Company', about_us_path, class: 'grey-text text-lighten-2'
             - if current_user
+              %li= link_to 'My Dashboard', root_path, class: 'grey-text text-lighten-2'
               %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
               %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
             -else
               %li= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
+              %li
+                = link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
+            %li= link_to 'All Workouts', workouts_path, class: 'grey-text text-lighten-2'
+            %li= link_to 'About Us', about_us_path, class: 'grey-text text-lighten-2'
         %ul#mobile-demo.side-nav
-          %li= link_to 'Workouts', workouts_path
-          %li= link_to 'Company', about_us_path
           - if current_user
+            %li= link_to 'My Dashboard', root_path
             %li= link_to 'Profile', user_path(current_user)
             %li= link_to 'Log Out', destroy_user_session_path, method: :delete
           -else
             %li= link_to 'Log In', new_user_session_path
             %li= link_to 'Sign Up', new_user_registration_path
+          %li= link_to 'All Workouts', workouts_path
+          %li= link_to 'About Us', about_us_path

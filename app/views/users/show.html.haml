@@ -1,15 +1,15 @@
-%h3 My Profile
-
-= link_to 'Edit Profile', edit_user_registration_path(@user)
-%h5 First Name: #{@user.first_name}
-%h5 Last Name: #{@user.last_name}
-%h5 Handle: #{@user.handle}
-%h5 Email: #{@user.email}
-= link_to 'Update Biometrics', new_user_biometric_path(@user)
-- if @user.biometrics.any?
-  %ul
-    - @user.biometrics.last do |biometric|
-      %li 
+.container
+  %h3 My Profile
+  = link_to 'Edit Profile', edit_user_registration_path(@user)
+  %h5 First Name: #{@user.first_name}
+  %h5 Last Name: #{@user.last_name}
+  %h5 Handle: #{@user.handle}
+  %h5 Email: #{@user.email}
+  = link_to 'Update Biometrics', new_user_biometric_path(@user)
+  - if @user.biometrics.any?
+    %ul
+      - @user.biometrics.last do |biometric|
+        %li 
         DOB:  #{biometric.date_of_birth}
         %br
         Gender: #{biometric.gender}
@@ -44,5 +44,5 @@
         %br
         Neck #{biometric.neck}
         %br
-- else
-  %h5 You Have Not Entered Your Biometrics. Please Update Them.
+  - else
+    %h5 You Have Not Entered Your Biometrics. Please Update Them.
