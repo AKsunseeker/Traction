@@ -81,7 +81,6 @@ class WorkoutsController < ApplicationController
       new_exercise.save
     end
     redirect_to workout_path(new_workout)
-
   end
 
   private
