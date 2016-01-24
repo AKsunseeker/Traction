@@ -39,4 +39,4 @@
     .center
       = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn'
       = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn'
-      = link_to 'Complete Workout', do_workout_path(id: @workout), method: :post, class: 'btn'
+      = link_to 'Finish', root_path, class: 'btn'

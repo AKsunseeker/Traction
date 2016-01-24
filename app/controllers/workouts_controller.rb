@@ -13,7 +13,7 @@
 #
 
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout]
+  before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout, :finish]
   def index
     @workouts = Workout.all
   end
@@ -43,6 +43,14 @@ class WorkoutsController < ApplicationController
       redirect_to workout_path(@workout)
     else
       redirect_to :edit
+    end
+  end
+
+  def finish
+    if @workout.update(complete: true)
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
