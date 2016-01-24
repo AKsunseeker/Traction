@@ -4,16 +4,16 @@
     .col.s6
       %h3.center Your Workout Plans
       .center
-        = link_to 'Create Workout', new_workout_path, class: 'btn'
+        = link_to 'Create Workout', new_workout_path, class: 'btn red'
       - current_user.workouts.where(complete: false).each do |workout|
         %ul
           %li
-            .card.grey.darken-2
-              .card-content.white-text
-                .card-title.red-text
+            .card.grey
+              .card-content.red-text.text-darken-4
+                .card-title.red-text.text-darken-4
                   = workout.name
                 .card-link
-                  = link_to 'Do Workout', do_workout_path(id: workout), method: :post
+                  = link_to 'Do Workout', do_workout_path(id: workout), method: :post, class: 'black-text'
     .col.s6
       %h3.center Progress 
       / todo: put in charts
@@ -25,9 +25,9 @@
       - current_user.workouts.where(complete: true).each do |workout|
         %ul
           %li
-            .card.grey.darken-2
-              .card-content.white-text
-                .card-title.red-text
+            .card.green
+              .card-content.black-text
+                .card-title
                   = workout.name
-                .card-link
-                  = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post
+                .card-link.red-text
+                  = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'

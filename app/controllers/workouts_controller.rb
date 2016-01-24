@@ -29,6 +29,8 @@ class WorkoutsController < ApplicationController
     @workout = current_user.workouts.new(workout_params)
     @workout.complete = false
     if @workout.save
+      @workout.creator_id=  @workout.id
+      @workout.save
       redirect_to workout_path(@workout)
     else
       redirect_to :new
@@ -63,7 +65,10 @@ class WorkoutsController < ApplicationController
   end
 
   def add_workout
-    new_workout = current_user.workouts.create(name: @workout.name)
+    new_workout = current_user.workouts.new
+    new_workout.name = @workout.name
+    new_workout.creator_id = @workout.creator_id
+    new_workout.save
     new_exercises = @workout.exercises.all
     new_exercises.each do |exercise|
       new_exercise = new_workout.exercises.new
@@ -78,7 +83,10 @@ class WorkoutsController < ApplicationController
   end
 
   def do_workout
-    new_workout = current_user.workouts.create(name: @workout.name)
+    new_workout = current_user.workouts.new
+    new_workout.name = @workout.name
+    new_workout.creator_id = @workout.creator_id
+    new_workout.save
     new_exercises = @workout.exercises.all
     new_exercises.each do |exercise|
       new_exercise = new_workout.exercises.new
