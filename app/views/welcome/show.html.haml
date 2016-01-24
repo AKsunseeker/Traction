@@ -2,10 +2,10 @@
   %h1.center Welcome Back #{current_user.email}
   .row
     .col.s6
-      %h3.center Your Workouts Plans
+      %h3.center Your Workout Plans
       .center
         = link_to 'Create Workout', new_workout_path, class: 'btn'
-      - current_user.workouts.each do |workout|
+      - current_user.workouts.where(complete: false).each do |workout|
         %ul
           %li
             .card.grey.darken-2
@@ -17,3 +17,17 @@
     .col.s6
       %h3.center Progress 
       / todo: put in charts
+
+  .row
+    .col.s6
+      %h3.center Completed Workouts
+      .center
+      - current_user.workouts.where(complete: true).each do |workout|
+        %ul
+          %li
+            .card.grey.darken-2
+              .card-content.white-text
+                .card-title.red-text
+                  = workout.name
+                .card-link
+                  = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post

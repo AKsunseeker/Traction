@@ -6,6 +6,10 @@ class WelcomeController < ApplicationController
     end
   end
 
+  def show
+    binding.pry
+  end
+
   def about_us
   end
 end

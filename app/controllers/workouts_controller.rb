@@ -26,7 +26,8 @@ class WorkoutsController < ApplicationController
   end
 
   def create
-    @workout = Workout.new(workout_params)
+    @workout = current_user.workouts.new(workout_params)
+    @workout.complete = false
     if @workout.save
       redirect_to workout_path(@workout)
     else
@@ -38,7 +39,7 @@ class WorkoutsController < ApplicationController
   end
 
   def update
-    if @workout.save
+    if @workout.update(workout_params)
       redirect_to workout_path(@workout)
     else
       redirect_to :edit
