@@ -54,6 +54,8 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.1)
+    chart-js-rails (0.0.9)
+      railties (> 3.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -86,6 +88,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     globalid (0.3.6)
@@ -125,6 +129,8 @@ GEM
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    momentjs-rails (2.11.0)
+      railties (>= 3.1)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -167,6 +173,7 @@ GEM
     petergate (1.2.0)
       activerecord (> 4.0.0)
     pg (0.18.4)
+    populator (1.0.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -279,20 +286,24 @@ DEPENDENCIES
   annotate
   better_errors
   byebug
+  chart-js-rails
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
   factory_girl_rails
+  faker
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
   materialize-sass
+  momentjs-rails
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
   paperclip (~> 4.3)
   petergate
   pg (~> 0.15)
+  populator
   pry
   rails (= 4.2.5)
   react-rails

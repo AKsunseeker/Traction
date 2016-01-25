@@ -39,6 +39,14 @@ gem "paperclip", "~> 4.3"
 
 gem "annotate"
 
+gem 'chart-js-rails'
+
+gem 'momentjs-rails'
+
+gem 'faker'
+
+gem 'populator'
+
 gem 'react-rails'
 
 
