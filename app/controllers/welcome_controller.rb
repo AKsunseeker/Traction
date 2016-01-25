@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
   end
 
   def show
-    binding.pry
+    @workouts = current_user.workouts
   end
 
   def about_us

@@ -16,6 +16,8 @@
 //= require react_ujs
 //= require materialize-sprockets
 //= require components
+//= require moment
+//= require Chart
 //= require_tree .
 
 $(document).ready(function(){
