@@ -68,6 +68,7 @@ class WorkoutsController < ApplicationController
     new_workout = current_user.workouts.new
     new_workout.name = @workout.name
     new_workout.creator_id = @workout.creator_id
+    new_workout.complete = false
     new_workout.save
     new_exercises = @workout.exercises.all
     new_exercises.each do |exercise|
