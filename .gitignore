@@ -13,3 +13,4 @@
 /tmp
 /coverage
 */.DS_Store
+config/facebook.yml
