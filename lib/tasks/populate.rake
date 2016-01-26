@@ -5,10 +5,11 @@ namespace :populate do
   desc "Create workouts and exercises for chart purposes"
   task data: :environment do
     Workout.populate 50 do |workout|
-      workout.name = Faker::Name.name
+      workout.name = Faker::Hacker.ingverb
+      workout.original = true
       workout.creator_id = workout.id
       Exercise.populate 10 do |exercise|
-        exercise.name = Faker::Name.name
+        exercise.name = Faker::Hacker.verb
         exercise.weight = [2.5, 5.5, 4.5].sample
         exercise.repetitions = Faker::Number.between(1,15)
         exercise.repetition_duration_seconds = Faker::Number.between(1,15)

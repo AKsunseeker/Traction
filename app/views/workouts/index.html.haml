@@ -3,7 +3,7 @@
 
   - if @workouts.any?
     %ul 
-      - @workouts.uniq{|x| x.name}.each do |workout|
+      - @workouts.each do |workout|
         %li
           / TODO add in checkbox to check, REACT
           = link_to workout.name, workout_path(workout)
