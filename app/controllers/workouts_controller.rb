@@ -100,6 +100,32 @@ class WorkoutsController < ApplicationController
     redirect_to workout_path(new_workout)
   end
 
+  def get_workouts
+    
+
+
+    @workouts = []
+    current_user.workouts.map do |workout|
+      exercises = []
+      workout.exercises.map do |exercise|
+        exercises.push({
+          name: exercise.name,
+          weight: exercise.weight,
+          weight: exercise.weight,
+          weight: exercise.weight
+          })
+      end
+      @workouts.push({
+        name: workout.name,
+        id: workout.id,
+        creator_id: workout.creator_id,
+        exercises: exercises
+        
+        })
+    end
+    render json: @workouts
+  end
+
   private
 
   def workout_params

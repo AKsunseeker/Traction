@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
   end
 
   def show
+    @user_id = current_user.id
     @workouts = current_user.workouts
   end
 

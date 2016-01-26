@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'add_workout', to: 'workouts#add_workout'
   post 'do_workout', to: 'workouts#do_workout'
   put 'finish', to: "workouts#finish"
+  get 'get_workouts', to: "workouts#get_workouts"
 
   
 end
