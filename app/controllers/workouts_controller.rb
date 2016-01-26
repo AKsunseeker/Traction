@@ -32,7 +32,7 @@ class WorkoutsController < ApplicationController
       @workout.creator_id=  @workout.id
       @workout.original = true
       @workout.save
-      @@original_workouts << @workout
+      # @@original_workouts << @workout
       redirect_to workout_path(@workout)
     else
       redirect_to :new
@@ -105,22 +105,19 @@ class WorkoutsController < ApplicationController
     redirect_to workout_path(new_workout)
   end
 
-  def get_workouts
-    
-
-
-    @workouts = []
-    current_user.workouts.map do |workout|
+  def get_exercise_progress
+    workout_list = []
+    workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
+      workouts.map do |workout|
       exercises = []
       workout.exercises.map do |exercise|
         exercises.push({
           name: exercise.name,
-          weight: exercise.weight,
-          weight: exercise.weight,
-          weight: exercise.weight
+          output: exercise.weight*exercise.repetitions,
+          updated_at: exercise.updated_at
           })
       end
-      @workouts.push({
+      workout_list.push({
         name: workout.name,
         id: workout.id,
         creator_id: workout.creator_id,
@@ -128,7 +125,8 @@ class WorkoutsController < ApplicationController
         
         })
     end
-    render json: @workouts
+    binding.pry
+    render json: workout_list
   end
 
   private
