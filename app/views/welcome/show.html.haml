@@ -15,9 +15,9 @@
                 .card-link
                   = link_to 'Do Workout', do_workout_path(id: workout), method: :post, class: 'black-text'
     .col.s6
-      %h3.center Progress 
-      / todo: put in charts
-      %canvas#workout_progress{height: 400}
+      = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}
+      
+      
 
   .row
     .col.s6

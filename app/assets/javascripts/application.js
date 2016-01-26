@@ -15,12 +15,13 @@
 //= require react
 //= require react_ujs
 //= require materialize-sprockets
-//= require components
 //= require moment
 //= require Chart
+//= require components
 //= require_tree .
 
 $(document).ready(function(){
       $('.slider').slider({full_width: true, height: 350});
       $(".button-collapse").sideNav();
+      $('select').material_select();
     });
