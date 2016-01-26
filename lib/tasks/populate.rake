@@ -6,6 +6,7 @@ namespace :populate do
   task data: :environment do
     Workout.populate 50 do |workout|
       workout.name = Faker::Name.name
+      workout.creator_id = workout.id
       Exercise.populate 10 do |exercise|
         exercise.name = Faker::Name.name
         exercise.weight = [2.5, 5.5, 4.5].sample
