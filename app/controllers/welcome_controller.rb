@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  access all: [:index], trainer: :all
+  access all: [:index, :about_us], trainer: :all
   def index
     if current_user
       render :show
