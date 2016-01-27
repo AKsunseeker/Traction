@@ -47,7 +47,10 @@ gem 'faker'
 
 gem 'populator'
 
+gem 'rails_12factor'
+
 gem 'react-rails'
+
 
 
 
