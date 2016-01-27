@@ -13,7 +13,7 @@ RSpec.describe ExercisesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     
-    it 'assigns the exercise instance variable'do
+    it 'assigns the exercise instance variable' do
       exercise = FactoryGirl.create(:exercise)
       get :index, workout_id: workout.id, user_id: user.id
       expect(assigns(:exercises)).to eq([exercise]) 
@@ -25,60 +25,46 @@ RSpec.describe ExercisesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #new" do
     it "returns http success" do
       sign_in(user)
       workout
-      exercise = FactoryGirl.create(:exercise)
-      get :show, workout_id: workout.id, id: exercise.id
-      expect(response).to redirect_to(workout_path(workout.id))
-    end
-
-    it 'renders show template' do
-      exercise = FactoryGirl.create(:exercise)
-      get :show, id: exercise.id
-      expect(response).to render_template(:show)
-    end
-
-    it 'sets the exercise instance vairable' do
-      exercise = FactoryGirl.create(:exercise)
-      get :show, id: exercise.id
-      expect(assigns(:exercise)).to eq(exercise)
-    end
-  end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
+      get :new, workout_id: workout.id, user_id: user.id
       expect(response).to have_http_status(:success)
     end
 
     it 'renders the new template' do
-      get :new
+      get :new, workout_id: workout.id, user_id: user.id
       expect(response).to render_template(:new)
     end
-
   end
-
 
   describe "POST #create" do
     it 'creates a new exercise successfully' do
-      post :create, {exercise: {name: 'deadlift'}}
-      expect(exercise.count).to eq(1)
+      sign_in(user)
+      workout
+      post :create, {exercise: {name: 'deadlift', workout_id: workout}}
+      expect(workout.exercises.count).to eq(1)
     end
 
     it 'fails to create a new exercise with a blank name' do
-      post :create, {exercise: {name: ''}}
-      expect(exercise.count).to eq(0)
+      sign_in(user)
+      workout
+      post :create, {exercise: {name: '', workout_id: workout}}
+      expect(workout.exercises.count).to eq(0)
     end
     
     it 'redirects after a create' do
-      post :create, {exercise: {name: 'deadlift'}}
-      expect(response).to have_http_status(:redirect)
+      sign_in(user)
+      workout
+      post :create, {exercise: {name: 'deadlift', workout_id: workout}}
+      expect(response).to have_http_status(:success)
     end
     
     it 'renders the new template if it fails' do
-      post :create, {exercise: {name: ''}}
+      sign_in(user)
+      workout
+      post :create, {exercise: {name: '', workout_id: workout}}
       expect(response).to render_template(:new)
     end
   end
