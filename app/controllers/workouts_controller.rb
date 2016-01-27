@@ -31,6 +31,7 @@ class WorkoutsController < ApplicationController
     if @workout.save
       @workout.creator_id=  @workout.id
       @workout.original = true
+      @workout.complete = false
       @workout.save
       # @@original_workouts << @workout
       redirect_to workout_path(@workout)
@@ -109,6 +110,7 @@ class WorkoutsController < ApplicationController
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
       workouts.map do |workout|
+      workout.like_exercises(workout.id)
       exercises = []
       workout.exercises.map do |exercise|
         exercises.push({

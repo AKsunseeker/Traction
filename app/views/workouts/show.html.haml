@@ -39,7 +39,7 @@
     .center
       = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn'
       = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn'
-      - if workout.original
+      - if @workout.original
         = link_to 'Save Workout', root_path, class: 'btn'
       - else 
         = link_to 'Finish', finish_path(id: @workout), method: :put, class: 'btn'
