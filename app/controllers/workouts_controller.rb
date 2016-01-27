@@ -109,8 +109,8 @@ class WorkoutsController < ApplicationController
   def get_exercise_progress
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
-      workouts.map do |workout|
-      workout.like_exercises(workout.id)
+    workouts.map do |workout|
+      workout.like_exercises(workout.exercises)
       exercises = []
       workout.exercises.map do |exercise|
         exercises.push({

@@ -19,14 +19,39 @@ class Workout < ActiveRecord::Base
 
 
 
-  def like_exercises(workout_id)
-    exercises = Workout.find(workout_id).exercises
-    binding.pry
+  def exercise_by_name(exercises)
+    if exercises.length == 0
+      return @unique_exercises
+    else  
+      @date = exercises.first.updated_at
+      @sum = 0
+      @name = exercises.first.name
+      
+      exercises.each do |ex|
+        if ex.name == @name
+          @sum += ex.weight * ex.repetitions
+        end
+      end
+      @unique_exercises.push({
+        name: @name,
+        sum: @sum,
+        date: @date
+        })
 
-    
-    # find all of the exercises with the same name
-    # sum the weight * reps
-    # return the name and sum and updated at
+      exercises.delete_if {|ex| ex.name == @name}
+      exercise_by_name(exercises)
+    end
+  end
+
+  def like_exercises(exercises)
+    current_exercises = []
+    exercises.map do |ex|
+      current_exercises << ex
+    end
+    @unique_exercises = []
+    exercise_by_name(current_exercises)
+    binding.pry
+    @unique_exercises
   end
 
 
