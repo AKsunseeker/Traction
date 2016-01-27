@@ -1,5 +1,5 @@
 = form_for [@workout, @exercise] do |f|
-  = f.text_field :name, autofocus: true, placeholder: 'Name'
+  = f.text_field :name, autofocus: true, placeholder: 'Name', :required => true
   %br
   = f.number_field :weight, placeholder: 'Weight'
   %br

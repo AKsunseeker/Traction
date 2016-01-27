@@ -19,11 +19,7 @@ class ExercisesController < ApplicationController
   before_action :find_exercise, except: [:index, :new, :create]
   def index
     @exercises = Exercise.all
-  end
-
-  def show
-    redirect_to workout_path(id: params[:id])
-  end
+  end 
   
   def new
     @exercise = @workout.exercises.new

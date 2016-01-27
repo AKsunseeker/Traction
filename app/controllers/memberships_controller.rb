@@ -20,7 +20,7 @@ class MembershipsController < ApplicationController
   end
 
   def new
-    @membership = Membership.new(membership_params)
+    @membership = Membership.new
   end
 
   def create
