@@ -21,7 +21,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-      $('.slider').slider({indicators: false, full_width: true, height: 350, interval: 2000, transition: 500});
+      $('.slider').slider({indicators: false, full_width: true, height: 500, interval: 2000, transition: 500});
       $(".button-collapse").sideNav();
       $('select').material_select();
     });
