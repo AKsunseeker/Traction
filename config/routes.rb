@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :workouts do
-    resources :exercises
+    resources :exercises, except: [:show]
   end
 
   resources :groups

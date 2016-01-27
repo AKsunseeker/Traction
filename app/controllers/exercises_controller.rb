@@ -22,6 +22,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    redirect_to workout_path(id: params[:id])
   end
   
   def new

@@ -15,21 +15,23 @@ RSpec.describe ExercisesController, type: :controller do
     
     it 'assigns the exercise instance variable'do
       exercise = FactoryGirl.create(:exercise)
-      get :index
+      get :index, workout_id: workout.id, user_id: user.id
       expect(assigns(:exercises)).to eq([exercise]) 
     end
 
     it 'renders the index template' do
-      get :index
-      expect(response).to render_template(:index)
+      get :index, workout_id: workout.id, user_id: user.id
+      expect(response).to render_template('index')
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
+      sign_in(user)
+      workout
       exercise = FactoryGirl.create(:exercise)
-      get :show, id: exercise.id
-      expect(response).to have_http_status(:success)
+      get :show, workout_id: workout.id, id: exercise.id
+      expect(response).to redirect_to(workout_path(workout.id))
     end
 
     it 'renders show template' do
