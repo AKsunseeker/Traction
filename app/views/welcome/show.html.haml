@@ -1,4 +1,6 @@
 .container
+  %p.notice= notice
+  %p.alert= alert
   %h1.center Welcome Back #{current_user.email}
   .row
     .col.s6
@@ -16,9 +18,6 @@
                   = link_to 'Do Workout', do_workout_path(id: workout), method: :post, class: 'black-text'
     .col.s6
       = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}
-      
-      
-
   .row
     .col.s6
       %h3.center Completed Workouts
@@ -32,3 +31,4 @@
                   = workout.name
                 .card-link.red-text
                   = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
+                  
