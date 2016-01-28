@@ -107,34 +107,37 @@ class WorkoutsController < ApplicationController
   end
 
   def get_exercise_progress
+    
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
     workouts.map do |workout|
-      workout.like_exercises(workout.exercises)
-      exercises = []
-      workout.exercises.map do |exercise|
-        exercises.push({
-          name: exercise.name,
-          output: exercise.weight*exercise.repetitions,
-          updated_at: exercise.updated_at
-          })
-      end
+      # exercises = []
+      # workout.exercises.map do |exercise|
+      #   exercises.push({
+      #     name: exercise.name,
+      #     weight: exercise.weight,
+      #     repetitions: exercise.repetitions,
+          # output: exercise.weight*exercise.repetitions,
+      #     updated_at: exercise.updated_at
+      #     })
+      # end
       workout_list.push({
+        date: workout.updated_at,
         name: workout.name,
         id: workout.id,
         creator_id: workout.creator_id,
-        exercises: exercises
-        
+        # exercises: exercises,
+        workout_progress: workout.like_exercises(workout.exercises)
         })
+
     end
-    binding.pry
     render json: workout_list
   end
 
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :complete)
+    params.require(:workout).permit(:name, :complete, :category_id)
   end
 
   def find_workout

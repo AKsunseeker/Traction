@@ -1,5 +1,6 @@
 = form_for @workout do |f|
   = f.text_field :name, autofocus: true, placeholder: 'Workout Name'
+  = f.select :category_id, placeholder: 'Workout Category', options: {[value: 1, 'Strength'],[value: 2, 'Stength-Edurance'],[value: 3, 'Endurance'],[value: 4, 'MISC'],[value: 5, 'Power'],[value: 6, 'Recovery']}
   %br
   .center
     = f.submit class: 'btn'

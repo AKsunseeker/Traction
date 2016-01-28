@@ -51,7 +51,6 @@ class Workout < ActiveRecord::Base
     end
     @unique_exercises = []
     exercise_by_name(current_exercises)
-    binding.pry
     @unique_exercises
   end
 
