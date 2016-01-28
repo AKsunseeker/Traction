@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128222214) do
+ActiveRecord::Schema.define(version: 20160128232459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,9 +120,13 @@ ActiveRecord::Schema.define(version: 20160128222214) do
     t.string   "name"
     t.boolean  "complete"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.boolean  "original"
+    t.integer  "category_id"
   end
 
+  add_index "workouts", ["category_id"], name: "index_workouts_on_category_id", using: :btree
+
+  add_foreign_key "workouts", "categories"
 end
