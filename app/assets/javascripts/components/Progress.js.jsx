@@ -7,12 +7,17 @@ class Progress extends React.Component{
 
   chartProgress(){
     labels = [];
-    dataPoints = [];
+    datasets = [];
     $.ajax({
       url: 'get_exercise_progress',
       type: 'GET',
       data: {creator_id: this.refs.workout.value}
       }).success(data => {
+        for(x = 0; x < data.length; x++){
+          labels.push(data[x]['date']);
+          dataPoints.push(data[x]['workout_progress']['sum']);
+          debugger
+        } 
       }).error(data => {
         console.log(data);
       });
