@@ -17,6 +17,4 @@
 class Exercise < ActiveRecord::Base
   belongs_to :workout
   has_many :locations, as: :addressable
-  has_many :category_exercises
-  has_many :categories, through: :category_exercises
 end
