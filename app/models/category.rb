@@ -13,6 +13,5 @@
 #
 
 class Category < ActiveRecord::Base
-  has_many :category_exercises
-  has_many :exercises, through: :category_exercises
+  has_many :workouts
 end

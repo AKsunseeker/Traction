@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126012323) do
+ActiveRecord::Schema.define(version: 20160128222214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,16 +45,6 @@ ActiveRecord::Schema.define(version: 20160126012323) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  create_table "category_exercises", force: :cascade do |t|
-    t.integer  "exercise_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "category_exercises", ["category_id"], name: "index_category_exercises_on_category_id", using: :btree
-  add_index "category_exercises", ["exercise_id"], name: "index_category_exercises_on_exercise_id", using: :btree
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
@@ -135,6 +125,4 @@ ActiveRecord::Schema.define(version: 20160126012323) do
     t.boolean  "original"
   end
 
-  add_foreign_key "category_exercises", "categories"
-  add_foreign_key "category_exercises", "exercises"
 end
