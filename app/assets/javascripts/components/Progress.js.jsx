@@ -6,27 +6,26 @@ class Progress extends React.Component{
   }
 
   chartProgress(){
-    labels = [];
-    datasets = [];
+    chartData = {datasets: [], labels: []};
     $.ajax({
       url: 'get_exercise_progress',
       type: 'GET',
       data: {creator_id: this.refs.workout.value}
       }).success(data => {
-        for(x = 0; x < data.length; x++){
-          labels.push(data[x]['date']);
-          dataPoints.push(data[x]['workout_progress']['sum']);
-          debugger
-        } 
+        if (data.length) {
+          for(x = 0; x < data.length; x++){
+            chartData.labels.push(data[x]['date']);
+            chartData.datasets.push({data: data[x]['workout_progress']['sum']});
+          } options = { responsive: true, scaleShowGriLines: false, pointDotRadius: 3, bezierCurveTension: 0.8}
+
+          $('#workout_progress').empty()
+          new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, {responsive: true})
+        }
       }).error(data => {
         console.log(data);
       });
        
   
-    options = { responsive: true, scaleShowGriLines: false, pointDotRadius: 3, bezierCurveTension: 0.8}
-
-    $('#workout_progress').empty()
-    new Chart($('#workout_progress').get(0).getContext('2d')).Line(data, {responsive: true})
   }
 
   render(){
