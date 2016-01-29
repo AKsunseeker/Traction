@@ -21,6 +21,7 @@ class Progress extends React.Component{
           $('#workout_progress').empty()
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, {responsive: true})
         }
+
       }).error(data => {
         console.log(data);
       });
