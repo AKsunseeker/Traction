@@ -77,6 +77,7 @@ class WorkoutsController < ApplicationController
     new_workout.original = false
     new_workout.save
     new_exercises = @workout.exercises.all
+    binding.pry
     new_exercises.each do |exercise|
       new_exercise = new_workout.exercises.new
       new_exercise.name = exercise.name 
