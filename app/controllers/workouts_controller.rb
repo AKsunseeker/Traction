@@ -24,6 +24,7 @@ class WorkoutsController < ApplicationController
 
   def new
     @workout = Workout.new
+    @categories = Category.all
   end
 
   def create
@@ -41,6 +42,7 @@ class WorkoutsController < ApplicationController
   end
 
   def edit    
+    @category = Category.all
   end
 
   def update
@@ -107,39 +109,35 @@ class WorkoutsController < ApplicationController
   end
 
   def get_exercise_progress
-    
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
     workouts.map do |workout|
-      # exercises = []
-      # workout.exercises.map do |exercise|
-      #   exercises.push({
-      #     name: exercise.name,
-      #     weight: exercise.weight,
-      #     repetitions: exercise.repetitions,
-          # output: exercise.weight*exercise.repetitions,
-      #     updated_at: exercise.updated_at
-      #     })
-      # end
       workout_list.push({
         date: workout.updated_at,
-        name: workout.name,
-        # exercises: exercises,
         workout_progress: workout.like_exercises(workout.exercises)
         })
 
     end
-    
-    workout_list.each do |w|
-      exercise = w[:workout_progress]
-      
-      exercise.each do |ex|
-        ex[:sum]
+    # workout_list.first[:workout_progress].length.times do |i|
+    # end
+    @line_hashes = []
+    @dates_array = []
+    workout_list.each do |workout|
+      @dates_array << workout[:date]
+    end
+    workout_list.first[:workout_progress].each do |w|
+      @line_hashes << {w[:name] => 0}
+    end
+    workout_list.each do |workout|
+      i = 0
+      workout[:workout_progress].each do |w|
+        @line_hashes[i][w[:name]] += w[:sum]
+        i += 1
       end
     end
-    render json: workout_list
+    render json: [@line_hashes, @dates_array]
   end
-
+  # need hash of exercise name, sum
   private
 
   def workout_params
