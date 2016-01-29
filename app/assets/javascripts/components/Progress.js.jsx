@@ -13,11 +13,14 @@ class Progress extends React.Component{
       data: {creator_id: this.refs.workout.value}
       }).success(data => {
         if (data.length) {
-          for(x = 0; x < data.length; x++){
-            chartData.labels.push(data[x]['date']);
-            chartData.datasets.push({data: data[x]['workout_progress']['sum']});
-          } options = { responsive: true, scaleShowGriLines: false, pointDotRadius: 3, bezierCurveTension: 0.8}
-
+          for(x = 0; x < data[1].length; x++){
+            chartData.labels.push(data[1][x]);
+          } 
+          for(x= 0; x < data[0].length; x++){
+            let label = Object.keys(data[0][x])
+            chartData.datasets.push({label: label, data: data[0][x][label]});
+          }
+          options = { responsive: true, scaleShowGriLines: false, pointDotRadius: 3, bezierCurveTension: 0.8}
           $('#workout_progress').empty()
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, {responsive: true})
         }

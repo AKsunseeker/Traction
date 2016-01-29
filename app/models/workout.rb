@@ -18,7 +18,6 @@ class Workout < ActiveRecord::Base
   has_many :exercises 
   has_many :locations, as: :addressable
 
-
   def exercise_by_name(exercises)
     if exercises.length == 0
       return @unique_exercises
@@ -33,9 +32,8 @@ class Workout < ActiveRecord::Base
       end
       @unique_exercises.push({
         name: @name,
-        sum: @sum,
+        sum: @sum
         })
-
       exercises.delete_if {|ex| ex.name == @name}
       exercise_by_name(exercises)
     end

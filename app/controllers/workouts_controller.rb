@@ -118,26 +118,26 @@ class WorkoutsController < ApplicationController
         })
 
     end
-    # workout_list.first[:workout_progress].length.times do |i|
-    # end
+
     @line_hashes = []
     @dates_array = []
     workout_list.each do |workout|
       @dates_array << workout[:date]
     end
     workout_list.first[:workout_progress].each do |w|
-      @line_hashes << {w[:name] => 0}
+      @line_hashes << {w[:name] => []}
     end
     workout_list.each do |workout|
-      i = 0
+      @i = 0
       workout[:workout_progress].each do |w|
-        @line_hashes[i][w[:name]] += w[:sum]
-        i += 1
+        @line_hashes[@i][w[:name]] << w[:sum]
+        @i += 1
       end
     end
-    render json: [@line_hashes, @dates_array]
+    json_data = [@line_hashes, @dates_array]
+    render json: json_data
   end
-  # need hash of exercise name, sum
+
   private
 
   def workout_params
