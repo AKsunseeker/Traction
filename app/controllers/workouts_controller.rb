@@ -84,6 +84,7 @@ class WorkoutsController < ApplicationController
       new_exercise.repetitions = exercise.repetitions
       new_exercise.repetition_duration_seconds = exercise.repetition_duration_seconds
       new_exercise.rest_duration_seconds = exercise.rest_duration_seconds
+      new_exercise.youtube_url = exercise.youtube_url
       new_exercise.save
     end
     render 'welcome/show'

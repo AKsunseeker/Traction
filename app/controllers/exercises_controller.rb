@@ -53,7 +53,7 @@ class ExercisesController < ApplicationController
   private
 
   def exercise_params
-    params.require(:exercise).permit(:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id)
+    params.require(:exercise).permit(:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id, :youtube_url)
   end
 
   def find_workout
