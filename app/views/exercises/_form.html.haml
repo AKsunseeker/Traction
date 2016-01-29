@@ -19,6 +19,10 @@
     = f.label :rest_duration_seconds, "Rest Duration in Seconds"
     = f.number_field :rest_duration_seconds
     %br
+  .input-field
+    = f.label :youtube_url, "Youtube link"
+    = f.text_field :youtube_url
+    %br
     = f.hidden_field :workout_id, value: @workout.id
     %br
   .center
