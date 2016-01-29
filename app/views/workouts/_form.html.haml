@@ -1,4 +1,13 @@
 = form_for @workout do |f|
-  = f.text_field :name, autofocus: true, placeholder: 'Workout Name'
-  = f.select :category_id, options_for_select(@categories.map {|category| [category.name, category.id]})
-  = f.submit class: 'btn'
+  .input-field
+    = f.label :name, "Workout Name"
+    = f.text_field :name, autofocus: true, :required => true
+    %br
+  .input-field
+    = f.label :category_id, "Category"
+    %br
+    %br
+    = f.select :category_id, options_for_select(@categories.map {|category| [category.name, category.id]})
+    %br
+  .center
+    = f.submit class: 'btn'
