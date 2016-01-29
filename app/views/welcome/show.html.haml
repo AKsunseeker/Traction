@@ -1,27 +1,37 @@
 .container
   %p.notice= notice
   %p.alert= alert
-  %h1.center 
+  %h3.center 
     -if current_user.first_name
       Welcome #{current_user.first_name} #{current_user.last_name}
     -else 
       Welcome #{current_user.email}
   .row
-    .col.s6
-      %h3.center Your Workout Plans
-      .center
-        = link_to 'Create Workout', new_workout_path, class: 'btn red'
-      - current_user.workouts.where(complete: false).each do |workout|
-        %ul
-          %li
-            .card.grey
-              .card-content.red-text.text-darken-4
-                .card-title.red-text.text-darken-4
-                  = workout.name
-                .card-link
-                  = link_to 'Do Workout', do_workout_path(id: workout), method: :post, class: 'black-text'
-    .col.s6
-      = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}
+    .col.s4
+      .card.grey.lighten-2.hoverable
+        .card-content
+          .row
+            .card-title.col.s7.red-text.text-darken-4
+              Workouts
+            .col.s4
+              = link_to 'Create', new_workout_path, class: 'btn red' 
+          - current_user.workouts.where(complete: false).each do |workout|
+            = workout.name
+            = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+            %br
+      .card.green.lighten-2.hoverable
+        .card-content
+          .card-title.red-text.text-darken-4
+            Completed Workouts
+          - if current_user.workouts.where(complete: true).any?
+            - current_user.workouts.where(complete: true).each do |workout|
+              = workout.name
+              = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
+
+    .col.s8
+      .card.grey.lighten-2.hoverable
+        .card-content
+          = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}
   .row
     .col.s6
       %h3.center Completed Workouts
@@ -37,5 +47,4 @@
                   .card-link.red-text
                     = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
       - else
-        %h5 You have not completed any workouts yet.
-              
+        %h5 You have not completed any workouts yet.              
