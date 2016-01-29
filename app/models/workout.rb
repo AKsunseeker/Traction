@@ -19,12 +19,10 @@ class Workout < ActiveRecord::Base
   has_many :locations, as: :addressable
 
 
-
   def exercise_by_name(exercises)
     if exercises.length == 0
       return @unique_exercises
     else  
-      @date = exercises.first.updated_at
       @sum = 0
       @name = exercises.first.name
       
@@ -36,7 +34,6 @@ class Workout < ActiveRecord::Base
       @unique_exercises.push({
         name: @name,
         sum: @sum,
-        date: @date
         })
 
       exercises.delete_if {|ex| ex.name == @name}

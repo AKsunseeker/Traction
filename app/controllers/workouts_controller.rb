@@ -124,12 +124,18 @@ class WorkoutsController < ApplicationController
       workout_list.push({
         date: workout.updated_at,
         name: workout.name,
-        id: workout.id,
-        creator_id: workout.creator_id,
         # exercises: exercises,
         workout_progress: workout.like_exercises(workout.exercises)
         })
 
+    end
+    
+    workout_list.each do |w|
+      exercise = w[:workout_progress]
+      
+      exercise.each do |ex|
+        ex[:sum]
+      end
     end
     render json: workout_list
   end
