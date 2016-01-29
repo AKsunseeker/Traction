@@ -31,20 +31,4 @@
     .col.s8
       .card.grey.lighten-2.hoverable
         .card-content
-          = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}
-  .row
-    .col.s6
-      %h3.center Completed Workouts
-      .center
-      - if current_user.workouts.where(complete: true).any?
-        - current_user.workouts.where(complete: true).each do |workout|
-          %ul
-            %li
-              .card.green
-                .card-content.black-text
-                  .card-title
-                    = workout.name
-                  .card-link.red-text
-                    = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
-      - else
-        %h5 You have not completed any workouts yet.              
+          = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}            
