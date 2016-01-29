@@ -7,11 +7,11 @@
     -else 
       Welcome #{current_user.email}
   .row
-    .col.s4
+    .col.m4
       .card.grey.lighten-2.hoverable
         .card-content
           .row
-            .card-title.col.s7.red-text.text-darken-4
+            .card-title.col.m7.red-text.text-darken-4
               Workouts
             .col.s4
               = link_to 'Create', new_workout_path, class: 'btn red' 
@@ -28,7 +28,7 @@
               = workout.name
               = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
 
-    .col.s8
+    .col.m8
       .card.grey.lighten-2.hoverable
         .card-content
           = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}            

@@ -21,15 +21,11 @@ namespace :populate do
 
   end
 
-
-
-
-
-
-
-
-
-
-
-
+  desc "Create categories"
+  task categories: :environment do
+    categories = ['Misc', 'Strength', 'Power', 'Strength-Endurance', 'Endurance', 'Recovery']
+    categories.each do |category|
+      Category.create(name: category) 
+    end
+  end
 end
