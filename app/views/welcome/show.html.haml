@@ -1,7 +1,8 @@
 .container
   %p.notice= notice
   %p.alert= alert
-  %h1.center Welcome Back #{current_user.email}
+  %h1.center 
+    & Welcome #{current_user.first_name} #{current_user.last_name}
   .row
     .col.s6
       %h3.center Your Workout Plans
