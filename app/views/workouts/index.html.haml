@@ -6,7 +6,7 @@
         - @workouts.each do |workout|
           %li
             / TODO add in checkbox to check, REACT
-            = link_to workout.name, workout_path(workout), class: 'btn-large blue-grey radius'
+            = link_to workout.name, workout_path(workout), class: 'btn-large blue-grey'
             - if current_user
               = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
             %br
