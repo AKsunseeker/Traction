@@ -9,8 +9,12 @@
 
 </head>
 <body>
- <%= render(partial: 'layouts/nav_bar') %>
- <%= yield %>
- <%= render(partial: 'layouts/footer') %>
+    <main>
+      <%= render(partial: 'layouts/nav_bar') %>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= render(partial: 'layouts/footer') %>
+    </footer>
 </body>
 </html>
