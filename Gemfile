@@ -52,6 +52,7 @@ gem 'populator'
 gem 'rails_12factor'
 
 gem 'reek'
+
 gem 'react-rails'
 
 
