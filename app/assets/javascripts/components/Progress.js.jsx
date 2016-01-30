@@ -2,6 +2,7 @@ class Progress extends React.Component{
   constructor(props) {
     super(props);
     this.chartProgress = this.chartProgress.bind(this);
+    this.chartBiometrics = this.chartBiometrics.bind(this);
     this.buildChart = this.buildChart.bind(this);
     this.state = {workouts: this.props.workouts };
   }
@@ -36,6 +37,39 @@ class Progress extends React.Component{
         console.log(data);
       });   
   
+  }
+  chartBiometrics(e){
+    e.preventDefault();
+    chartData = {datasets: [], labels: []};
+    $.ajax({
+      url: 'get_biometrics_progress',
+      type: 'GET',
+      }).success(data => {
+        if (data['date_labels'].length) {
+          for(x = 0; x < data['date_labels'].length; x++){
+            chartData.labels.push(moment(new Date(data['date_labels'][x])).format("DD/MM/YYYY"));
+          } 
+          for(x= 0; x < Object.keys(data['data']).length; x++){
+            let label = Object.keys(data['data'])[x]
+            let colors = this.setColor();
+            chartData.datasets.push({
+              label: data['data'][label], 
+              data: data['data'][label],
+              fillColor: colors.fillColor,
+              strokeColor: colors.color,
+              pointColor: colors.color,
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: colors.color});
+          }
+          this.setState({chartData: chartData});
+        }
+      }).error(data => {
+        console.log(data);
+      });   
+  }
+  chartCategories(e){
+
   }
   buildChart(){
     if(this.state.chartData){
@@ -73,13 +107,25 @@ class Progress extends React.Component{
     }); 
     return(<div>
              <h3 className='center'>Progress</h3>
-             <form onSubmit={this.chartProgress}>
-               <select ref='workout'>{workouts}</select>
-               <button type='submit'>Show Chart</button>
-             </form>
-             <canvas id='workout_progress' />
-             { this.buildChart() }
-           </div>)
+             <div className="row">
+               <div className="col s1">
+                 <button onClick={this.chartBiometrics} className="btn">Biometrics</button>
+               </div>
+               <div className="col s1 offset-s3">
+                 <button onClick={this.chartCategories} className="btn">Categories</button>
+               </div>
+               <div className="col s3 offset-s3">
+                <form onSubmit={this.chartProgress}>
+                  <select ref='workout'>{workouts}</select>
+                  <button type='submit' className="btn">Show Chart</button>
+                </form>
+                </div>
+              </div>
+              <div className="row">
+                <canvas id='workout_progress' />
+                { this.buildChart() };
+              </div>
+           </div>);
   }
 }
 
