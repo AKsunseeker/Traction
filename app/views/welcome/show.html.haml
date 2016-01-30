@@ -18,6 +18,7 @@
           - current_user.workouts.where(complete: false).each do |workout|
             = workout.name
             = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+            = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
             %br
       .card.green.lighten-2.hoverable
         .card-content

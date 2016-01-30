@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :memberships
   resources :locations
 
-  get 'workout_history/:id', to: 'workouts#workout_history'
+  get 'workout_history/:id', to: 'workouts#workout_history', as: 'workout_history'
   root 'welcome#index'
   get 'about_us', to: 'welcome#about_us'
   post 'add_workout', to: 'workouts#add_workout'
