@@ -53,7 +53,7 @@ class Progress extends React.Component{
             let label = Object.keys(data['data'])[x]
             let colors = this.setColor();
             chartData.datasets.push({
-              label: data['data'][label], 
+              label: label, 
               data: data['data'][label],
               fillColor: colors.fillColor,
               strokeColor: colors.color,
