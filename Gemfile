@@ -53,6 +53,8 @@ gem 'rails_12factor'
 
 gem 'reek'
 
+gem 'kaminari'
+
 gem 'react-rails'
 
 

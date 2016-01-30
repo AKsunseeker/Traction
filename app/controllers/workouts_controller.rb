@@ -16,7 +16,7 @@ class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout, :finish, :workout_history]
   
   def index
-    @workouts = Workout.where(original: true)
+    @workouts = Workout.where(original: true).order(:name).page(params[:page])
   end
 
   def show
