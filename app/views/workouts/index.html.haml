@@ -10,8 +10,9 @@
             - if current_user
               = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
             %br
+      = paginate @workouts 
     - else
       %h4 
         Unfortunately we do not have any workouts right now. Add your own or check back later!
     - if current_user
-      = link_to 'New Workout', new_workout_path
+      = link_to 'New Workout', new_workout_path, class: "btn green"
