@@ -19,7 +19,7 @@ class Progress extends React.Component{
             chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
           } 
           for(x= 0; x < data[0].length; x++){
-            let label = Object.keys(data[0][x])
+            let label = Object.keys(data[0][x]);
             let colors = this.setColor();
             chartData.datasets.push({
               label: label[0], 
@@ -50,7 +50,7 @@ class Progress extends React.Component{
             chartData.labels.push(moment(new Date(data['date_labels'][x])).format("DD/MM/YYYY"));
           } 
           for(x= 0; x < Object.keys(data['data']).length; x++){
-            let label = Object.keys(data['data'])[x]
+            let label = Object.keys(data['data'])[x];
             let colors = this.setColor();
             chartData.datasets.push({
               label: label, 
@@ -123,7 +123,7 @@ class Progress extends React.Component{
               </div>
               <div className="row">
                 <canvas id='workout_progress' />
-                { this.buildChart() };
+                { this.buildChart() }
               </div>
            </div>);
   }
