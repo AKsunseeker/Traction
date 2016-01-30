@@ -13,7 +13,7 @@
 #
 
 class WorkoutsController < ApplicationController
-  before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout, :finish]
+  before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout, :finish, :workout_history]
   
   def index
     @workouts = Workout.where(original: true)
@@ -136,6 +136,11 @@ class WorkoutsController < ApplicationController
     end
     json_data = [@line_hashes, @dates_array]
     render json: json_data
+  end
+
+  def workout_history
+    @workouts = Workout.where(creator_id: @workout.creator_id)
+    binding.pry
   end
 
   private
