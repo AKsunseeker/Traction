@@ -8,78 +8,23 @@ class Progress extends React.Component{
   }
   chartProgress(e){
     e.preventDefault();
-    chartData = {datasets: [], labels: []};
-    $.ajax({
-      url: 'get_exercise_progress',
-      type: 'GET',
-      data: {creator_id: this.refs.workout.value}
-      }).success(data => {
-        if (data.length) {
-          for(x = 0; x < data[1].length; x++){
-            chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
-          } 
-          for(x= 0; x < data[0].length; x++){
-            let label = Object.keys(data[0][x]);
-            let colors = this.setColor();
-            chartData.datasets.push({
-              label: label[0], 
-              data: data[0][x][label],
-              fillColor: colors.fillColor,
-              strokeColor: colors.color,
-              pointColor: colors.color,
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: colors.color});
-          }
-          this.setState({chartData: chartData});
-        }
-      }).error(data => {
-        console.log(data);
-      });   
-  
+    console.log('Progress clicked')
+    this.setState({ chartType: 'workoutProgress' });
   }
   chartBiometrics(e){
     e.preventDefault();
-    chartData = {datasets: [], labels: []};
-    $.ajax({
-      url: 'get_biometrics_progress',
-      type: 'GET',
-      }).success(data => {
-        if (data['date_labels'].length) {
-          for(x = 0; x < data['date_labels'].length; x++){
-            chartData.labels.push(moment(new Date(data['date_labels'][x])).format("DD/MM/YYYY"));
-          } 
-          for(x= 0; x < Object.keys(data['data']).length; x++){
-            let label = Object.keys(data['data'])[x];
-            let colors = this.setColor();
-            chartData.datasets.push({
-              label: label, 
-              data: data['data'][label],
-              fillColor: colors.fillColor,
-              strokeColor: colors.color,
-              pointColor: colors.color,
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: colors.color});
-          }
-          this.setState({chartData: chartData});
-        }
-      }).error(data => {
-        console.log(data);
-      });   
+    console.log('biometrics clicked')
+    this.setState({chartType: 'biometricsProgress'});
   }
   chartCategories(e){
 
   }
   buildChart(){
-    if(this.state.chartData){
-      $('#workout_progress').empty();
-      let options = { responsive: true, 
-                      scaleShowGridLines: false, 
-                      pointDotRadius: 3, 
-                      bezierCurveTension: 0.8, 
-                      multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
-      new Chart($('#workout_progress').get(0).getContext('2d')).Line(this.state.chartData, options);
+    if(this.state.chartType == 'workoutProgress' ){
+      return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>)
+    }
+    else if (this.state.chartType == 'biometricsProgress'){
+      return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     }
   }
   rgb(r, g, b){
@@ -100,6 +45,7 @@ class Progress extends React.Component{
     return {fillColor: fillColor, color: color}
   }
   render(){
+
     // TODO only completed workouts, only once
     let workouts = this.props.workouts.map(workout => {
       let key = `workout-${workout.id}`
@@ -122,7 +68,6 @@ class Progress extends React.Component{
                 </div>
               </div>
               <div className="row">
-                <canvas id='workout_progress' />
                 { this.buildChart() }
               </div>
            </div>);
