@@ -2,10 +2,11 @@ class Progress extends React.Component{
   constructor(props) {
     super(props);
     this.chartProgress = this.chartProgress.bind(this);
-    this.state = {workouts: this.props.workouts};
+    this.buildChart = this.buildChart.bind(this);
+    this.state = {workouts: this.props.workouts };
   }
-
-  chartProgress(){
+  chartProgress(e){
+    e.preventDefault();
     chartData = {datasets: [], labels: []};
     $.ajax({
       url: 'get_exercise_progress',
@@ -14,25 +15,58 @@ class Progress extends React.Component{
       }).success(data => {
         if (data.length) {
           for(x = 0; x < data[1].length; x++){
-            chartData.labels.push(data[1][x]);
+            chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
           } 
           for(x= 0; x < data[0].length; x++){
             let label = Object.keys(data[0][x])
-            chartData.datasets.push({label: label, data: data[0][x][label]});
+            let colors = this.setColor();
+            chartData.datasets.push({
+              label: label[0], 
+              data: data[0][x][label],
+              fillColor: colors.fillColor,
+              strokeColor: colors.color,
+              pointColor: colors.color,
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: colors.color});
           }
-          options = { responsive: true, scaleShowGriLines: false, pointDotRadius: 3, bezierCurveTension: 0.8}
-          $('#workout_progress').empty()
-          new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, {responsive: true})
+          this.setState({chartData: chartData});
         }
-
       }).error(data => {
         console.log(data);
-      });
-       
+      });   
   
   }
-
+  buildChart(){
+    if(this.state.chartData){
+      $('#workout_progress').empty();
+      let options = { responsive: true, 
+                      scaleShowGridLines: false, 
+                      pointDotRadius: 3, 
+                      bezierCurveTension: 0.8, 
+                      multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
+      new Chart($('#workout_progress').get(0).getContext('2d')).Line(this.state.chartData, options);
+    }
+  }
+  rgb(r, g, b){
+    return "rgba("+r+","+g+","+b+", 1)";
+  }
+  rgba(r,g,b) {
+    return "rgba("+r+","+g+","+b+", 0.1)";
+  }
+  randNumber() {
+    return Math.floor(Math.random() * 255);
+  }
+  setColor(){
+    let r = this.randNumber();
+    let g = this.randNumber();
+    let b = this.randNumber();
+    let color = this.rgb(r,g,b);
+    let fillColor = this.rgba(r,g,b);
+    return {fillColor: fillColor, color: color}
+  }
   render(){
+    // TODO only completed workouts, only once
     let workouts = this.props.workouts.map(workout => {
       let key = `workout-${workout.id}`
       return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
@@ -44,7 +78,7 @@ class Progress extends React.Component{
                <button type='submit'>Show Chart</button>
              </form>
              <canvas id='workout_progress' />
-
+             { this.buildChart() }
            </div>)
   }
 }
