@@ -66,6 +66,21 @@ class BiometricsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def get_biometrics_progress
+    @biometrics = @user.biometrics.all
+    if @biometrics.any?
+      line_chart_json = {date_labels: [], data: {weight: [], body_fat_percentage: []}, logs: []}
+      @biometrics.each do |biometric|
+        line_chart_json[:date_labels] << biometric.date
+        line_chart_json[:data][:weight] << biometric.weight
+        line_chart_json[:data][:body_fat_percentage] << biometric.body_fat_percentage
+      end
+        render json: line_chart_json
+    else
+      render json: ["No Biometrics"]
+    end
+  end
+
   private
     def biometric_params
       params.require(:biometric).permit(:dateof_birth, :weight, :gender, :body_fat_percentage, :chest, 
@@ -74,7 +89,7 @@ class BiometricsController < ApplicationController
     end
 
     def find_user
-      @user = User.find(params[:user_id])
+      @user = current_user
     end
 
     def find_biometric

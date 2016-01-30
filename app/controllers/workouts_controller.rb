@@ -77,7 +77,6 @@ class WorkoutsController < ApplicationController
     new_workout.original = false
     new_workout.save
     new_exercises = @workout.exercises.all
-    binding.pry
     new_exercises.each do |exercise|
       new_exercise = new_workout.exercises.new
       new_exercise.name = exercise.name 
@@ -119,9 +118,7 @@ class WorkoutsController < ApplicationController
         date: workout.updated_at,
         workout_progress: workout.like_exercises(workout.exercises)
         })
-
     end
-
     @line_hashes = []
     @dates_array = []
     workout_list.each do |workout|

@@ -51,7 +51,6 @@ gem 'populator'
 
 gem 'rails_12factor'
 
-gem 'rubocop', require: false
 gem 'reek'
 gem 'react-rails'
 
