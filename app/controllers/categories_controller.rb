@@ -13,9 +13,9 @@
 #
 
 class CategoriesController < ApplicationController
-  before_action :find_workout
+  before_action :find_workout, except: [:get_categories_progress]
   before_action :find_exercise, only: [:new]
-  before_action :find_category, except: [:index, :new, :create]
+  before_action :find_category, except: [:index, :new, :create, :get_categories_progress]
 
   def index
     @categories = Category.all
@@ -52,6 +52,22 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     redirect_to workout_exercise_path(@workout, @exercise)
+  end
+
+  def get_categories_progress
+    @categories = Category.all
+    @category_json_data = []
+    @categories.map {|category| @category_json_data << {"#{category.name}" => 0} }
+    current_user.workouts.each do |workout|
+      if workout.category
+        (0...@category_json_data.length).each do |i|
+          if @category_json_data[i].keys[0] == workout.category.name 
+            @category_json_data[i][workout.category.name] += 1
+          end
+        end
+      end
+    end
+    render json: @category_json_data
   end
 
   private
