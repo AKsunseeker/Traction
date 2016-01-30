@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   put 'finish', to: "workouts#finish"
   get 'get_exercise_progress', to: "workouts#get_exercise_progress"
   get 'get_biometrics_progress', to: "biometrics#get_biometrics_progress"
+  get 'get_categories_progress', to: "categories#get_categories_progress"
 
   
 end

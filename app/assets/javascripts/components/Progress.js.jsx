@@ -3,6 +3,7 @@ class Progress extends React.Component{
     super(props);
     this.chartProgress = this.chartProgress.bind(this);
     this.chartBiometrics = this.chartBiometrics.bind(this);
+    this.chartCategories = this.chartCategories.bind(this);
     this.buildChart = this.buildChart.bind(this);
     this.state = {workouts: this.props.workouts };
   }
@@ -17,14 +18,17 @@ class Progress extends React.Component{
     this.setState({chartType: 'biometricsProgress'});
   }
   chartCategories(e){
-
+    e.preventDefault();
+    console.log('categories clicked')
+    this.setState({chartType: 'categoriesChart'})
   }
   buildChart(){
     if(this.state.chartType == 'workoutProgress' ){
-      return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>)
-    }
-    else if (this.state.chartType == 'biometricsProgress'){
+      return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
+    } else if (this.state.chartType == 'biometricsProgress'){
       return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
+    } else if (this.state.chartType == 'categoriesChart'){
+      return(< CategoriesChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     }
   }
   rgb(r, g, b){
