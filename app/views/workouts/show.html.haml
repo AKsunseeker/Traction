@@ -2,36 +2,43 @@
   %h3.center #{@workout.name}
 
   - if @workout.exercises.any?
-    .row
-      .col.s2
-        %h6.center Name
-      .col.s2
-        %h6.center Weight
-      .col.s2
-        %h6.center Reps
-      .col.s2
-        %h6.center Rep Duration (s)
-      .col.s2
-        %h6.center Rest Duration (s)
-    %hr
-    .row
-      %ul
+    %table.highlight
+      %thead
+        %tr
+          %th
+            %h6.center Name
+          %th
+            %h6.center Weight
+          %th
+            %h6.center Reps
+          %th
+            %h6.center Rep Duration (s)
+          %th
+            %h6.center Rest Duration (s)
+          %hr
+      %tbody
         - @workout.exercises.each do |exercise|
-          %li
-            .col.s2.center
-              = exercise.name
-            .col.s2.center
-              = exercise.weight
-            .col.s2.center
-              = exercise.repetitions
-            .col.s2.center
-              = exercise.repetition_duration_seconds
-            .col.s2.center
-              = exercise.rest_duration_seconds
-            .col.s2.center
-              = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
+          %tr
+            %td
+              .col.s2.center
+                = exercise.name
+            %td
+              .col.s2.center
+                = exercise.weight
+            %td
+              .col.s2.center
+                = exercise.repetitions
+            %td
+              .col.s2.center
+                = exercise.repetition_duration_seconds
+            %td
+              .col.s2.center
+                = exercise.rest_duration_seconds
+            %td
+              .col.s2.center
+                = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
             %br
-            %hr
+        
   -else
     %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
 

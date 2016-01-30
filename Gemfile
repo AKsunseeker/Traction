@@ -39,6 +39,8 @@ gem "paperclip", "~> 4.3"
 
 gem "annotate"
 
+gem 'rubocop', require: false
+
 gem 'chart-js-rails'
 
 gem 'momentjs-rails'
