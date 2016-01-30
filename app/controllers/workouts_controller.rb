@@ -140,7 +140,13 @@ class WorkoutsController < ApplicationController
 
   def workout_history
     @workouts = Workout.where(creator_id: @workout.creator_id)
-    binding.pry
+    @exercises = []
+    @workouts.each do |workout|
+      workout.exercises.all.each do |exercise|
+        @exercises << exercise
+      end
+    end
+    @exercises.sort! { |a,b| a.name.downcase <=> b.name.downcase }
   end
 
   private
