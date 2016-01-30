@@ -1,22 +1,24 @@
-.row
-  .col.s10.offset-s1
-    %h2.center Log in
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      .field
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      - if devise_mapping.rememberable?
-        .field
-          = f.check_box :remember_me
-          = f.label :remember_me
+.container
+  .row
+    .col.s10.offset-s1
+      %h2.center Log in
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .row
+          .field.col.s10.offset-s1
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .field.col.s10.offset-s1
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "off"
+        - if devise_mapping.rememberable?
+          .field.col.s10.offset-s1
+            = f.check_box :remember_me
+            = f.label :remember_me
+        %br
+        .actions.center
+          = f.submit "Log in", class: 'btn'
       %br
-      .actions.center
-        = f.submit "Log in", class: 'btn'
-    %br
-    .center
-      = render "devise/shared/links"
+      .center
+        = render "devise/shared/links"
