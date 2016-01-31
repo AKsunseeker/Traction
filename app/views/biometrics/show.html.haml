@@ -1,20 +1,43 @@
-= link_to 'Biometrics', user_biometrics_path(current_user)
-= link_to 'Current User', user_path(current_user)
-%h2 Biometric from #{@biometric.date}
-= link_to 'Edit', edit_user_biometric_path(current_user, @biometric)
-= link_to 'Delete', user_biometric_path(current_user, @biometric), method: :delete
 
-%p Weight: #{@biometric.weight}
-%p Body fat %: #{@biometric.body_fat_percentage}
-%p Chest: #{@biometric.chest}
-%p Height: #{@biometric.height}
-%p Waist: #{@biometric.waist}
-%p Shoulder: #{@biometric.shoulder}
-%p Hips: #{@biometric.hips}
-%p Biceps: #{@biometric.biceps}
-%p Thigh: #{@biometric.thigh}
-%p Calf: #{@biometric.calf}
-%p Forearm: #{@biometric.forearm}
-%p Wrist: #{@biometric.wrist}
-%p Neck: #{@biometric.neck}
+.container  
+  .center
+    %h3 Biometric from #{@biometric.date}
+    = link_to 'Edit', edit_user_biometric_path(current_user, @biometric), class: 'btn red'
+    = link_to 'Delete', user_biometric_path(current_user, @biometric), method: :delete, class: 'btn red'
+    = link_to 'All Biometrics', user_biometrics_path(current_user), class: 'btn red'
+
+    
+  .row
+    .card.col.s6.offset-s3
+      .card-content
+        .row
+          .col.s4
+            %h5 Weight:
+            %h5 Body fat %:
+            %h5 Chest:
+            %h5 Height:
+            %h5 Waist:
+            %h5 Shoulder:
+            %h5 Hips:
+            %h5 Biceps:
+            %h5 Thigh:
+            %h5 Calf:
+            %h5 Forearm:
+            %h5 Wrist:
+            %h5 Neck:
+          .col.s8
+            %h5 #{@biometric.weight}
+            %h5 #{@biometric.body_fat_percentage}
+            %h5 #{@biometric.chest}
+            %h5 #{@biometric.height}
+            %h5 #{@biometric.waist}
+            %h5 #{@biometric.shoulder}
+            %h5 #{@biometric.hips}
+            %h5 #{@biometric.biceps}
+            %h5 #{@biometric.thigh}
+            %h5 #{@biometric.calf}
+            %h5 #{@biometric.forearm}
+            %h5 #{@biometric.wrist}
+            %h5 #{@biometric.neck}
+
 
