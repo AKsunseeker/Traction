@@ -32,4 +32,4 @@
     .col.m8
       .card.grey.lighten-2.hoverable
         .card-content
-          = react_component "Progress", {workouts: current_user.workouts.where(complete: true)}            
+          = react_component "Progress", {workouts: @unique_workout_names}            

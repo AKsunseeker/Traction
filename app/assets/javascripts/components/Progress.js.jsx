@@ -49,7 +49,6 @@ class Progress extends React.Component{
     return {fillColor: fillColor, color: color}
   }
   render(){
-
     // TODO only completed workouts, only once
     let workouts = this.props.workouts.map(workout => {
       let key = `workout-${workout.id}`
