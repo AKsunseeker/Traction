@@ -14,6 +14,9 @@
           %hr
           %h6 Email: #{@user.email}
           %hr
+          %h6 Gender: #{@user.gender}
+          %hr
+          %h6 Date of Birth: #{@user.date_of_birth}
         .center  
           = link_to 'Edit Profile', edit_user_registration_path(@user), class: "btn orange"
     .col.s10.m6.l6
@@ -23,11 +26,13 @@
           - if @user.biometrics
             %ul
               %li
-                DOB: #{@user.biometrics.last.date_of_birth}
+                Updated on: #{@user.biometrics.last.date}
                 %hr
-                Gender: #{@user.biometrics.last.gender}
-                %hr
+              %li
                 Weight: #{@user.biometrics.last.weight}
+                %hr
+              %li
+                Body Fat %: #{@user.biometrics.last.body_fat_percentage}
                 %hr
           .center.activator.hoverable See All
         .card-reveal
@@ -37,12 +42,6 @@
           - if @user.biometrics
             %ul
               %li 
-                DOB: #{@user.biometrics.last.date_of_birth}
-                %hr
-                %br
-                Gender: #{@user.biometrics.last.gender}
-                %hr
-                %br
                 Weight: #{@user.biometrics.last.weight}
                 %hr
                 %br
