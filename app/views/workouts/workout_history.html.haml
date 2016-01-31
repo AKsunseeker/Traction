@@ -1,40 +1,42 @@
-%h4 Exercise Log for the #{@workout.name} workout
-%table
-  %thead
-    %tr
-      %th
-        %h6.center Date
-      %th
-        %h6.center Exercise
-      %th
-        %h6.center Weight
-      %th
-        %h6.center Reps
-      %th
-        %h6.center Rep Duration (s)
-      %th
-        %h6.center Rest Duration (s)
-      %hr
-  -@exercise_names.each do |name|
-    - @exercise_details.each do |exercise|
-      - if exercise.name == name
-        %tbody
-          %tr
-            %td
-              .col.s2.center
-                = exercise.updated_at.to_date
-            %td
-              .col.s2.center
-                = exercise.name
-            %td
-              .col.s2.center
-                = exercise.weight
-            %td
-              .col.s2.center
-                = exercise.repetitions
-            %td
-              .col.s2.center
-                = exercise.repetition_duration_seconds
-            %td
-              .col.s2.center
-                = exercise.rest_duration_seconds
+.container  
+  .center
+    %h4 Exercise Log for the #{@workout.name} workout
+    %table
+      %thead
+        %tr
+          %th
+            %h6.center Date
+          %th
+            %h6.center Exercise
+          %th
+            %h6.center Weight
+          %th
+            %h6.center Reps
+          %th
+            %h6.center Rep Duration (s)
+          %th
+            %h6.center Rest Duration (s)
+          %hr
+      -@exercise_names.each do |name|
+        - @exercise_details.each do |exercise|
+          - if exercise.name == name
+            %tbody
+              %tr
+                %td
+                  .col.s2.center
+                    = exercise.updated_at.to_date
+                %td
+                  .col.s2.center
+                    = exercise.name
+                %td
+                  .col.s2.center
+                    = exercise.weight
+                %td
+                  .col.s2.center
+                    = exercise.repetitions
+                %td
+                  .col.s2.center
+                    = exercise.repetition_duration_seconds
+                %td
+                  .col.s2.center
+                    = exercise.rest_duration_seconds
