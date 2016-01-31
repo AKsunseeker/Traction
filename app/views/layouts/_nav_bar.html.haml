@@ -12,6 +12,7 @@
             - if current_user
               %li= link_to 'My Dashboard', root_path, class: 'grey-text text-lighten-2'
               %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
+              %li= link_to 'Biometrics', user_biometrics_path(current_user), class: 'grey-text text-lighten-2'
               %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
             -else
               %li.valign-wrapper= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
@@ -22,6 +23,7 @@
           - if current_user
             %li= link_to 'My Dashboard', root_path
             %li= link_to 'Profile', user_path(current_user)
+            %li= link_to 'Biometrics', user_biometrics_path(current_user)
             %li= link_to 'Log Out', destroy_user_session_path, method: :delete
           -else
             %li= link_to 'Log In', new_user_session_path
