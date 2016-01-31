@@ -7,53 +7,89 @@
         .card-content
           %h5.center.card-title Your Info
           %h6 First Name: #{@user.first_name}
+          %hr
           %h6 Last Name: #{@user.last_name}
+          %hr
           %h6 Handle: #{@user.handle}
+          %hr
           %h6 Email: #{@user.email}
+          %hr
+        .center  
           = link_to 'Edit Profile', edit_user_registration_path(@user), class: "btn orange"
     .col.s10.m6.l6
       .card.grey.lighten-2
         .card-content
           %h5.center.card-title Your Biometrics
-          - if current_user.biometrics.any?
+          - if @user.biometrics
             %ul
-              - current_user.biometrics.last do |biometric|
-                %li 
-                  DOB: #{biometric.date_of_birth}
-                  %br
-                  Gender: #{biometric.gender}
-                  %br
-                  Weight: #{biometric.weight}
-                  %br
-                  Updated on: #{biometric.date}
-                  %br
-                  Body Fat %: #{biometric.body_fat_percentage}
-                  %br
-                  Chest: #{biometric.chest} in.
-                  %br
-                  Height: #{biometric.height} in.
-                  %br
-                  Waist: #{biometric.waist} in.
-                  %br
-                  Hips: #{biometric.hips} in.
-                  %br
-                  Shoulder Girdle: #{biometric.shoulder} in.
-                  %br
-                  Biceps: #{biometric.biceps} in.
-                  %br
-                  APE Index: #{biometric.ape_index}
-                  %br
-                  Thighs: #{biometric.thigh}
-                  %br
-                  Calves: #{biometric.calf}
-                  %br
-                  Forearm: #{biometric.forearm}
-                  %br
-                  Wrist #{biometric.wrist}
-                  %br
-                  Neck #{biometric.neck}
-                  %br
+              %li
+                DOB: #{@user.biometrics.last.date_of_birth}
+                %hr
+                Gender: #{@user.biometrics.last.gender}
+                %hr
+                Weight: #{@user.biometrics.last.weight}
+                %hr
+          .center.activator.hoverable See All
+        .card-reveal
+          %h5.center.card-title
+            Your Biometrics
+            %i.material-icons.right close
+          - if @user.biometrics
+            %ul
+              %li 
+                DOB: #{@user.biometrics.last.date_of_birth}
+                %hr
+                %br
+                Gender: #{@user.biometrics.last.gender}
+                %hr
+                %br
+                Weight: #{@user.biometrics.last.weight}
+                %hr
+                %br
+                Updated on: #{@user.biometrics.last.date}
+                %hr
+                %br
+                Body Fat %: #{@user.biometrics.last.body_fat_percentage}
+                %hr
+                %br
+                Chest: #{@user.biometrics.last.chest} in.
+                %hr
+                %br
+                Height: #{@user.biometrics.last.height} in.
+                %hr
+                %br
+                Waist: #{@user.biometrics.last.waist} in.
+                %hr
+                %br
+                Hips: #{@user.biometrics.last.hips} in.
+                %hr
+                %br
+                Shoulder Girdle: #{@user.biometrics.last.shoulder} in.
+                %hr
+                %br
+                Biceps: #{@user.biometrics.last.biceps} in.
+                %hr
+                %br
+                APE Index: #{@user.biometrics.last.ape_index}
+                %hr
+                %br
+                Thighs: #{@user.biometrics.last.thigh}
+                %hr
+                %br
+                Calves: #{@user.biometrics.last.calf}
+                %hr
+                %br
+                Forearm: #{@user.biometrics.last.forearm}
+                %hr
+                %br
+                Wrist #{@user.biometrics.last.wrist}
+                %hr
+                %br
+                Neck #{@user.biometrics.last.neck}
+                %hr
+                %br
           - else
             %h6 You Have Not Entered Your Biometrics. Please Update Them.
-          = link_to 'Update Biometrics', new_user_biometric_path(current_user), class: "btn purple"
+        .center
+          = link_to 'Update Biometrics', new_user_biometric_path(@user), class: "btn purple"
 
