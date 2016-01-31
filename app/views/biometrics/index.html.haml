@@ -1,14 +1,60 @@
-%h2 Biometrics
+.center
+  %h3 Biometrics
+.container
+  - if current_user
+    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red'
+  
+  - if @biometrics.any?
+    %table.highlight
+      %thead
+        %tr
+          %th
+            %h6.center Date
+          %th
+            %h6.center Weight
+          %th
+            %h6.center Body Fat %
+          %th
+            %h6.center Chest
+          %th
+            %h6.center Waist
+          %th
+            %h6.center Biceps
+          %th
+            %h6.center Forearms
+          %th
+            %h6.center 
+          %hr
+      %tbody
+        - @biometrics.each do |biometric|
+          %tr
+            %td
+              .col.s2.center
+                = biometric.date
+            %td
+              .col.s2.center
+                = biometric.weight
+            %td
+              .col.s2.center
+                = biometric.body_fat_percentage
+            %td
+              .col.s2.center
+                = biometric.chest
+            %td
+              .col.s2.center
+                = biometric.waist
+            %td
+              .col.s2.center
+                = biometric.biceps
+            %td
+              .col.s2.center
+                = biometric.forearm
+            %td
+              .col.s2.center
+                = link_to 'Details', user_biometric_path(current_user, biometric)
+            %br
+  - else
+    %h4 
+      Unfortunately we do not have any biometrics right now. Please add one!
 
-- if @biometrics.any?
-  %ul 
-    - @biometrics.each do |biometric|
-      %li
-        = link_to biometric.date, user_biometric_path(current_user, biometric)
-        %br
-- else
-  %h4 
-    Unfortunately we do not have any biometrics right now. Please add one!
 
-- if current_user
-  = link_to 'Add New Biometric', new_user_biometric_path(current_user)
