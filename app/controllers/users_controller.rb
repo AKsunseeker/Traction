@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @biometrics = current_user.biometrics.all
   end
 
   def new
