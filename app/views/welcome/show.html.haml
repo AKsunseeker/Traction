@@ -16,18 +16,29 @@
             .col.s4
               = link_to 'Create', new_workout_path, class: 'btn red' 
           - current_user.workouts.where(complete: false).each do |workout|
-            = workout.name
-            = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
-            = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
+            .row
+              .col.s7
+                = workout.name
+              .col.s5
+                = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+                | 
+                = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
+            %hr
             %br
       .card.green.lighten-2.hoverable
         .card-content
           .card-title.red-text.text-darken-4
             Completed Workouts
+          %br
           - if current_user.workouts.where(complete: true).any?
             - current_user.workouts.where(complete: true).each do |workout|
-              = workout.name
-              = link_to 'Do Workout Again', do_workout_path(id: workout), method: :post, class: 'black-text'
+              .row
+                .col.s7
+                  = workout.name
+                .col.s5
+                  = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+              %hr
+              %br
 
     .col.m8
       .card.grey.lighten-2.hoverable
