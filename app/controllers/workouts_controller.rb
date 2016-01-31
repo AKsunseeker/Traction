@@ -29,12 +29,10 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.new(workout_params)
+    @workout.creator_id=  @workout.id
+    @workout.original = true
+    @workout.complete = false
     if @workout.save
-      @workout.creator_id=  @workout.id
-      @workout.original = true
-      @workout.complete = false
-      @workout.save
-      # @@original_workouts << @workout
       redirect_to workout_path(@workout)
     else
       redirect_to :new
@@ -115,29 +113,31 @@ class WorkoutsController < ApplicationController
   def get_exercise_progress
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])
-    workouts.map do |workout|
-      workout_list.push({
-        date: workout.updated_at,
-        workout_progress: workout.like_exercises(workout.exercises)
-        })
-    end
-    @line_hashes = []
-    @dates_array = []
-    workout_list.each do |workout|
-      @dates_array << workout[:date]
-    end
-    workout_list.first[:workout_progress].each do |w|
-      @line_hashes << {w[:name] => []}
-    end
-    workout_list.each do |workout|
-      @i = 0
-      workout[:workout_progress].each do |w|
-        @line_hashes[@i][w[:name]] << w[:sum]
-        @i += 1
+    if workouts.first.exercises
+      workouts.map do |workout|
+        workout_list.push({
+          date: workout.updated_at,
+          workout_progress: workout.like_exercises(workout.exercises)
+          })
       end
+      @line_hashes = []
+      @dates_array = []
+      workout_list.each do |workout|
+        @dates_array << workout[:date]
+      end
+      workout_list.first[:workout_progress].each do |w|
+        @line_hashes << {w[:name] => []}
+      end
+      workout_list.each do |workout|
+        @i = 0
+        workout[:workout_progress].each do |w|
+          @line_hashes[@i][w[:name]] << w[:sum]
+          @i += 1
+        end
+      end
+      json_data = [@line_hashes, @dates_array]
+      render json: json_data
     end
-    json_data = [@line_hashes, @dates_array]
-    render json: json_data
   end
 
   def workout_history

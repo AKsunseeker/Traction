@@ -33,13 +33,16 @@ class WorkoutChart extends React.Component {
                           bezierCurveTension: 0.8, 
                           multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, options);
+        } else {
+          $('#chart').append(<h6>No Data</h6>);
         }
         }).error(data => {
+          $('#chart').append(<h6>No Data</h6>);
           console.log(data);
         }); 
   }
   render(){
-    return(<div>
+    return(<div id="chart">
              <canvas id="workout_progress" />
            </div>);
   }
