@@ -1,4 +1,9 @@
-%h2 Create New Biometric
-= link_to 'Back', user_path(@user)
-
-= render(partial: 'form')
+= link_to 'Back', user_biometrics_path(@user), class: 'btn red'
+.container  
+  .center
+    .row
+      .card.col.s8.offset-s2
+        %h3 Add New Biometric
+        .center
+          .card-content  
+          = render(partial: 'form')
