@@ -63,7 +63,7 @@ class BiometricsController < ApplicationController
 
   def destroy
     @biometric.destroy
-    redirect_to user_path(@user)
+    redirect_to user_biometrics_path(@user, @biometric)
   end
 
   def get_biometrics_progress
