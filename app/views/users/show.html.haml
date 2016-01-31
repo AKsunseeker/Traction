@@ -1,49 +1,59 @@
+.blue-grey.darken-2
 .container
-  %h3 My Profile
-  = link_to 'Edit Profile', edit_user_registration_path(@user)
-  %h5 First Name: #{@user.first_name}
-  %h5 Last Name: #{@user.last_name}
-  %h5 Handle: #{@user.handle}
-  %h5 Email: #{@user.email}
-  = link_to 'Update Biometrics', new_user_biometric_path(@user)
-  - if @user.biometrics.any?
-    %ul
-      - @user.biometrics.last do |biometric|
-        %li 
-          DOB: #{biometric.date_of_birth}
-          %br
-          Gender: #{biometric.gender}
-          %br
-          Weight: #{biometric.weight}
-          %br
-          Updated on: #{biometric.date}
-          %br
-          Body Fat %: #{biometric.body_fat_percentage}
-          %br
-          Chest: #{biometric.chest} in.
-          %br
-          Height: #{biometric.height} in.
-          %br
-          Waist: #{biometric.waist} in.
-          %br
-          Hips: #{biometric.hips} in.
-          %br
-          Shoulder Girdle: #{biometric.shoulder} in.
-          %br
-          Biceps: #{biometric.biceps} in.
-          %br
-          APE Index: #{biometric.ape_index}
-          %br
-          Thighs: #{biometric.thigh}
-          %br
-          Calves: #{biometric.calf}
-          %br
-          Forearm: #{biometric.forearm}
-          %br
-          Wrist #{biometric.wrist}
-          %br
-          Neck #{biometric.neck}
-          %br
-  - else
-    %h5 You Have Not Entered Your Biometrics. Please Update Them.
+  %h3.center My Profile
+  .row 
+    .col.s10.m6.l6
+      .card.grey.lighten-2
+        .card-content
+          %h5.center.card-title Your Info
+          %h6 First Name: #{@user.first_name}
+          %h6 Last Name: #{@user.last_name}
+          %h6 Handle: #{@user.handle}
+          %h6 Email: #{@user.email}
+          = link_to 'Edit Profile', edit_user_registration_path(@user), class: "btn orange"
+    .col.s10.m6.l6
+      .card.grey.lighten-2
+        .card-content
+          %h5.center.card-title Your Biometrics
+          - if current_user.biometrics.any?
+            %ul
+              - current_user.biometrics.last do |biometric|
+                %li 
+                  DOB: #{biometric.date_of_birth}
+                  %br
+                  Gender: #{biometric.gender}
+                  %br
+                  Weight: #{biometric.weight}
+                  %br
+                  Updated on: #{biometric.date}
+                  %br
+                  Body Fat %: #{biometric.body_fat_percentage}
+                  %br
+                  Chest: #{biometric.chest} in.
+                  %br
+                  Height: #{biometric.height} in.
+                  %br
+                  Waist: #{biometric.waist} in.
+                  %br
+                  Hips: #{biometric.hips} in.
+                  %br
+                  Shoulder Girdle: #{biometric.shoulder} in.
+                  %br
+                  Biceps: #{biometric.biceps} in.
+                  %br
+                  APE Index: #{biometric.ape_index}
+                  %br
+                  Thighs: #{biometric.thigh}
+                  %br
+                  Calves: #{biometric.calf}
+                  %br
+                  Forearm: #{biometric.forearm}
+                  %br
+                  Wrist #{biometric.wrist}
+                  %br
+                  Neck #{biometric.neck}
+                  %br
+          - else
+            %h6 You Have Not Entered Your Biometrics. Please Update Them.
+          = link_to 'Update Biometrics', new_user_biometric_path(current_user), class: "btn purple"
 
