@@ -142,13 +142,23 @@ class WorkoutsController < ApplicationController
 
   def workout_history
     @workouts = Workout.where(creator_id: @workout.creator_id)
-    @exercises = []
+    @exercise_names = []
+    @exercise_details = []
+    # @exercise_names_details = {}      (names are keys, details are arrays that are values)
+    # assign each exercise name to be a key in the hash
+    # assign each value of the key to be an array of the details
+    # shovel new details onto appropriate array
     @workouts.each do |workout|
       workout.exercises.all.each do |exercise|
-        @exercises << exercise
+        # exercise_name_details[:exercise] = [] <- this is where details will go
+        # another loop inside to shovel appropriate details into array above
+        @exercise_names << exercise.name unless @exercise_names.include? exercise.name
+        @exercise_details << exercise
       end
     end
-    @exercises.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+    # @exercise_details.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+    # @exercises.group_by(&:name)
+    # binding.pry
   end
 
   private
