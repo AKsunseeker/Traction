@@ -1,7 +1,9 @@
 .container
-  %h2.center Create New Workout
+  = link_to 'Back', workouts_path, class: 'btn red'
+  .row
+    .card.col.s6.offset-s2
+      %h3.center Create New Workout
 
-  = render(partial: 'form')
-  %br
-  .center
-    = link_to 'Back', workouts_path
+      = render(partial: 'form')
+      %br
+      .center
