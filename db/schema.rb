@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129021606) do
+ActiveRecord::Schema.define(version: 20160131040059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "biometrics", force: :cascade do |t|
-    t.date     "date_of_birth"
     t.float    "weight"
-    t.string   "gender"
     t.float    "body_fat_percentage"
     t.float    "chest"
     t.float    "height"
@@ -109,6 +107,8 @@ ActiveRecord::Schema.define(version: 20160129021606) do
     t.string   "roles"
     t.string   "provider"
     t.string   "uid"
+    t.date     "date_of_birth"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

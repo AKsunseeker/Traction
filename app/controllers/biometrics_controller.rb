@@ -83,7 +83,7 @@ class BiometricsController < ApplicationController
 
   private
     def biometric_params
-      params.require(:biometric).permit(:dateof_birth, :weight, :gender, :body_fat_percentage, :chest, 
+      params.require(:biometric).permit(:weight, :body_fat_percentage, :chest, 
                                         :height, :waist, :shoulder, :hips, :biceps, :ape_index, 
                                         :thigh, :calf, :forearm, :wrist, :neck, :date, :exercise_id)
     end
