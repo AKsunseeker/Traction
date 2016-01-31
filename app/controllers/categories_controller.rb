@@ -58,7 +58,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @category_json_data = []
     @categories.map {|category| @category_json_data << {"#{category.name}" => 0} }
-    current_user.workouts.each do |workout|
+    current_user.workouts.where(complete: true).each do |workout|
       if workout.category
         (0...@category_json_data.length).each do |i|
           if @category_json_data[i].keys[0] == workout.category.name 

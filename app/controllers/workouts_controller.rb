@@ -73,6 +73,7 @@ class WorkoutsController < ApplicationController
     new_workout = current_user.workouts.new
     new_workout.name = @workout.name
     new_workout.creator_id = @workout.creator_id
+    new_workout.category_id = @workout.category_id
     new_workout.complete = false
     new_workout.original = false
     new_workout.save
@@ -94,6 +95,7 @@ class WorkoutsController < ApplicationController
     new_workout = current_user.workouts.new
     new_workout.name = @workout.name
     new_workout.creator_id = @workout.creator_id
+    new_workout.category_id = @workout.category_id
     new_workout.original = false
     new_workout.save
     new_exercises = @workout.exercises.all
