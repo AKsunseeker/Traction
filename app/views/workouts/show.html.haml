@@ -36,7 +36,8 @@
                 = exercise.rest_duration_seconds
             %td
               .col.s2.center
-                = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
+                - if current_user && !@workout.original
+                  = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
             %br
         
   -else
