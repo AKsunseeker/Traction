@@ -24,6 +24,7 @@
                 | 
                 = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
             %hr
+            = paginate @list_workouts
             %br
       .card.green.lighten-2.hoverable
         .card-content
