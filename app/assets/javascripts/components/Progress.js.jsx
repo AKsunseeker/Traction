@@ -5,11 +5,13 @@ class Progress extends React.Component{
     this.chartBiometrics = this.chartBiometrics.bind(this);
     this.chartCategories = this.chartCategories.bind(this);
     this.showMotivation = this.showMotivation.bind(this);
+    this.resetChartType = this.resetChartType.bind(this);
     this.buildChart = this.buildChart.bind(this);
-    this.state = {workouts: this.props.workouts, chartType: 'motivation' };
+    this.state = {workouts: this.props.workouts, chartType: 'motivation'};
   }
   showMotivation(e){
     e.preventDefault();
+    console.log('motivation clicked')
     this.setState({chartType: 'motivation'});
   }
   chartProgress(e){
@@ -24,7 +26,12 @@ class Progress extends React.Component{
   }
   chartCategories(e){
     e.preventDefault();
+    console.log('categories clicked')
     this.setState({chartType: 'categoriesChart'})
+  }
+  resetChartType(){
+    console.log('option changed')
+    this.setState({chartType: ''})
   }
   buildChart(){
     if(this.state.chartType == 'motivation'){
@@ -36,6 +43,7 @@ class Progress extends React.Component{
     } else if (this.state.chartType == 'categoriesChart'){
       return(< CategoriesChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     }
+    console.log('state reset');
   }
   rgb(r, g, b){
     return "rgba("+r+","+g+","+b+", 1)";
@@ -74,8 +82,8 @@ class Progress extends React.Component{
                </div>
                <div className="col s3 offset-s2">
                 <form onSubmit={this.chartProgress}>
-                  <select ref='workout'>{workouts}</select>
-                  <button type='submit' className="btn red">Show Chart</button>
+                  <button type='submit' className="btn red" >Workouts</button>
+                  <select ref='workout' >{workouts}</select>
                 </form>
                 </div>
               </div>
