@@ -4,8 +4,13 @@ class Progress extends React.Component{
     this.chartProgress = this.chartProgress.bind(this);
     this.chartBiometrics = this.chartBiometrics.bind(this);
     this.chartCategories = this.chartCategories.bind(this);
+    this.showMotivation = this.showMotivation.bind(this);
     this.buildChart = this.buildChart.bind(this);
-    this.state = {workouts: this.props.workouts };
+    this.state = {workouts: this.props.workouts, chartType: 'motivation' };
+  }
+  showMotivation(e){
+    e.preventDefault();
+    this.setState({chartType: 'motivation'});
   }
   chartProgress(e){
     e.preventDefault();
@@ -19,11 +24,12 @@ class Progress extends React.Component{
   }
   chartCategories(e){
     e.preventDefault();
-    console.log('categories clicked')
     this.setState({chartType: 'categoriesChart'})
   }
   buildChart(){
-    if(this.state.chartType == 'workoutProgress' ){
+    if(this.state.chartType == 'motivation'){
+      return(< Motivation />);
+    }else if(this.state.chartType == 'workoutProgress' ){
       return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
     } else if (this.state.chartType == 'biometricsProgress'){
       return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
@@ -49,24 +55,27 @@ class Progress extends React.Component{
     return {fillColor: fillColor, color: color}
   }
   render(){
-    // TODO only completed workouts, only once
     let workouts = this.props.workouts.map(workout => {
       let key = `workout-${workout.id}`
       return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
     }); 
     return(<div>
-             <h3 className='center'>Progress</h3>
+             <h4 className='center red-text text-darken-4'>Progress</h4>
+             <hr/>
              <div className="row">
                <div className="col s1">
-                 <button onClick={this.chartBiometrics} className="btn">Biometrics</button>
+                 <button onClick={this.showMotivation} className="btn red">Motivation</button>
                </div>
-               <div className="col s1 offset-s3">
-                 <button onClick={this.chartCategories} className="btn">Categories</button>
+               <div className="col s1 offset-s2">
+                 <button onClick={this.chartBiometrics} className="btn red">Biometrics</button>
                </div>
-               <div className="col s3 offset-s3">
+               <div className="col s1 offset-s2">
+                 <button onClick={this.chartCategories} className="btn red">Categories</button>
+               </div>
+               <div className="col s3 offset-s2">
                 <form onSubmit={this.chartProgress}>
                   <select ref='workout'>{workouts}</select>
-                  <button type='submit' className="btn">Show Chart</button>
+                  <button type='submit' className="btn red">Show Chart</button>
                 </form>
                 </div>
               </div>
