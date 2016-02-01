@@ -4,7 +4,7 @@
     = link_to 'Add new workout', new_workout_path, class: "btn red"
 
   - if @workouts.any?
-    %table.highlight
+    %table
       %thead
         %tr
           %th
@@ -19,7 +19,7 @@
             %td
               = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
               - if current_user
-                = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post
+                = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post, class: "btn-flat hoverable"
             %td
               #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name ||User.find(workout.created_by_user).email}
             %td
