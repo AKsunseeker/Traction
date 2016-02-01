@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
       if current_user.workouts.any?
         @workouts = current_user.workouts
         @list_workouts =  @workouts.where(complete: true).page(params[:page])
+        @added_workouts = current_user.workouts.where(complete: false).page(params[:page])
         names = @list_workouts.map {|workout| workout.name}
         uniq_list = names.uniq
         @unique_workout_names = []
