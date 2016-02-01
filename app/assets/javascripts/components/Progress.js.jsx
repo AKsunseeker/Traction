@@ -6,16 +6,17 @@ class Progress extends React.Component{
     this.chartCategories = this.chartCategories.bind(this);
     this.showMotivation = this.showMotivation.bind(this);
     this.buildChart = this.buildChart.bind(this);
-    this.state = {workouts: this.props.workouts, chartType: 'motivation' };
+    this.state = {workouts: this.props.workouts, chartType: 'motivation'};
   }
   showMotivation(e){
     e.preventDefault();
+    console.log('motivation clicked')
     this.setState({chartType: 'motivation'});
   }
   chartProgress(e){
     e.preventDefault();
     console.log('Progress clicked')
-    this.setState({ chartType: 'workoutProgress' });
+    this.setState({ chartType: 'workoutProgress' + this.refs.workout.value});
   }
   chartBiometrics(e){
     e.preventDefault();
@@ -24,13 +25,14 @@ class Progress extends React.Component{
   }
   chartCategories(e){
     e.preventDefault();
+    console.log('categories clicked')
     this.setState({chartType: 'categoriesChart'})
   }
   buildChart(){
     if(this.state.chartType == 'motivation'){
       return(< Motivation />);
-    }else if(this.state.chartType == 'workoutProgress' ){
-      return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
+    }else if(this.state.chartType == 'workoutProgress' + this.refs.workout.value){
+      return(< WorkoutChart key={this.refs.workout.value} setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
     } else if (this.state.chartType == 'biometricsProgress'){
       return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     } else if (this.state.chartType == 'categoriesChart'){
@@ -74,12 +76,13 @@ class Progress extends React.Component{
                </div>
                <div className="col s3 offset-s2">
                 <form onSubmit={this.chartProgress}>
-                  <select ref='workout'>{workouts}</select>
-                  <button type='submit' className="btn red">Show Chart</button>
+                  <button type='submit' className="btn red" >Workouts</button>
+                  <select ref='workout' onChange={this.chartProgress}>{workouts}</select>
                 </form>
                 </div>
               </div>
               <div className="row">
+              <h5 id="no_data_message" className="center red-text"></h5>
                 { this.buildChart() }
               </div>
            </div>);
