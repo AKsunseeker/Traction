@@ -17,6 +17,7 @@ class Workout < ActiveRecord::Base
   belongs_to :category
   has_many :exercises 
   has_many :locations, as: :addressable
+  validates :name, uniqueness: true, presence: true
 
   def exercise_by_name(exercises)
     if exercises.length == 0

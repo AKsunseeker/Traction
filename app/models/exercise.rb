@@ -17,4 +17,5 @@
 class Exercise < ActiveRecord::Base
   belongs_to :workout
   has_many :locations, as: :addressable
+  validates :name, presence: true
 end
