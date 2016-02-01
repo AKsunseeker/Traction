@@ -15,6 +15,9 @@
           %br/
           = f.text_field :last_name, class: 'red-text form-border'
         .field
+          = f.label :avatar, class: 'red-text'
+          = f.file_field :avatar
+        .field
           = f.label :date_of_birth, class: 'red-text'
           %br/
           = f.date_field :date_of_birth, class: 'red-text form-border'

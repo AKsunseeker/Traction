@@ -63,7 +63,7 @@ class Progress extends React.Component{
         return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
       });
     } else {
-      workouts = []
+      let workouts = []
     }
     return(<div>
              <div className="row">
