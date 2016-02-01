@@ -30,7 +30,7 @@ class WorkoutsController < ApplicationController
   def create
     @workout = current_user.workouts.new(workout_params)
     if @workout.save
-      @workout.creator_id=  @workout.id
+      @workout.creator_id=  current_user.id
       @workout.original = true
       @workout.complete = false
       @workout.save
