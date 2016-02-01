@@ -11,6 +11,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# validation for having category
 
 class WorkoutsController < ApplicationController
   before_action :find_workout, only: [:show, :update, :edit, :destroy, :add_workout, :do_workout, :finish, :workout_history]
