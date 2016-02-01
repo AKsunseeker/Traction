@@ -1,19 +1,30 @@
-.container  
-  %h2.center All Workouts
-  .container
-    - if @workouts.any?
-      %ul 
+.container 
+  %h3.center Workouts From All Users
+  - if current_user
+    = link_to 'Add new workout', new_workout_path, class: "btn red"
+
+  - if @workouts.any?
+    %table.highlight
+      %thead
+        %tr
+          %th
+            %h6 Workout Name
+          %th
+            %h6 Creator Name
+          %th
+            %h6 Created Date
+      %tbody
         - @workouts.each do |workout|
-          %li
-            / TODO add in checkbox to check, REACT
-            = link_to workout.name, workout_path(workout), class: 'btn-large blue-grey'
-            - if current_user
-              = link_to 'Add to my Workouts', add_workout_path(id: workout), method: :post
-      = paginate @workouts 
-      %br
-    - else
-      %h4 
-        Unfortunately we do not have any workouts right now. Add your own or check back later!
-    - if current_user
-      = link_to 'New Workout', new_workout_path, class: "btn green"
-  %br
+          %tr
+            %td
+              = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
+              - if current_user
+                = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post
+            %td
+              #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name ||User.find(workout.created_by_user).email}
+            %td
+              #{workout.created_at.to_date}           
+            %br
+        
+  -else
+    %h4 Unfortunately we do not have any workouts right now. Add your own or check back later!
