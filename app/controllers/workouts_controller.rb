@@ -29,10 +29,11 @@ class WorkoutsController < ApplicationController
 
   def create
     @workout = current_user.workouts.new(workout_params)
-    @workout.creator_id=  @workout.id
-    @workout.original = true
-    @workout.complete = false
     if @workout.save
+      @workout.creator_id=  @workout.id
+      @workout.original = true
+      @workout.complete = false
+      @workout.save
       redirect_to workout_path(@workout)
     else
       redirect_to :new
@@ -68,7 +69,7 @@ class WorkoutsController < ApplicationController
   end
 
   def add_workout
-    new_workout = current_user.workouts.new
+    new_workout = current_user.workouts.create
     new_workout.name = @workout.name
     new_workout.creator_id = @workout.creator_id
     new_workout.category_id = @workout.category_id
@@ -86,6 +87,7 @@ class WorkoutsController < ApplicationController
       new_exercise.youtube_url = exercise.youtube_url
       new_exercise.save
     end
+    binding.pry
     render 'welcome/show'
   end
 
