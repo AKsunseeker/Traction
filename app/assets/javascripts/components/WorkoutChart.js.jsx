@@ -9,7 +9,7 @@ class WorkoutChart extends React.Component {
       type: 'GET',
       data: {creator_id: this.props.creator_id}
       }).success(data => {
-        if (data.length) {
+        if (data[0].length > 0) {
           for(x = 0; x < data[1].length; x++){
             chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
           } 
@@ -38,7 +38,6 @@ class WorkoutChart extends React.Component {
           $("#no_data_message").html("No Data");
         }
         }).error(data => {
-          debugger
           $("#no_data_message").html("No Data");
           console.log(data);
         }); 

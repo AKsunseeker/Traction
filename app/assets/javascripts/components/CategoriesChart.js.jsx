@@ -8,7 +8,7 @@ class CategoriesChart extends React.Component{
       url: 'get_categories_progress',
       type: 'GET',
       }).success(data => {
-        if (data.length) {
+        if (data.length > 0) {
           for(x = 0; x < data.length; x++){
             let label = Object.keys(data[x])[0]
             let value = data[x][label]
@@ -25,8 +25,11 @@ class CategoriesChart extends React.Component{
           let options = { responsive: true, 
                           animateRotate : true};
           new Chart($('#workout_progress').get(0).getContext('2d')).PolarArea(chartData, options);
+        } else {
+          $("#no_data_message").html("No Data");
         }
       }).error(data => {
+        $("#no_data_message").html("No Data");
         console.log(data);
       }); 
   }
