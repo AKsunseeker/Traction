@@ -1,20 +1,21 @@
 .container
-  %p.notice= notice
-  %p.alert= alert
-  %h3.center 
-    -if current_user.first_name
-      Welcome #{current_user.first_name} #{current_user.last_name}
-    -else 
-      Welcome #{current_user.email}
   .row
-    .col.m4
+    .col.s12.m12.l12
+      %p.notice= notice
+      %p.alert= alert
+      %h3.center 
+        -if current_user.first_name
+          Welcome #{current_user.first_name} #{current_user.last_name}
+        -else 
+          Welcome #{current_user.email}
+  .row
+    .col.s12.m4.l4
       .card.blue.lighten-3.hoverable
         .card-content
           .row
-            .card-title.col.m7.red-text.text-darken-4
+            .card-title.col.s8.m6.l6.red-text.text-darken-4
               Workouts
-            .col.s4
-              = link_to 'Create', new_workout_path, class: 'btn red' 
+            = link_to 'Create', new_workout_path, class: 'btn red col s3 m4 l4' 
           - current_user.workouts.where(complete: false).each do |workout|
             .row
               .col.s7
@@ -26,6 +27,7 @@
             %hr
             = paginate @list_workouts
             %br
+
       .card.green.lighten-2.hoverable
         .card-content
           .card-title.red-text.text-darken-4
@@ -41,7 +43,7 @@
               %hr
               %br
 
-    .col.m8
+    .col.s12.m8.l8
       .card.grey.lighten-2.hoverable
         .card-content
           = react_component "Progress", {workouts: @unique_workout_names}            

@@ -62,27 +62,31 @@ class Progress extends React.Component{
       return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
     }); 
     return(<div>
-             <h4 className='center red-text text-darken-4'>Progress</h4>
-             <hr/>
              <div className="row">
-               <div className="col s1">
-                 <button onClick={this.showMotivation} className="btn red">Motivation</button>
-               </div>
-               <div className="col s1 offset-s2">
-                 <button onClick={this.chartBiometrics} className="btn red">Biometrics</button>
-               </div>
-               <div className="col s1 offset-s2">
-                 <button onClick={this.chartCategories} className="btn red">Categories</button>
-               </div>
-               <div className="col s3 offset-s2">
-                <form onSubmit={this.chartProgress}>
-                  <button type='submit' className="btn red" >Workouts</button>
-                  <select ref='workout' onChange={this.chartProgress}>{workouts}</select>
-                </form>
+                <h4 className='center red-text text-darken-4'>Progress</h4>
+             </div>
+             <hr/>
+             <div className="">
+               <div className="row">
+                <div className="col s3 m3 l3">
+                  <button onClick={this.showMotivation} className="progress-button btn red col s12">Motivates</button>
+                </div> 
+                <div className="col s3 m3 l3">
+                  <button onClick={this.chartBiometrics} className="progress-button btn red col s12">Biometrics</button>
+                </div> 
+                <div className="col s3 m3 l3">
+                 <button onClick={this.chartCategories} className="progress-button btn red col s12">Categories</button>
+                </div> 
+                <div className="col s3 m3 l3">
+                 <form onSubmit={this.chartProgress} className="">
+                   <button type='submit' className="progress-button btn red col s12" >Workouts</button>
+                   <select ref='workout' onChange={this.chartProgress} className="col s12">{workouts}</select>
+                 </form>
                 </div>
-              </div>
+               </div>
+             </div>
               <div className="row">
-              <h5 id="no_data_message" className="center red-text"></h5>
+                <h5 id="no_data_message" className="center red-text"></h5>
                 { this.buildChart() }
               </div>
            </div>);
