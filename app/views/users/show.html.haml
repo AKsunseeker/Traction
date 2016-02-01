@@ -23,7 +23,7 @@
       .card.grey.lighten-2
         .card-content
           %h5.center.card-title Your Biometrics
-          - if @user.biometrics
+          - if @user.biometrics.any?
             %ul
               %li
                 Updated on: #{@user.biometrics.last.date}
@@ -39,7 +39,7 @@
           %h5.center.card-title
             Your Biometrics
             %i.material-icons.right close
-          - if @user.biometrics
+          - if @user.biometrics.any?
             %ul
               %li 
                 Weight: #{@user.biometrics.last.weight}
