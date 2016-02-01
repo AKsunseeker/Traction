@@ -57,10 +57,14 @@ class Progress extends React.Component{
     return {fillColor: fillColor, color: color}
   }
   render(){
-    let workouts = this.props.workouts.map(workout => {
-      let key = `workout-${workout.id}`
-      return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
-    }); 
+    if (this.props.workouts != null ){
+      let workouts = this.props.workouts.map(workout => {
+        let key = `workout-${workout.id}`
+        return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
+      });
+    } else {
+      workouts = []
+    }
     return(<div>
              <div className="row">
                 <h4 className='center red-text text-darken-4'>Progress</h4>
