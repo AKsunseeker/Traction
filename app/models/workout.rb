@@ -23,8 +23,7 @@ class Workout < ActiveRecord::Base
       return @unique_exercises
     else  
       @sum = 0
-      @name = exercises.first.name
-      
+      @name = exercises.first.name 
       exercises.each do |ex|
         if ex.name == @name
           @sum += ex.weight * ex.repetitions

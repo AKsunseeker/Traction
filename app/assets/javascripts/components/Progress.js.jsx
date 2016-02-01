@@ -5,7 +5,6 @@ class Progress extends React.Component{
     this.chartBiometrics = this.chartBiometrics.bind(this);
     this.chartCategories = this.chartCategories.bind(this);
     this.showMotivation = this.showMotivation.bind(this);
-    this.resetChartType = this.resetChartType.bind(this);
     this.buildChart = this.buildChart.bind(this);
     this.state = {workouts: this.props.workouts, chartType: 'motivation'};
   }
@@ -17,7 +16,7 @@ class Progress extends React.Component{
   chartProgress(e){
     e.preventDefault();
     console.log('Progress clicked')
-    this.setState({ chartType: 'workoutProgress' });
+    this.setState({ chartType: 'workoutProgress' + this.refs.workout.value});
   }
   chartBiometrics(e){
     e.preventDefault();
@@ -29,21 +28,16 @@ class Progress extends React.Component{
     console.log('categories clicked')
     this.setState({chartType: 'categoriesChart'})
   }
-  resetChartType(){
-    console.log('option changed')
-    this.setState({chartType: ''})
-  }
   buildChart(){
     if(this.state.chartType == 'motivation'){
       return(< Motivation />);
-    }else if(this.state.chartType == 'workoutProgress' ){
-      return(< WorkoutChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
+    }else if(this.state.chartType == 'workoutProgress' + this.refs.workout.value){
+      return(< WorkoutChart key={this.refs.workout.value} setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
     } else if (this.state.chartType == 'biometricsProgress'){
       return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     } else if (this.state.chartType == 'categoriesChart'){
       return(< CategoriesChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
     }
-    console.log('state reset');
   }
   rgb(r, g, b){
     return "rgba("+r+","+g+","+b+", 1)";
@@ -83,11 +77,12 @@ class Progress extends React.Component{
                <div className="col s3 offset-s2">
                 <form onSubmit={this.chartProgress}>
                   <button type='submit' className="btn red" >Workouts</button>
-                  <select ref='workout' >{workouts}</select>
+                  <select ref='workout' onChange={this.chartProgress}>{workouts}</select>
                 </form>
                 </div>
               </div>
               <div className="row">
+              <h5 id="no_data_message" className="center red-text"></h5>
                 { this.buildChart() }
               </div>
            </div>);

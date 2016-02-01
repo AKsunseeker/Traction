@@ -26,6 +26,7 @@ class WorkoutChart extends React.Component {
               pointHighlightFill: "#fff",
               pointHighlightStroke: colors.color});
           }
+          $("#no_data_message").empty();
           $('#workout_progress').empty();
           let options = { responsive: true, 
                           scaleShowGridLines: false, 
@@ -34,10 +35,11 @@ class WorkoutChart extends React.Component {
                           multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, options);
         } else {
-          $('#chart').append(<h6>No Data</h6>);
+          $("#no_data_message").html("No Data");
         }
         }).error(data => {
-          $('#chart').append(<h6>No Data</h6>);
+          debugger
+          $("#no_data_message").html("No Data");
           console.log(data);
         }); 
   }

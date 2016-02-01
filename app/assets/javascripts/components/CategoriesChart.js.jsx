@@ -20,6 +20,7 @@ class CategoriesChart extends React.Component{
               highlight: colors.fillColor
             })
           }
+          $("#no_data_message").empty();
           $('#workout_progress').empty();
           let options = { responsive: true, 
                           animateRotate : true};
