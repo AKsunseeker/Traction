@@ -6,6 +6,9 @@
       .card.grey.lighten-2
         .card-content
           %h5.center.card-title Your Info
+          %h6 Avatar:
+          = image_tag @user.avatar.url(:thumb)
+          %hr
           %h6 First Name: #{@user.first_name}
           %hr
           %h6 Last Name: #{@user.last_name}
