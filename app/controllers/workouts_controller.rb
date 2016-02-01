@@ -89,8 +89,7 @@ class WorkoutsController < ApplicationController
       new_exercise.youtube_url = exercise.youtube_url
       new_exercise.save
     end
-    binding.pry
-    render 'welcome/show'
+    redirect_to root_path
   end
 
   def do_workout
