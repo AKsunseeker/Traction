@@ -16,7 +16,7 @@
             .card-title.col.s8.m6.l6.red-text.text-darken-4
               Workouts
             = link_to 'Create', new_workout_path, class: 'btn red col s3 m4 l4' 
-          - current_user.workouts.where(complete: false).each do |workout|
+          - @added_workouts.each do |workout|
             .row
               .col.s7
                 = workout.name
@@ -25,10 +25,8 @@
                 | 
                 = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
             %hr
-            / should paginate workouts where complete is false, no @list_workouts
-            - if @list_workouts
-              = paginate @list_workouts
             %br
+          = paginate @added_workouts
 
       .card.green.lighten-2.hoverable
         .card-content
@@ -42,11 +40,11 @@
                   = workout.name
                 .col.s5
                   = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
-              %hr
-              / should paginate workouts where complete is true
-              %br
-
+            = paginate @list_workouts
+            %hr
+            %br
     .col.s12.m8.l8
       .card.grey.lighten-2.hoverable
         .card-content
-          = react_component "Progress", {workouts: @unique_workout_names}            
+          = react_component "Progress", {workouts: @unique_workout_names}        
+              
