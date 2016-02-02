@@ -19,7 +19,7 @@
           - @added_workouts.each do |workout|
             .row.info-font
               .col.s7
-                = workout.name
+                = link_to workout.name, workout_path(workout), class: 'black-text'
               .col.s5
                 = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
                 | 
