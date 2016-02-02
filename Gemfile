@@ -57,6 +57,8 @@ gem 'kaminari'
 
 gem 'react-rails'
 
+gem 'cocoon'
+
 
 
 # Use ActiveModel has_secure_password
