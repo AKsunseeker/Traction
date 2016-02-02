@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20160202190849) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
-    t.float    "weight",                      default: 0.0
-    t.integer  "repetitions",                 default: 0
+    t.float    "weight",                      default: 1.0
+    t.integer  "repetitions",                 default: 1
     t.integer  "repetition_duration_seconds"
     t.integer  "rest_duration_seconds"
     t.boolean  "complete"

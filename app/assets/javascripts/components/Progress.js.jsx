@@ -62,9 +62,9 @@ class Progress extends React.Component{
       let options = [];
       let workouts = this.props.workouts.map(workout => {
         let key = `workout-${workout.id}`
-        options.push(<option key={key} value={workout.creator_id}>{workout.name}</option>);
+        options.push(<option key={key} className="select-font" value={workout.creator_id}>{workout.name}</option>);
       });
-      return(<select ref='workout' className="col s12" onChange={console.log('onchange')}>{options}</select>);
+      return(<select ref='workout' className="col s12 browser-default select-font">{options}</select>);
     }
   }
   render(){ 
@@ -99,5 +99,3 @@ class Progress extends React.Component{
            </div>);
   }
 }
-
-
