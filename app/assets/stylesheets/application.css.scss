@@ -17,6 +17,11 @@
 $primary-color: color("grey", "darken-4") !default;
 @import 'materialize';
 
+html {
+  /*font-family: 'Poiret One', cursive;*/
+  font-family: 'Special Elite', cursive;
+  font-weight: bold;
+}
 .logo-font {
   font-size: 30px;
 }
@@ -45,9 +50,11 @@ main {
   margin: 5px;
   border-radius: 7px; 
 }
-
+form {
+  color: black !important;
+}
 .form-border {
-  border-bottom: 1px solid red !important;
+  border-bottom: 1px solid black !important;
 }
 
 .chartSelect {
@@ -58,6 +65,17 @@ main {
 footer .row {
   margin-bottom: 0px;
 }
-
-
+footer h5 {
+  font-size: 16px;
+}
+footer p {
+  font-size: 12px;
+}
+footer p, form, .info-font, table, .btn, .card  {
+  font-family: 'Merriweather', serif;
+}
+.card .card-title, h3 {
+  font-family: 'Special Elite', cursive;
+  font-weight: bold;
+}
 

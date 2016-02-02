@@ -17,7 +17,7 @@
               Workouts
             = link_to 'Create', new_workout_path, class: 'btn red col s3 m4 l4' 
           - @added_workouts.each do |workout|
-            .row
+            .row.info-font
               .col.s7
                 = workout.name
               .col.s5
@@ -35,13 +35,13 @@
           %br
           - if current_user.workouts.where(complete: true).any?
             - current_user.workouts.where(complete: true).each do |workout|
-              .row
+              .row.info-font
                 .col.s7
                   = workout.name
                 .col.s5
                   = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+              %hr
             = paginate @list_workouts
-            %hr
             %br
     .col.s12.m8.l8
       .card.grey.lighten-2.hoverable

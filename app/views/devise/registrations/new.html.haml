@@ -7,20 +7,20 @@
         = devise_error_messages!
         .row
           .field.col.s10.offset-s1
-            = f.label :email, class: 'red-text'
+            = f.label :email, class: 'black-text'
             %br/
-            = f.email_field :email, autofocus: true, class: 'red-text form-border'
+            = f.email_field :email, autofocus: true, class: 'black-text form-border'
           .field.col.s10.offset-s1
-            = f.label :password, class: 'red-text'
+            = f.label :password, class: 'black-text'
             - if @minimum_password_length
               %em
                 (#{@minimum_password_length} characters minimum)
             %br/
-            = f.password_field :password, autocomplete: "off", class: 'red-text form-border'
+            = f.password_field :password, autocomplete: "off", class: 'black-text form-border'
           .field.col.s10.offset-s1
-            = f.label :password_confirmation, class: 'red-text'
+            = f.label :password_confirmation, class: 'black-text'
             %br/
-            = f.password_field :password_confirmation, autocomplete: "off", class: 'red-text form-border'
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'black-text form-border'
         .row
           .actions.center
             = f.submit "Sign up", class: 'btn red'

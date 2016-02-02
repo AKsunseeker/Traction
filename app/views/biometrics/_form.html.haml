@@ -1,33 +1,33 @@
 .row
-  .col.s6.offset-s2
+  .col.s12.m8.l6.offset-m2.offset-l3
     = form_for [@user, @biometric] do |f|
       = f.date_field :date, autofocus: true, placeholder: @date
       %br
-      = f.number_field :weight, autofocus: true, placeholder: 'weight'
+      = f.number_field :weight, placeholder: 'weight'
       %br
-      = f.number_field :body_fat_percentage, autofocus: true, placeholder: 'body fat percentage '
+      = f.number_field :body_fat_percentage, placeholder: 'body fat percentage '
       %br
-      = f.number_field :chest, autofocus: true, placeholder: 'chest'
+      = f.number_field :chest, placeholder: 'chest'
       %br
-      = f.number_field :height, autofocus: true, placeholder: 'height'
+      = f.number_field :height, placeholder: 'height'
       %br
-      = f.number_field :waist, autofocus: true, placeholder: 'waist'
+      = f.number_field :waist, placeholder: 'waist'
       %br
-      = f.number_field :shoulder, autofocus: true, placeholder: 'shoulder'
+      = f.number_field :shoulder, placeholder: 'shoulder'
       %br
-      = f.number_field :hips, autofocus: true, placeholder: 'hips'
+      = f.number_field :hips, placeholder: 'hips'
       %br
-      = f.number_field :biceps, autofocus: true, placeholder: 'biceps'
+      = f.number_field :biceps, placeholder: 'biceps'
       %br
-      = f.number_field :thigh, autofocus: true, placeholder: 'thigh'
+      = f.number_field :thigh, placeholder: 'thigh'
       %br
-      = f.number_field :calf, autofocus: true, placeholder: 'calf'
+      = f.number_field :calf, placeholder: 'calf'
       %br
-      = f.number_field :forearm, autofocus: true, placeholder: 'forearm'
+      = f.number_field :forearm, placeholder: 'forearm'
       %br
-      = f.number_field :wrist, autofocus: true, placeholder: 'wrist'
+      = f.number_field :wrist, placeholder: 'wrist'
       %br
-      = f.number_field :neck, autofocus: true, placeholder: 'neck'
+      = f.number_field :neck, placeholder: 'neck'
       %br
 
       = f.submit class: 'btn red'

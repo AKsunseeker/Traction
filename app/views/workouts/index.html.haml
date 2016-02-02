@@ -2,7 +2,6 @@
   %h3.center Workouts From All Users
   - if current_user
     = link_to 'Add new workout', new_workout_path, class: "btn red"
-
   - if @workouts.any?
     %table
       %thead

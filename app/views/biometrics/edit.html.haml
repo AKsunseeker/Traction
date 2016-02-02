@@ -1,3 +1,9 @@
-%h3 Edit Biometric #{@biometric.date}
-= link_to 'Back', user_path(current_user)
-= render(partial: 'form')
+.container  
+  = link_to 'Back', user_biometrics_path(current_user), class: 'btn red'
+  .center
+    .row
+      .card.col.s8.offset-s2
+        %h3 Edit Biometric #{@biometric.date}
+        .center
+          .card-content 
+            = render(partial: 'form')
