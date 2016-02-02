@@ -4,11 +4,11 @@
     = f.text_field :name, autofocus: true, :required => true
     %br
   .input-field
-    = f.label :weight, "Weight in Pounds"
+    = f.label :weight, "Weight in Pounds", class: 'active'
     = f.number_field :weight, step: 'any'
     %br
   .input-field
-    = f.label :repetitions, "Number of Repetitions"
+    = f.label :repetitions, "Number of Repetitions", class: 'active'
     = f.number_field :repetitions
     %br
   .input-field

@@ -6,6 +6,7 @@ class Progress extends React.Component{
     this.chartCategories = this.chartCategories.bind(this);
     this.showMotivation = this.showMotivation.bind(this);
     this.buildChart = this.buildChart.bind(this);
+    this.populateSelect = this.populateSelect.bind(this);
     this.state = {workouts: this.props.workouts, chartType: 'motivation'};
   }
   showMotivation(e){
@@ -56,11 +57,17 @@ class Progress extends React.Component{
     let fillColor = this.rgba(r,g,b);
     return {fillColor: fillColor, color: color}
   }
-  render(){
-    let workouts = this.props.workouts.map(workout => {
-      let key = `workout-${workout.id}`
-      return(<option key={key} value={workout.creator_id}>{workout.name}</option>);
-    });
+  populateSelect() {
+    if (this.state.workouts.length){
+      let options = [];
+      let workouts = this.props.workouts.map(workout => {
+        let key = `workout-${workout.id}`
+        options.push(<option key={key} value={workout.creator_id}>{workout.name}</option>);
+      });
+      return(<select ref='workout' className="col s12" onChange={console.log('onchange')}>{options}</select>);
+    }
+  }
+  render(){ 
     return(<div>
              <div className="row">
                 <h4 className='center red-text text-darken-4'>Progress</h4>
@@ -80,7 +87,7 @@ class Progress extends React.Component{
                 <div className="col s3 m3 l3">
                  <form onSubmit={this.chartProgress} className="">
                    <button type='submit' className="progress-button btn red darken-4 col s12" >Workouts</button>
-                   <select ref='workout' onChange={this.chartProgress} className="col s12">{workouts}</select>
+                   {this.populateSelect()}
                  </form>
                 </div>
                </div>
