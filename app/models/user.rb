@@ -46,8 +46,18 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      names =  auth.info.name.split(" ")
+      user.first_name = names.first
+      user.last_name = names.last
       user.email = auth.info.email
+      user.avatar = process_uri(auth.info.image)
       user.password = Devise.friendly_token[0,20]
     end
+  end
+  
+  def self.process_uri(uri)
+   avatar_url = URI.parse(uri)
+   avatar_url.scheme = 'https'
+   avatar_url.to_s
   end
 end
