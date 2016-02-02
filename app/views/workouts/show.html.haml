@@ -47,6 +47,7 @@
     .center
       = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn red'
       = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn red'
+      = link_to 'Dashboard', root_path, class: 'btn red'
       - if @workout.original
         = link_to 'Save Workout', root_path, class: 'btn red'
       - else 
