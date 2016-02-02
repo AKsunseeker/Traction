@@ -21,7 +21,7 @@
           %hr
           %h6 Date of Birth: #{@user.date_of_birth}
         .center  
-          = link_to 'Edit Profile', edit_user_registration_path(@user), class: "btn orange"
+          = link_to 'Edit Profile', edit_user_registration_path(@user), class: "btn red"
     .col.s10.m6.l6
       .card.grey.lighten-2
         .card-content
@@ -93,5 +93,5 @@
           - else
             %h6 You Have Not Entered Your Biometrics. Please Update Them.
         .center
-          = link_to 'Update Biometrics', new_user_biometric_path(@user), class: "btn purple"
+          = link_to 'Update Biometrics', new_user_biometric_path(@user), class: "btn red"
 
