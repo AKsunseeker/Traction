@@ -12,10 +12,11 @@
     .col.s12.m4.l4
       .card.blue.lighten-3.hoverable
         .card-content
-          .row
-            .card-title.col.s8.m6.l6.red-text.text-darken-4
-              Workouts
-            = link_to 'Create', new_workout_path, class: 'btn red col s3 m4 l4' 
+          .card-title.col.s8.m6.l6.red-text.text-darken-4
+            Workouts
+          = link_to 'Create', new_workout_path, class: 'btn red darken-4  col s3 m4 l4'
+          %br
+          .row.info-font
             - unless @added_workouts.nil?  
               - @added_workouts.each do |workout|
                 .row.info-font
@@ -28,7 +29,7 @@
                     |
                     = link_to 'Remove', remove_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
             - else
-              %h4 'No workouts, add some please'
+              %h6 No Workouts
             %hr
             %br
           = paginate @added_workouts unless @added_workouts.nil?

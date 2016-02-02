@@ -1,7 +1,7 @@
 .container 
   %h3.center Workouts From All Users
   - if current_user
-    = link_to 'Add new workout', new_workout_path, class: "btn red"
+    = link_to 'Add new workout', new_workout_path, class: "btn red darken-4 "
   - if @workouts_original.any?
     .row
       .col.s3.offset-s8
@@ -27,9 +27,10 @@
             %td  
               - if current_user
                 = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post, class: "btn-flat hoverable"
-            %td  
-              - if current_user.id == workout.created_by_user
-                = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'btn-flat hoverable'
+            %td
+              - if current_user 
+                - if current_user.id == workout.created_by_user
+                  = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'btn-flat hoverable'
             %td
               #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name || User.find(workout.created_by_user).email}
             %td

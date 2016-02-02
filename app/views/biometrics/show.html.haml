@@ -2,9 +2,9 @@
 .container  
   .center
     %h3 Biometric from #{@biometric.date}
-    = link_to 'Edit', edit_user_biometric_path(current_user, @biometric), class: 'btn red'
-    = link_to 'Delete', user_biometric_path(current_user, @biometric), method: :delete, class: 'btn red'
-    = link_to 'All Biometrics', user_biometrics_path(current_user), class: 'btn red'
+    = link_to 'Edit', edit_user_biometric_path(current_user, @biometric), class: 'btn red darken-4'
+    = link_to 'Delete', user_biometric_path(current_user, @biometric), method: :delete, class: 'btn red darken-4'
+    = link_to 'All Biometrics', user_biometrics_path(current_user), class: 'btn red darken-4'
 
     
   .row
