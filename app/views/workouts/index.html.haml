@@ -14,6 +14,8 @@
           %th
             %h5 Workout Name
           %th
+          %th
+          %th
             %h5 Creator Name
           %th
             %h5 Created Date
@@ -22,8 +24,10 @@
           %tr
             %td
               = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
+            %td  
               - if current_user
                 = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post, class: "btn-flat hoverable"
+            %td  
               - if current_user.id == workout.created_by_user
                 = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'btn-flat hoverable'
             %td
