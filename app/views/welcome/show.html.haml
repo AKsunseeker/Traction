@@ -12,9 +12,9 @@
     .col.s12.m4.l4
       .card.blue.lighten-3.hoverable
         .card-content
-          .card-title.col.s7.red-text.text-darken-4
+          .card-title.col.s12.l7.red-text.text-darken-4
             Workouts
-          .col.s4
+          .col.s12.l4
             = link_to 'Create', new_workout_path, class: 'btn red darken-4'
           %br
           .row
@@ -22,9 +22,9 @@
             - unless @added_workouts.nil?  
               - @added_workouts.each do |workout|
                 .row
-                  .col.s5
+                  .col.s12.l5
                     = link_to workout.name, workout_path(workout), class: 'black-text'
-                  .col.s7
+                  .col.s12.l7
                     = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
                     | 
                     = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
