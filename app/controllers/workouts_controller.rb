@@ -113,6 +113,13 @@ class WorkoutsController < ApplicationController
     redirect_to workout_path(new_workout)
   end
 
+  def remove_workout
+    workout = Workout.find(params[:id])
+    workout.complete = true
+    workout.save
+    redirect_to root_path
+  end
+
   def get_exercise_progress
     workout_list = []
     workouts = current_user.workouts.where(complete: true).where(creator_id: params[:creator_id])

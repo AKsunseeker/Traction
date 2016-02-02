@@ -24,6 +24,8 @@
                 = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
                 | 
                 = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
+                |
+                = link_to 'Remove', remove_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
             %hr
             %br
           = paginate @added_workouts

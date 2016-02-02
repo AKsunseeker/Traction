@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'about_us', to: 'welcome#about_us'
   post 'add_workout', to: 'workouts#add_workout'
   post 'do_workout', to: 'workouts#do_workout'
+  post 'remove_workout/:id', to: 'workouts#remove_workout', as: 'remove_workout'
   put 'finish', to: "workouts#finish"
   get 'get_exercise_progress', to: "workouts#get_exercise_progress"
   get 'get_biometrics_progress', to: "biometrics#get_biometrics_progress"
