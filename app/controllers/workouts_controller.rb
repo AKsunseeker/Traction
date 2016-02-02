@@ -115,9 +115,18 @@ class WorkoutsController < ApplicationController
 
   def remove_workout
     workout = Workout.find(params[:id])
-    workout.complete = true
-    workout.save
+    workout.destroy
+    # workout.complete = true
+    # workout.save
     redirect_to root_path
+  end
+
+  def delete_workout
+    workout = Workout.find(params[:id])
+    workout.destroy
+    # workout.complete = true
+    # workout.save
+    redirect_to workouts_path
   end
 
   def get_exercise_progress
