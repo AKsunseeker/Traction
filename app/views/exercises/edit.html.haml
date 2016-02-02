@@ -1,6 +1,12 @@
 .container
-  %h1 Enter your Workout Numbers:
-  = render(partial: 'form')
-  %br
-  .embed-container  
-    = embed(@exercise.youtube_url)
+  .row
+    .col.s6.offset
+      %h3 Enter your Workout Numbers:
+      %br
+      = render(partial: 'form')
+    .col.s5.offset-s1
+      %br
+      %br
+      %br
+      .embed-container
+        = embed(@exercise.youtube_url)
