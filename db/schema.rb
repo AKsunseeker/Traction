@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201200345) do
+ActiveRecord::Schema.define(version: 20160202190849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,14 +46,14 @@ ActiveRecord::Schema.define(version: 20160201200345) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
-    t.float    "weight"
-    t.integer  "repetitions"
+    t.float    "weight",                      default: 0.0
+    t.integer  "repetitions",                 default: 0
     t.integer  "repetition_duration_seconds"
     t.integer  "rest_duration_seconds"
     t.boolean  "complete"
     t.integer  "workout_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.string   "youtube_url"
   end
 

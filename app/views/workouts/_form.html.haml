@@ -1,20 +1,23 @@
-= form_for @workout do |f|
-  .input-field
-    = f.label :name, "Workout Name"
-    = f.text_field :name, autofocus: true, :required => true
-    %br
-  .input-field
-    = f.label :category_id, "Category"
-    %br
-    %br
-    = f.select :category_id, options_for_select(@categories.map {|category| [category.name, category.id]})
-    %br
-    %h4 Exercises
-    %br
-    #exercises
-      = f.fields_for :exercises do |exercise|
-        = render 'exercise_fields', f: exercise
-      .links
-        = link_to_add_association 'add exercise', f, :exercises, class: 'btn-flat hoverable'
-  .center
-    = f.submit class: 'btn red darken-4 '
+.container
+  .row
+    .col.s10.offset-s1
+      = form_for @workout do |f|
+        .input-field
+          = f.label :name, "Workout Name"
+          = f.text_field :name, autofocus: true, :required => true
+          %br
+        .input-field
+          = f.label :category_id, "Category"
+          %br
+          %br
+          = f.select :category_id, options_for_select(@categories.map {|category| [category.name, category.id]})
+          %br
+          %h4 Exercises
+          %br
+          #exercises
+            = f.fields_for :exercises do |exercise|
+              = render 'exercise_fields', f: exercise
+            .links
+              = link_to_add_association 'add exercise', f, :exercises, class: 'btn-flat hoverable'
+        .center
+          = f.submit class: 'btn red darken-4 '

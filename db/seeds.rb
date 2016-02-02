@@ -11,3 +11,4 @@ Category.create({name: 'Endurance', description:""})
 Category.create({name: 'Strength-Endurance', description:""})
 Category.create({name: 'Power', description:""})
 Category.create({name: 'Recovery', description:""})
+
