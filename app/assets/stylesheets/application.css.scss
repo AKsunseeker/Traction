@@ -84,4 +84,10 @@ footer p, form, .info-font, table, .btn, .card  {
   /*font-family: 'Special Elite', cursive;*/
   font-weight: bold;
 }
+input:focus {
+  border-radius: 1px solid red !important;
+  -webkit-box-shadow: 0 1px 0 0 red !important;
+  -moz-box-shadow: 0 1px 0 0 red !important;
+  box-shadow: 0 1px 0 0 red !important;
+}
 
