@@ -12,6 +12,15 @@
   
 </head>
 <body>
+    <div id="fb-root"></div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=756910834439418";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <main>
       <%= render(partial: 'layouts/nav_bar') %>
       <%= yield %>
@@ -19,5 +28,7 @@
     <footer>
       <%= render(partial: 'layouts/footer') %>
     </footer>
+    <!-- Place this tag right after the last button or just before your close body tag. -->
+    <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
