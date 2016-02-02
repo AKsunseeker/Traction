@@ -18,7 +18,7 @@
       - @workouts.each do |workout|
         .row
           .col.s10.m7.l6
-            = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
+            = link_to workout.name, workout_path(workout), class: 'btn grey darken-1'
             - if current_user
               = link_to 'Add', add_workout_path(id: workout), method: :post, class: "black-text hoverable"
             - if current_user 

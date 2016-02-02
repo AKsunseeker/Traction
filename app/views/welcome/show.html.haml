@@ -36,7 +36,7 @@
             %br
             = paginate @added_workouts unless @added_workouts.nil?
 
-      .card.grey.darken-2.hoverable
+      .card.grey.darken-1.hoverable
         .card-content
           .card-title.white-text.text-darken-4
             Completed Workouts
@@ -47,7 +47,7 @@
                 .col.s7.white-text
                   = workout.name
                 .col.s5
-                  = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'red-text text-lighten-1'
+                  = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'red-text text-lighten-3'
               %hr
             = paginate @list_workouts
             %br
