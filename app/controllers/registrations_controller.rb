@@ -3,8 +3,10 @@ class RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(current_user)
       user_path(current_user)
   end
-
+  def account_create_params
+    params.require(:user).permit(:first_name, :last_name, :handle, :email, :password, :password_confirmation, :current_password, :gender, :date_of_birth, :avatar_file_name)
+  end
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :handle, :email, :password, :password_confirmation, :current_password, :gender, :date_of_birth, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :handle, :email, :password, :password_confirmation, :current_password, :gender, :date_of_birth, :avatar_file_name)
   end
 end
