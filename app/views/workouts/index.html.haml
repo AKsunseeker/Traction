@@ -2,40 +2,33 @@
   %h3.center Workouts From All Users
   - if current_user
     = link_to 'Add new workout', new_workout_path, class: "btn red darken-4 "
-  - if @workouts_original.any?
     .row
-      .col.s3.offset-s8
-        = form_tag "/workouts", method: :get do
-          = text_field_tag :workout_name, params[:workout_name], placeholder: "Workout Name"
-          = submit_tag 'search', class: 'btn-flat hoverable'
-    %table
-      %thead
-        %tr
-          %th
-            %h5 Workout Name
-          %th
-          %th
-          %th
-            %h5 Creator Name
-          %th
-            %h5 Created Date
-      %tbody
-        - @workouts.each do |workout|
-          %tr
-            %td
-              = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
-            %td  
-              - if current_user
-                = link_to 'Add to my workouts', add_workout_path(id: workout), method: :post, class: "btn-flat hoverable"
-            %td
-              - if current_user 
-                - if current_user.id == workout.created_by_user
-                  = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'btn-flat hoverable'
-            %td
-              #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name || User.find(workout.created_by_user).email}
-            %td
-              #{workout.created_at.to_date}           
-            %br
-        
+      .col.s10.m7.l6
+        %h5
+          Workout Name
+      .col.s2
+        %h5
+          Creator Name
+      .col.hide-on-small-only.m2.l3
+        .hide-on-small-only
+          %h5
+            Created Date
+    %hr
+    .row
+      - @workouts.each do |workout|
+        .row
+          .col.s10.m7.l6
+            = link_to workout.name, workout_path(workout), class: 'btn blue-grey'
+            - if current_user
+              = link_to 'Add', add_workout_path(id: workout), method: :post, class: "black-text hoverable"
+            - if current_user 
+              - if current_user.id == workout.created_by_user
+                |
+                = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'black-text hoverable'
+          .col.s2.m3.l3
+            #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name || User.find(workout.created_by_user).email}
+          .col.hide-on-small-only.m2.l3
+            #{workout.created_at.to_date}           
+      
   -else
     %h4 Unfortunately we do not have any workouts right now. Add your own or check back later!
