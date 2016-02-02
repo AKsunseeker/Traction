@@ -1,7 +1,7 @@
 .blue-grey.darken-2
 .container
   %h3.center My Profile
-  .row 
+  .row.info-font
     .col.s10.m6.l6
       .card.grey.lighten-2
         .card-content
@@ -27,7 +27,7 @@
         .card-content
           %h5.center.card-title Your Biometrics
           - if @user.biometrics.any?
-            %ul
+            %ul.info-font
               %li
                 Updated on: #{@user.biometrics.last.date}
                 %hr

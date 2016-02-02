@@ -7,46 +7,46 @@
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
         .field
-          = f.label :first_name, class: 'red-text'
+          = f.label :first_name, class: 'black-text'
           %br/
-          = f.text_field :first_name, autofocus: true, class: 'red-text form-border'
+          = f.text_field :first_name, autofocus: true, class: 'black-text form-border'
         .field
-          = f.label :last_name, class: 'red-text'
+          = f.label :last_name, class: 'black-text'
           %br/
-          = f.text_field :last_name, class: 'red-text form-border'
+          = f.text_field :last_name, class: 'black-text form-border'
         .field
-          = f.label :avatar, class: 'red-text'
+          = f.label :avatar, class: 'black-text'
           = f.file_field :avatar
         .field
-          = f.label :date_of_birth, class: 'red-text'
+          = f.label :date_of_birth, class: 'black-text'
           %br/
-          = f.date_field :date_of_birth, class: 'red-text form-border'
+          = f.date_field :date_of_birth, class: 'black-text form-border'
         .field
-          = f.label :gender, class: 'red-text'
+          = f.label :gender, class: 'black-text'
           %br/
-          = f.text_field :gender, class: 'red-text form-border'
+          = f.text_field :gender, class: 'black-text form-border'
         .field
-          = f.label :handle, class: 'red-text'
+          = f.label :handle, class: 'black-text'
           %br/
-          = f.text_field :handle, class: 'red-text form-border'
+          = f.text_field :handle, class: 'black-text form-border'
         .field
-          = f.label :email, class: 'red-text'
+          = f.label :email, class: 'black-text'
           %br/
-          = f.email_field :email, class: 'red-text form-border'
+          = f.email_field :email, class: 'black-text form-border'
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
         .field
-          = f.label :password, class: 'red-text'
+          = f.label :password, class: 'black-text'
           %i (leave blank if you don't want to change it)
           %br/
-          = f.password_field :password, autocomplete: "off", class: 'red-text form-border'
+          = f.password_field :password, autocomplete: "off", class: 'black-text form-border'
         .field
-          = f.label :password_confirmation, class: 'red-text'
+          = f.label :password_confirmation, class: 'black-text'
           %br/
-          = f.password_field :password_confirmation, autocomplete: "off", class: 'red-text form-border'
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'black-text form-border'
         .field
-          = f.label :current_password, class: 'red-text'
+          = f.label :current_password, class: 'black-text'
           %i (we need your current password to confirm your changes)
           %br/
           = f.password_field :current_password, autocomplete: "off", class: 'red-text form-border'
