@@ -2,14 +2,16 @@
   .row
     .col.s5.offset-s1
       %h3 Enter your Workout Numbers:
+  .row
+    .col.s5.offset-s1
       %br
       = render(partial: 'form')
     .col.s5.offset-s1
       %br
       %br
       %br 
-      - if @exercise.youtube_url
+      - if @exercise.youtube_url.length > 0
         .embed-container
           = embed(@exercise.youtube_url)
       - else 
-        %h6 No Video. Add One in the Form.
+        %h6.center No Video, But You Can Add One

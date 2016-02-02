@@ -3,12 +3,12 @@
     .nav-wrapper
       .row
         - if current_user
-          .col.m2.l3.offset-m1.offset-l1
+          .col.l3.offset-l1
             %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
               = image_tag 'logo2.png', class: 'logo-size'
             %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
               %i.material-icons menu
-          .col.m8.l7.offset-l1.right
+          .col.l7.right
             %ul.hide-on-med-and-down
               %li= link_to 'Dashboard', root_path, class: 'grey-text text-lighten-2'
               %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
@@ -23,12 +23,12 @@
             %li= link_to 'Log Out', destroy_user_session_path, method: :delete
             %li= link_to 'About Us', about_us_path
         - else
-          .col.m3.l3.offset-l1
+          .col.l3.offset-l1
             %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
               = image_tag 'logo2.png', class: 'logo-size'
             %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
               %i.material-icons menu
-          .col.m5.l5.offset-l2.right
+          .col.l6.right
             %ul.hide-on-med-and-down
               %li.valign-wrapper= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
               %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
