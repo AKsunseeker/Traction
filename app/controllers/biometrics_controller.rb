@@ -44,7 +44,7 @@ class BiometricsController < ApplicationController
   def create
     @biometric = @user.biometrics.new(biometric_params)
     if @biometric.save
-      redirect_to user_biometrics_path(@user, @biometric)
+      redirect_to user_path(@user)
     else
       render :new
     end
