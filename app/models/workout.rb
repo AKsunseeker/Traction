@@ -20,6 +20,8 @@ class Workout < ActiveRecord::Base
   has_many :locations, as: :addressable
   validates :name, presence: true
 
+  scope :workout_name, -> (name) {where "name like ?", "%#{name}%"}
+
   def exercise_by_name(exercises)
     if exercises.length == 0
       return @unique_exercises

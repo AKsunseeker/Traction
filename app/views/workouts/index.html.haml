@@ -2,16 +2,21 @@
   %h3.center Workouts From All Users
   - if current_user
     = link_to 'Add new workout', new_workout_path, class: "btn red"
-  - if @workouts.any?
+  - if @workouts_original.any?
+    .row
+      .col.s3.offset-s8
+        = form_tag "/workouts", method: :get do
+          = text_field_tag :workout_name, params[:workout_name], placeholder: "Workout Name"
+          = submit_tag 'search', class: 'btn-flat hoverable'
     %table
       %thead
         %tr
           %th
-            %h6 Workout Name
+            %h5 Workout Name
           %th
-            %h6 Creator Name
+            %h5 Creator Name
           %th
-            %h6 Created Date
+            %h5 Created Date
       %tbody
         - @workouts.each do |workout|
           %tr
