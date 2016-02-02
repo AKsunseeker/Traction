@@ -58,13 +58,13 @@ class Progress extends React.Component{
     return {fillColor: fillColor, color: color}
   }
   populateSelect() {
-    if (this.state.workouts.length){
+    if (this.state.workouts.length > 0){
       let options = [];
       let workouts = this.props.workouts.map(workout => {
         let key = `workout-${workout.id}`
         options.push(<option key={key} value={workout.creator_id}>{workout.name}</option>);
       });
-      return(<select ref='workout' className="col s12" onChange={console.log('onchange')}>{options}</select>);
+      return(<select className="red-text" ref='workout' className="col s12" onChange={console.log('onchange')}>{options}</select>);
     }
   }
   render(){ 

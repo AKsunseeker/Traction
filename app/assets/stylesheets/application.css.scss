@@ -65,6 +65,9 @@ form {
   padding: 0 0 0 0 !important;
 }
 
+.select-font {
+  color: red !important;
+}
 footer .row {
   margin-bottom: 0px;
 }
@@ -89,5 +92,9 @@ input:focus {
   -webkit-box-shadow: 0 1px 0 0 red !important;
   -moz-box-shadow: 0 1px 0 0 red !important;
   box-shadow: 0 1px 0 0 red !important;
+}
+
+select, option {
+  color: red !important;
 }
 
