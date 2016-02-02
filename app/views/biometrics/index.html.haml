@@ -2,7 +2,7 @@
   .center
     %h3 Biometrics
   - if current_user
-    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red'
+    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red darken-4'
   - if @biometrics.any?
     .card
       %table

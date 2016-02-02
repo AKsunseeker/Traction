@@ -45,10 +45,10 @@
 
   - if current_user
     .center
-      = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn red'
-      = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn red'
-      = link_to 'Dashboard', root_path, class: 'btn red'
+      = link_to 'Add Exercise', new_workout_exercise_path(@workout), class: 'btn red darken-4 '
+      = link_to 'Edit Workout', edit_workout_path(@workout), class: 'btn red darken-4 '
+      = link_to 'Dashboard', root_path, class: 'btn red darken-4 '
       - if @workout.original
-        = link_to 'Save Workout', root_path, class: 'btn red'
+        = link_to 'Save Workout', root_path, class: 'btn red darken-4 '
       - else 
-        = link_to 'Finish', finish_path(id: @workout), method: :put, class: 'btn red'
+        = link_to 'Finish', finish_path(id: @workout), method: :put, class: 'btn red darken-4 '
