@@ -18,9 +18,12 @@ $primary-color: color("grey", "darken-4") !default;
 @import 'materialize';
 
 html {
+  /*font-family: 'Ubuntu', sans-serif;*/
+  font-family: 'Montserrat', sans-serif;
+  /*font-family: 'Lato', sans-serif;*/
   /*font-family: 'Poiret One', cursive;*/
-  font-family: 'Special Elite', cursive;
-  font-weight: bold;
+  /*font-family: 'Special Elite', cursive;
+  font-weight: bold;*/
 }
 .logo-font {
   font-size: 30px;
@@ -75,7 +78,10 @@ footer p, form, .info-font, table, .btn, .card  {
   font-family: 'Merriweather', serif;
 }
 .card .card-title, h3 {
-  font-family: 'Special Elite', cursive;
+  /*font-family: 'Montserrat', sans-serif;*/
+  font-family: 'Ubuntu', sans-serif;
+  /*font-family: 'Raleway', sans serif;*/
+  /*font-family: 'Special Elite', cursive;*/
   font-weight: bold;
 }
 

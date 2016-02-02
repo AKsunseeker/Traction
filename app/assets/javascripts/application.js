@@ -18,6 +18,7 @@
 //= require moment
 //= require Chart
 //= require components
+//= require cocoon
 //= require_tree .
 
 $(document).ready(function(){

@@ -167,7 +167,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :complete, :category_id)
+    params.require(:workout).permit(:name, :complete, :category_id, exercises_attributes: [:id,:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id, :youtube_url, :_destroy])
   end
 
   def find_workout

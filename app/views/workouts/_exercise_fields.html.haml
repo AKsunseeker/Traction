@@ -1,0 +1,27 @@
+.nested-fields
+  .input-field
+    = f.label :name, "Exercise Name"
+    = f.text_field :name, autofocus: true, :required => true
+    %br
+  .input-field
+    = f.label :weight, "Weight in Pounds"
+    = f.number_field :weight, step: 'any'
+    %br
+  .input-field
+    = f.label :repetitions, "Number of Repetitions"
+    = f.number_field :repetitions
+    %br
+  .input-field
+    = f.label :repetition_duration_seconds, "Repetition Duration in Seconds"
+    = f.number_field :repetition_duration_seconds
+    %br
+  .input-field
+    = f.label :rest_duration_seconds, "Rest Duration in Seconds"
+    = f.number_field :rest_duration_seconds
+    %br
+  .input-field
+    = f.label :youtube_url, "Youtube URL"
+    = f.text_field :youtube_url
+    %br
+    = f.hidden_field :workout_id, value: @workout.id
+  = link_to_remove_association "remove exercise", f, class: 'btn-flat hoverable'
