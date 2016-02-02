@@ -76,7 +76,7 @@ class Progress extends React.Component{
              <div className="">
                <div className="row">
                 <div className="col s3 m3 l3">
-                  <button onClick={this.showMotivation} className="progress-button btn red darken-4 col s12">Motivates</button>
+                  <button onClick={this.showMotivation} className="progress-button btn red darken-4 col s12">Motivation</button>
                 </div> 
                 <div className="col s3 m3 l3">
                   <button onClick={this.chartBiometrics} className="progress-button btn red darken-4 col s12">Biometrics</button>
