@@ -1,27 +1,25 @@
 .container
   .center
-    %h3 Biometrics
-  - if current_user
-    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red darken-4'
+    %h3 Biometrics History 
   - if @biometrics.any?
     .card
       %table
         %thead
           %tr
             %th
-              %h6.center Date
+              %h6.center.bold Date
             %th
-              %h6.center Weight
+              %h6.center.bold Weight
             %th
-              %h6.center Body Fat %
+              %h6.center.bold Body Fat %
             %th
-              %h6.center Chest
+              %h6.center.bold Chest
             %th
-              %h6.center Waist
+              %h6.center.bold Waist
             %th
-              %h6.center Biceps
+              %h6.center.bold Biceps
             %th
-              %h6.center Forearms
+              %h6.center.bold Forearms
             %th
               %h6.center 
             %hr
@@ -52,9 +50,13 @@
               %td
                 .col.s2.center
                   = link_to 'Details', user_biometric_path(current_user, biometric)
+                  |
+                  = link_to 'Delete', user_biometric_path(current_user, biometric), method: :delete
               %br
   - else
     %h4 
-      Unfortunately we do not have any biometrics right now. Please add one!
+      You do not have any biometrics yet. Go ahead and create one!
+  - if current_user
+    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red darken-4'
 
 

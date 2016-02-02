@@ -1,35 +1,49 @@
 .row
   .col.s12.m8.l6.offset-m2.offset-l3
     = form_for [@user, @biometric] do |f|
-      = f.date_field :date, autofocus: true, placeholder: @date
+      = f.label :date, "Date", class: 'left active'
+      = f.date_field :date, autofocus: true, required: true
       %br
-      = f.number_field :weight, placeholder: 'weight'
+      = f.label :weight, "Weight", class: 'left active'
+      = f.number_field :weight, required: true
       %br
-      = f.number_field :body_fat_percentage, placeholder: 'body fat percentage '
+      = f.label :weight, "Body Fat Percentage", class: 'left active'
+      = f.number_field :body_fat_percentage, required: true
       %br
-      = f.number_field :chest, placeholder: 'chest'
+      = f.label :weight, "Chest", class: 'left active'
+      = f.number_field :chest
       %br
-      = f.number_field :height, placeholder: 'height'
+      = f.label :weight, "Height", class: 'left active'
+      = f.number_field :height
       %br
-      = f.number_field :waist, placeholder: 'waist'
+      = f.label :weight, "Waist", class: 'left active'
+      = f.number_field :waist
       %br
-      = f.number_field :shoulder, placeholder: 'shoulder'
+      = f.label :weight, "Shoulder", class: 'left active'
+      = f.number_field :shoulder
       %br
-      = f.number_field :hips, placeholder: 'hips'
+      = f.label :weight, "Hips", class: 'left active'
+      = f.number_field :hips
       %br
-      = f.number_field :biceps, placeholder: 'biceps'
+      = f.label :weight, "Biceps", class: 'left active'
+      = f.number_field :biceps
       %br
-      = f.number_field :thigh, placeholder: 'thigh'
+      = f.label :weight, "Thigh", class: 'left active'
+      = f.number_field :thigh
       %br
-      = f.number_field :calf, placeholder: 'calf'
+      = f.label :weight, "Calf", class: 'left active'
+      = f.number_field :calf
       %br
-      = f.number_field :forearm, placeholder: 'forearm'
+      = f.label :weight, "Forearm", class: 'left active'
+      = f.number_field :forearm
       %br
-      = f.number_field :wrist, placeholder: 'wrist'
+      = f.label :weight, "Wrist", class: 'left active'
+      = f.number_field :wrist
       %br
-      = f.number_field :neck, placeholder: 'neck'
+      = f.label :weight, "Neck", class: 'left active'
+      = f.number_field :neck
       %br
-
+      
       = f.submit class: 'btn red darken-4 '
 
 / left off :dateof_birth, :gender, :height, :exercise_id, :ape_index
