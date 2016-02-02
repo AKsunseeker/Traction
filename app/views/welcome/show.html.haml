@@ -16,19 +16,22 @@
             .card-title.col.s8.m6.l6.red-text.text-darken-4
               Workouts
             = link_to 'Create', new_workout_path, class: 'btn red col s3 m4 l4' 
-          - @added_workouts.each do |workout|
-            .row.info-font
-              .col.s6
-                = link_to workout.name, workout_path(workout), class: 'black-text'
-              .col.s6
-                = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
-                | 
-                = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
-                |
-                = link_to 'Remove', remove_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+            - unless @added_workouts.nil?  
+              - @added_workouts.each do |workout|
+                .row.info-font
+                  .col.s6
+                    = link_to workout.name, workout_path(workout), class: 'black-text'
+                  .col.s6
+                    = link_to 'Do it', do_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+                    | 
+                    = link_to 'History', workout_history_path(id: workout), class: 'red-text text-darken-4'
+                    |
+                    = link_to 'Remove', remove_workout_path(id: workout), method: :post, class: 'red-text text-darken-4'
+            - else
+              %h4 'No workouts, add some please'
             %hr
             %br
-          = paginate @added_workouts
+          = paginate @added_workouts unless @added_workouts.nil?
 
       .card.green.lighten-2.hoverable
         .card-content

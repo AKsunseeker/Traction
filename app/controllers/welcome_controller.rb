@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   access all: [:index, :about_us], trainer: :all
   def index
+    added_workouts ||= []
     if current_user 
       if current_user.workouts.any?
         @workouts = current_user.workouts
@@ -15,6 +16,7 @@ class WelcomeController < ApplicationController
       else
         @list_workouts = []
         @unique_workout_names = []
+        added_workouts ||= []
       end
       render :show
     end
@@ -23,6 +25,8 @@ class WelcomeController < ApplicationController
   def show
     @user_id = current_user.id
     @workouts = current_user.workouts
+    @added_workouts ||= []
+    binding.pry
   end
 
   def about_us
