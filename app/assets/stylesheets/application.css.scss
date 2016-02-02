@@ -66,7 +66,8 @@ form {
 }
 
 .select-font {
-  color: red !important;
+  color: #b71c1c !important;
+  font-size: 12px;
 }
 footer .row {
   margin-bottom: 0px;
@@ -92,9 +93,5 @@ input:focus {
   -webkit-box-shadow: 0 1px 0 0 red !important;
   -moz-box-shadow: 0 1px 0 0 red !important;
   box-shadow: 0 1px 0 0 red !important;
-}
-
-select, option {
-  color: red !important;
 }
 
