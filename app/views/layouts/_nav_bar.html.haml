@@ -6,15 +6,15 @@
           .col.l3.offset-l1
             %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
               = image_tag 'logo2.png', class: 'logo-size'
-            %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
+            %a.button-collapse{"data-activates" => "mobile-demo", :href => "#", class: 'nav-hover'}
               %i.material-icons menu
           .col.l7.right
             %ul.hide-on-med-and-down
-              %li= link_to 'Dashboard', root_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2'
-              %li= link_to 'Biometrics', user_biometrics_path(current_user), class: 'grey-text text-lighten-2'
-              %li= link_to 'All Workouts', workouts_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2'
+              %li= link_to 'Dashboard', root_path, class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'Profile', user_path(current_user), class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'Biometrics', user_biometrics_path(current_user), class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'All Workouts', workouts_path, class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'grey-text text-lighten-2 nav-hover'
           %ul#mobile-demo.side-nav
             %li= link_to 'Dashboard', root_path
             %li= link_to 'Profile', user_path(current_user)
@@ -30,10 +30,10 @@
               %i.material-icons menu
           .col.l6.right
             %ul.hide-on-med-and-down
-              %li.valign-wrapper= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'All Workouts', workouts_path, class: 'grey-text text-lighten-2'
-              %li= link_to 'About Traction', about_us_path, class: 'grey-text text-lighten-2'
+              %li.valign-wrapper= link_to 'Log In', new_user_session_path, class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'Sign Up', new_user_registration_path, class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'All Workouts', workouts_path, class: 'grey-text text-lighten-2 nav-hover'
+              %li= link_to 'About Traction', about_us_path, class: 'grey-text text-lighten-2 nav-hover'
             %ul#mobile-demo.side-nav
               %li= link_to 'Log In', new_user_session_path
               %li= link_to 'Sign Up', new_user_registration_path
