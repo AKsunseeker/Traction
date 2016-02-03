@@ -126,3 +126,12 @@ a.footer-link:hover {
   width: 200px;
   height: auto;
 }
+
+.logo-link {
+  width: 30px;
+  height: auto;
+  vertical-align: center;
+}
+.logo-link:hover {
+  transform: scale(1.1);
+}
