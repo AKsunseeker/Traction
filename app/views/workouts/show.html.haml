@@ -39,7 +39,7 @@
                 - if current_user && !@workout.original
                   = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise), class: 'btn grey darken-1'
             %br
-        
+    %hr      
   -else
     %h4 No Exercises in this workout. Wasn't that easy? Jk, add some!
 
@@ -51,4 +51,5 @@
       - if @workout.original
         = link_to 'Save Workout', root_path, class: 'btn red darken-4 '
       - else 
-        = link_to 'Finish', finish_path(id: @workout), method: :put, class: 'btn red darken-4 '
+        %br
+        = link_to 'Finish', finish_path(id: @workout), method: :put, class: 'btn-large red darken-4 center '
