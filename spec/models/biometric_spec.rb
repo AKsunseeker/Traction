@@ -101,5 +101,7 @@ RSpec.describe Biometric, type: :model do
 
   describe 'validates' do
     it { should belong_to(:user) }
+    it { should validate_presence_of(:weight)}
+    it { should validate_presence_of(:body_fat_percentage)}
   end
 end

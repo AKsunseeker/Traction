@@ -27,4 +27,5 @@
 
 class Biometric < ActiveRecord::Base
   belongs_to :user
+  validates_presence_of :weight, :body_fat_percentage
 end
