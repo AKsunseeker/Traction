@@ -13,8 +13,6 @@
 #
 
 class CategoriesController < ApplicationController
-  before_action :find_workout, except: [:get_categories_progress]
-  before_action :find_exercise, only: [:new]
   before_action :find_category, except: [:index, :new, :create, :get_categories_progress]
 
   def index
@@ -31,8 +29,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      @exercise << @category
-      redirect_to workout_exercise_path(@workout, @exercise)
+      redirect_to category_path(@category)
     else
       render :new
     end
@@ -43,7 +40,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update
-      redirect_to workout_exercise_path(@workout, @exercise)
+      redirect_to category_path(@category)
     else
       render :edit
     end
@@ -51,7 +48,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to workout_exercise_path(@workout, @exercise)
+    redirect_to root_path
   end
 
   def get_categories_progress
@@ -80,11 +77,4 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def find_workout
-    @workout = Workout.find_by(params[:workout_id])
-  end
-
-  def find_exercise
-    @exercise = @workout.exercises.find_by(params[:exercise_id])
-  end
 end
