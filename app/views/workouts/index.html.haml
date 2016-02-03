@@ -1,8 +1,6 @@
 .container 
   %h3.center Workouts From All Users
   - if current_user
-    .center
-      = link_to 'Add new workout', new_workout_path, class: "btn red darken-4 "
     .row
       .col.s10.m7.l6
         %h5
@@ -32,7 +30,9 @@
             - else 
               %p Anonymous
           .col.hide-on-small-only.m2.l3
-            #{workout.created_at.to_date}           
-      
+            #{workout.created_at.to_date} 
+    %hr                  
+    .center
+      = link_to 'Add new workout', new_workout_path, class: "btn red darken-4 "
   -else
     %h4 Unfortunately we do not have any workouts right now. Add your own or check back later!

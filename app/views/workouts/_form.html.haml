@@ -18,6 +18,6 @@
             = f.fields_for :exercises do |exercise|
               = render 'exercise_fields', f: exercise
             .links
-              = link_to_add_association 'add exercise', f, :exercises, class: 'btn-flat hoverable'
+              = link_to_add_association 'add exercise', f, :exercises, class: 'btn red darken-4'
         .center
           = f.submit class: 'btn red darken-4 '
