@@ -20,4 +20,9 @@ RSpec.describe Membership, type: :model do
       expect(membership.group_id).to eq(group_id) 
     end
   end
+
+  describe 'associations' do
+    it { should belong_to(:user)}
+    it { should belong_to(:group)}
+  end
 end
