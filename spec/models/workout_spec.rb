@@ -31,6 +31,24 @@ RSpec.describe Workout, type: :model do
       workout = Workout.create(user_id: user_id)
       expect(workout.user_id).to eq(user_id) 
     end
+
+    it 'has an original status' do 
+      original = true
+      workout = Workout.create(original: original)
+      expect(workout.original).to eq(original) 
+    end
+
+    it 'has a category_id' do 
+      category_id = 1
+      workout = Workout.create(category_id: category_id)
+      expect(workout.category_id).to eq(category_id) 
+    end
+
+    it 'has a created_by_user integer' do 
+      created_by_user = 1
+      workout = Workout.create(created_by_user: created_by_user)
+      expect(workout.created_by_user).to eq(created_by_user) 
+    end
   end
 
   describe 'validations' do
@@ -38,7 +56,7 @@ RSpec.describe Workout, type: :model do
     it { should belong_to(:category)}
     it { should have_many(:exercises) }
     it { should accept_nested_attributes_for(:exercises).allow_destroy(true)}
-    # How to test the reject_if ??? for accept_nested_attributes_for
+    # How to test the reject_if: :all_blank ??? for accept_nested_attributes_for
     it { should have_many(:locations)}
     it { should validate_presence_of(:name)}
   end
