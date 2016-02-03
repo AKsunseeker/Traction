@@ -20,6 +20,7 @@ class WorkoutsController < ApplicationController
     @workouts_original = Workout.where(original: true).order(:created_by_user).page(params[:page])
     @workouts = @workouts_original.where(nil)
     @workouts = @workouts.workout_name(params[:workout_name].downcase) if params[:workout_name].present?
+    @user_creator_ids = current_user.workouts.map(&:creator_id).compact
   end
 
   def show
