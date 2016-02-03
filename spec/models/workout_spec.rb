@@ -63,12 +63,13 @@ RSpec.describe Workout, type: :model do
 
   describe 'instance methods' do
     it 'return like exercises' do
-      exercise1 = FactoryGirl.create(:exercise)
-      exercise2 = FactoryGirl.create(:exercise)
-      exercise3 = FactoryGirl.create(:exercise)
+      workout = Workout.create(name: "Workout 1")
+      exercise1 = workout.exercises.create(name: 'deadlift', weight: 12.5, repetitions: 12, repetition_duration_seconds: 120, complete: true)
+      exercise2 = workout.exercises.create(name: 'deadlift', weight: 12.5, repetitions: 12, repetition_duration_seconds: 120, complete: true)
+      exercise3 = workout.exercises.create(name: 'deadlift', weight: 12.5, repetitions: 12, repetition_duration_seconds: 120, complete: true)
       sum = (exercise1.weight * exercise1.repetitions) + (exercise2.weight * exercise2.repetitions) + (exercise3.weight * exercise3.repetitions)
-      exercises = like_exercises([exercise1, exercise2, exercise3])
-      expect(exercises).to eq()
+      exercises = workout.like_exercises([exercise1, exercise2, exercise3])
+      expect(exercises).to eq([{name: exercise1.name, sum: sum}])
     end
   end
 end
