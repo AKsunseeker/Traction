@@ -26,7 +26,10 @@
                 |
                 = link_to 'Delete', delete_workout_path(id: workout), method: :post, class: 'black-text hoverable'
           .col.s2.m3.l3
-            #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name || User.find(workout.created_by_user).email}
+            - if User.where(id: workout.created_by_user).any?
+              #{User.find(workout.created_by_user).handle || User.find(workout.created_by_user).first_name || User.find(workout.created_by_user).email}
+            - else 
+              %p Anonymous
           .col.hide-on-small-only.m2.l3
             #{workout.created_at.to_date}           
       
