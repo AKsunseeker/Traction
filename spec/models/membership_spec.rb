@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Membership, type: :model do
   describe 'attributes' do
     it 'has a join_date' do 
-      join_date = 2001-01-05
+      join_date = Date.today
       membership = Membership.create(join_date: join_date)
       expect(membership.join_date).to eq(join_date) 
     end
