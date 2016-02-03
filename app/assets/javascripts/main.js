@@ -20,7 +20,7 @@ jQuery(document).ready(function($){
 			closeFaqsContainer.addClass('move-left');
 			$('body').addClass('cd-overlay');
 		} else {
-	        $('body,html').animate({ 'scrollTop': target.offset().top - 92}, 200); 
+	        $('body,html').animate({ 'scrollTop': target.offset().top - 19}, 200); 
 		}
 	});
 
@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
 	function updateCategoryPosition() {
 		var top = $('.cd-faq').offset().top,
 			height = jQuery('.cd-faq').height() - jQuery('.cd-faq-categories').height(),
-			margin = 20;
+			margin = 50;
 		if( top - margin <= $(window).scrollTop() && top - margin + height > $(window).scrollTop() ) {
 			var leftValue = faqsCategoriesContainer.offset().left,
 				widthValue = faqsCategoriesContainer.width();
