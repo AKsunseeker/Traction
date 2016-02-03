@@ -31,7 +31,7 @@ html {
 
 .logo-size {
   border-radius: 20px;
-  height: 50px;
+  height: 37px;
   margin-top: 2.5px;
 }
 
@@ -69,6 +69,10 @@ form {
   color: #b71c1c !important;
   font-size: 12px;
 }
+
+footer {
+  background-color: black !important;
+}
 footer .row {
   margin-bottom: 0px;
 }
@@ -103,7 +107,7 @@ input:focus {
 }
 
 .nav-wrapper {
-  background-color: rgb(76,75,75);
+  background-color: black;
 }
 
 .avatar-size {
