@@ -24,54 +24,14 @@
 class UsersController < ApplicationController
   access all: [:index], trainer: :all, user: :all
 
-  def index
-    @users = User.all
-  end
-
   def show
     @user = User.find(params[:id])
     @biometrics = current_user.biometrics.all
   end
 
-  def new
-    @user = User.new(user_params)
-  end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_path
-    else
-      render :new
-    end
-  end
-  
-  def edit
-    
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.save
-      redirect_to user_path(@user)
-    else
-      redirect_to :edit
-    end
-  end
-
-
-  def destroy
-    if @user.destroy
-      redirect_to user_path
-    else
-      redirect_to user_path(@user)
-    end
-  end
-
   private
-
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :handle, :date_of_birth, :gender)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :handle, :date_of_birth, :gender)
+    end
 
 end
