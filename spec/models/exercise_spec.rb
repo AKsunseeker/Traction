@@ -50,4 +50,10 @@ RSpec.describe Exercise, type: :model do
       expect(exercise.workout_id).to eq(workout_id)
     end
   end
+
+  describe 'validations' do
+    it { should belong_to(:workout)}
+    it { should have_many(:locations)}
+    it { should validate_presence_of(:name)}
+  end
 end
