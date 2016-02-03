@@ -49,14 +49,15 @@
                   = biometric.forearm
               %td
                 .col.s2.center
-                  = link_to 'Details', user_biometric_path(current_user, biometric)
-                  |
-                  = link_to 'Delete', user_biometric_path(current_user, biometric), method: :delete
+                  = link_to 'Details', user_biometric_path(current_user, biometric), class: 'btn grey darken-1'
+                  = link_to 'Delete', user_biometric_path(current_user, biometric), method: :delete, class: 'btn grey darken-1'
               %br
   - else
-    %h4 
-      You do not have any biometrics yet. Go ahead and create one!
+    .row.center
+      %h4 
+        You do not have any biometrics yet. Go ahead and create one!
   - if current_user
-    = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red darken-4'
+    .row.center
+      = link_to 'Add New Biometric', new_user_biometric_path(current_user), class: 'btn red darken-4'
 
 

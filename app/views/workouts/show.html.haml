@@ -37,7 +37,7 @@
             %td
               .col.s2.center
                 - if current_user && !@workout.original
-                  = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise)
+                  = link_to 'Do Exercise', edit_workout_exercise_path(@workout, exercise), class: 'btn grey darken-1'
             %br
         
   -else
