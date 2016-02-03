@@ -44,9 +44,9 @@
           - if current_user.workouts.where(complete: true).any?
             - current_user.workouts.where(complete: true).each do |workout|
               .row.info-font
-                .col.s5.white-text
+                .col.s12.m12.l4.white-text
                   = workout.name
-                .col.s7
+                .col.s12.m12.l8
                   = link_to 'Do It Again', do_workout_path(id: workout), method: :post, class: 'btn white red-text text-darken-4'
               %hr
             = paginate @list_workouts
