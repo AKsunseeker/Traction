@@ -31,7 +31,7 @@ class WorkoutChart extends React.Component {
           let options = { responsive: true, 
                           scaleShowGridLines: false, 
                           pointDotRadius: 3, 
-                          bezierCurveTension: 0.8, 
+                          bezierCurveTension: 0.3, 
                           multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, options);
         } else {
