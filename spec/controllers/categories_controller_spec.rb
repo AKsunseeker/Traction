@@ -13,7 +13,7 @@ RSpec.describe CategoriesController, type: :controller do
     it 'assigns the category instance variable' do
       category = FactoryGirl.create(:category)
       get :index, id: category
-      expect(assigns(:categorys)).to eq([category]) 
+      expect(assigns(:category)).to eq([category]) 
     end
 
     it 'renders the index template' do
