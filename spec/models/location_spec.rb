@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Location, type: :model do
   describe 'attributes' do
+    it 'has an id' do 
+      id = 10
+      location = Location.create(id: id)
+      expect(location.id).to eq(id) 
+    end
+
     it 'has a lat' do 
       lat = 100.1
       location = Location.create(lat: lat)
@@ -20,10 +26,10 @@ RSpec.describe Location, type: :model do
       expect(location.street).to eq(street) 
     end
 
-    it 'has a zip' do 
-      zip = '84010'
-      location = Location.create(zip: zip)
-      expect(location.zip).to eq(zip) 
+    it 'has a city' do 
+      city = 'Salt Lake City'
+      location = Location.create(city: city)
+      expect(location.city).to eq(city) 
     end
 
     it 'has a state' do 
@@ -32,34 +38,26 @@ RSpec.describe Location, type: :model do
       expect(location.state).to eq(state) 
     end
 
-    it 'has a city' do 
-      city = 'Salt Lake City'
-      location = Location.create(city: city)
-      expect(location.city).to eq(city) 
+    it 'has a zip' do 
+      zip = '84010'
+      location = Location.create(zip: zip)
+      expect(location.zip).to eq(zip) 
     end
 
-    it 'has a user_id' do 
-      user_id = 1
-      location = Location.create(user_id: user_id)
-      expect(location.user_id).to eq(user_id) 
+    it 'has a addressable_id' do 
+      addressable_id = 1
+      location = Location.create(addressable_id: addressable_id)
+      expect(location.addressable_id).to eq(addressable_id) 
     end
 
-    it 'has a group_id' do 
-      group_id = 1
-      location = Location.create(group_id: group_id)
-      expect(location.group_id).to eq(group_id) 
+    it 'has a addressable_type' do 
+      addressable_type = 'addressable type'
+      location = Location.create(addressable_type: addressable_type)
+      expect(location.addressable_type).to eq(addressable_type) 
     end
+  end
 
-    it 'has a workout_id' do 
-      workout_id = 1
-      location = Location.create(workout_id: workout_id)
-      expect(location.workout_id).to eq(workout_id) 
-    end
-
-    it 'has a exercise_id' do 
-      exercise_id = 1
-      location = Location.create(exercise_id: exercise_id)
-      expect(location.exercise_id).to eq(exercise_id) 
-    end
+  describe 'validations' do
+    it { should belong_to(:addressable)}
   end
 end
