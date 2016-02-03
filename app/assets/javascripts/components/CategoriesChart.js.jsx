@@ -12,12 +12,18 @@ class CategoriesChart extends React.Component{
           for(x = 0; x < data.length; x++){
             let label = Object.keys(data[x])[0]
             let value = data[x][label]
-            let colors = this.props.setColor();
+            let colors = [{fillColor: "rgba(183,28,28,0.1)", color: "rgba(183,28,28,1)"}, 
+                          {fillColor: "rgba(13, 71, 161, 0.1)", color: "rgba(13, 71, 161, 1)"},
+                          {fillColor: "rgba(46, 125, 50, 0.1)", color: "rgba(46, 125, 50, 1)"},
+                          {fillColor: "rgba(0, 131, 143, 0.1)", color: "rgba(0, 131, 143, 1)"},
+                          {fillColor: "rgba(94, 53, 177, 0.1)", color: "rgba(94, 53, 177, 1)"},
+                          {fillColor: "rgba(255, 143, 0, 0.1)", color: "rgba(255, 143, 0, 1)"}
+                          ];
             chartData.push({
               label: label,
               value: value,
-              color: colors.color,
-              highlight: colors.fillColor
+              color: colors[x].color,
+              highlight: colors[x].fillColor
             })
           }
           $("#no_data_message").empty();

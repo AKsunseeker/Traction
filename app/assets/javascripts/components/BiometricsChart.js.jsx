@@ -14,23 +14,23 @@ class BiometricsChart extends React.Component{
           } 
           for(x= 0; x < Object.keys(data['data']).length; x++){
             let label = Object.keys(data['data'])[x];
-            let colors = this.props.setColor();
+            let colors = [{fillColor: "rgba(183,28,28,0.1)", color: "rgba(183,28,28,1)"}, {fillColor: "rgba(13, 71, 161, 0.1)", color: "rgba(13, 71, 161, 1)"}];
             chartData.datasets.push({
               label: label, 
               data: data['data'][label],
-              fillColor: colors.fillColor,
-              strokeColor: colors.color,
-              pointColor: colors.color,
+              fillColor: colors[x].fillColor,
+              strokeColor: colors[x].color,
+              pointColor: colors[x].color,
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
-              pointHighlightStroke: colors.color});
+              pointHighlightStroke: colors[x].color});
           }
           $("#no_data_message").empty();
           $('#workout_progress').empty();
           let options = { responsive: true, 
                           scaleShowGridLines: false, 
                           pointDotRadius: 3, 
-                          bezierCurveTension: 0.8, 
+                          bezierCurveTension: 0.3, 
                           multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"};
           new Chart($('#workout_progress').get(0).getContext('2d')).Line(chartData, options);
         } else {
