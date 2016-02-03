@@ -4,5 +4,6 @@ FactoryGirl.define do
     complete false
     creator_id 1
     user
+    category
   end
 end

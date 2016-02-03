@@ -15,41 +15,41 @@
 class CategoriesController < ApplicationController
   before_action :find_category, except: [:index, :new, :create, :get_categories_progress]
 
-  def index
-    @categories = Category.all
-  end
+  # def index
+  #   @categories = Category.all
+  # end
 
-  def show
-  end
+  # def show
+  # end
 
-  def new
-    @category = Category.new
-  end
+  # def new
+  #   @category = Category.new
+  # end
 
-  def create
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to category_path(@category)
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @category = Category.new(category_params)
+  #   if @category.save
+  #     redirect_to category_path(@category)
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @category.update
-      redirect_to category_path(@category)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @category.update
+  #     redirect_to category_path(@category)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @category.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @category.destroy
+  #   redirect_to root_path
+  # end
 
   def get_categories_progress
     @categories = Category.all
