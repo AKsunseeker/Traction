@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  access all: [:index, :about_us], trainer: :all
+  access all: [:index, :about_us, :faq], trainer: :all
   def index
     added_workouts ||= []
     if current_user 
@@ -30,6 +30,9 @@ class WelcomeController < ApplicationController
   end
 
   def about_us
+  end
+
+  def faq
   end
 
 end

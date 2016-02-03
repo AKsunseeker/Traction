@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :memberships
   resources :locations
 
+  get 'faq', to: 'welcome#faq', as: 'faq'
   get 'workout_history/:id', to: 'workouts#workout_history', as: 'workout_history'
   root 'welcome#index'
   get 'about_us', to: 'welcome#about_us'
