@@ -2,22 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Biometric, type: :model do
   describe 'attributes' do
-    # it 'has a dob' do 
-    #   dob = 2000-01-01
-    #   biometric = Biometric.create(date_of_birth: dob)
-    #   expect(biometric.date_of_birth).to eq(dob) 
-    # end
     
     it 'has a weight' do
       weight = 175.5
       biometric = Biometric.create(weight: weight)
       expect(biometric.weight).to eq(weight)
-    end
-
-    it 'has a gender' do
-      gender = 'Female'
-      biometric = Biometric.create(gender: gender)
-      expect(biometric.gender).to eq(gender)
     end
 
     it 'has a body_fat_percentage measurment' do
@@ -98,10 +87,19 @@ RSpec.describe Biometric, type: :model do
       expect(biometric.neck).to eq(neck)
     end
 
-    # it 'has a date' do
-    #   date = '2016-01-20'
-    #   biometric = Biometric.create(date: date)
-    #   expect(biometric.date).to eq(date)
-    # end
+    it 'has a date' do
+      date = Date.today
+      biometric = Biometric.create(date: date)
+      expect(biometric.date).to eq(date)
+    end
+
+    it 'has a user_id' do
+      user_id = 1
+      biometric = Biometric.create(user_id: user_id)
+    end
+  end
+
+  describe 'validates' do
+    it { should belong_to(:user) }
   end
 end
