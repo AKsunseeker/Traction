@@ -69,7 +69,7 @@ class BiometricsController < ApplicationController
   def get_biometrics_progress
     @biometrics = current_user.biometrics.all.order(:date)
     if @biometrics.any?
-      line_chart_json = {date_labels: [], data: {weight: [], body_fat_percentage: []}, logs: []}
+      line_chart_json = {date_labels: [], data: {weight: [], body_fat_percentage: []}}
       @biometrics.each do |biometric|
         line_chart_json[:date_labels] << biometric.date
         line_chart_json[:data][:weight] << biometric.weight
