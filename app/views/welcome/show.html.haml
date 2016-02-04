@@ -19,7 +19,7 @@
           %br
           .row
           %br
-            - unless @added_workouts.nil?  
+            - unless @added_workouts.nil? 
               - @added_workouts.each do |workout|
                 .row
                   .col.s12.l5
@@ -42,7 +42,7 @@
             Completed Workouts
           %br
           - if current_user.workouts.where(complete: true).any?
-            - current_user.workouts.where(complete: true).each do |workout|
+            - current_user.workouts.where(complete: true).order(updated_at: :desc).each do |workout|
               .row.info-font
                 .col.s12.m12.l4.white-text
                   = workout.name
