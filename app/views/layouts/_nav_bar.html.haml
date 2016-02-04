@@ -1,9 +1,9 @@
-.navbar-fixed#nav_fixed
+.navbar-fixed
   %nav
     .nav-wrapper
-      .row#nav_row
+      .row
         - if current_user
-          .col.s6.offset-s2.m6.offset-m6.l3.offset-l1
+          .col.l3.offset-l1
             %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
               = image_tag 'traction-logo-light.png', class: 'logo-size'
             %a.button-collapse{"data-activates" => "mobile-demo", :href => "#", class: 'nav-hover'}
