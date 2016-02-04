@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe CategoriesController, type: :controller do
   let(:category) {FactoryGirl.create(:category)}
   let(:workout) {FactoryGirl.create(:workout)}
+  let(:user) {FactoryGirl.create(:user)}
   
   #   it "returns http success" do
   #     category
@@ -108,10 +109,11 @@ RSpec.describe CategoriesController, type: :controller do
   describe 'GET #get_categories_progress' do
     it 'creates hash of key:category and value:number of completed workouts in that category' do
       sign_in(user)
-      category = FactoryGirl.create(:category, name: 'New')
-      workout = FactoryGirl.create(:workout, complete: true, catergory_id: category.id)
-      results = get :get_categories_progress  
-      expect(results.length).to eq(1)
+      category
+      workout = FactoryGirl.create(:workout, complete: true, category_id: category.id, user_id: user.id)
+      get :get_categories_progress
+      expected = ([{"#{category.name}" => 1}]).to_json
+      expect(response.body).to eq(expected)
     end
   end
 end

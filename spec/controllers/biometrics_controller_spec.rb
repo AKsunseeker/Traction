@@ -131,4 +131,14 @@ RSpec.describe BiometricsController, type: :controller do
       expect(response).to have_http_status(:redirect)
     end
   end
+
+  describe 'GET #get_biometrics_progress' do
+    it 'creates json object with hash of key:date-label and value:array of dates, and key:data that is an array of hashes of the keys are weight and body_fat_percentage and their values are arrays' do
+      biometric
+      sign_in(User.find(biometric.user_id))
+      get :get_biometrics_progress
+      result = ({date_labels: [Date.today], data: {weight: [biometric.weight], body_fat_percentage: [biometric.body_fat_percentage]}}).to_json
+      expect(response.body).to eq(result)
+    end
+  end
 end

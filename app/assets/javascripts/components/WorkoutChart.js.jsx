@@ -11,7 +11,10 @@ class WorkoutChart extends React.Component {
       }).success(data => {
         if (data[0].length > 0) {
           for(x = 0; x < data[1].length; x++){
-            chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
+            let d = new Date(data[1][x]);
+            d = new Date(d.getTime() + d.getTimezoneOffset()*60000);
+            chartData.labels.push(moment(new Date(d)).format("DD/MM/YYYY"));
+            // chartData.labels.push(moment(new Date(data[1][x])).format("DD/MM/YYYY"));
           } 
           for(x= 0; x < data[0].length; x++){
             let label = Object.keys(data[0][x]);
