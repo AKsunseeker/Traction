@@ -4,9 +4,10 @@
       .row
         - if current_user
           .col.s6.offset-s2.m6.offset-m6.l3.offset-l1
-            %a.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
+            %a.hide-on-med-and-down.brand-logo{href: root_path, class: 'grey-text text-lighten-2 logo-size'} 
               = image_tag 'traction-logo-light.png', class: 'logo-size'
             %a.button-collapse{"data-activates" => "mobile-demo", :href => "#", class: 'nav-hover'}
+              = image_tag 'traction-logo-light.png', class: 'small-traction-logo'
               %i.material-icons menu
           .col.l7.right
             %ul.hide-on-med-and-down
