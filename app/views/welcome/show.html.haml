@@ -20,7 +20,7 @@
           .row
           %br
             - unless @added_workouts.nil? 
-              - @added_workouts.each do |workout|
+              - @added_workouts.order(updated_at: :desc).each do |workout|
                 .row
                   .col.s12.l5
                     = link_to workout.name, workout_path(workout), class: 'black-text workout-link'
