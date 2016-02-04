@@ -75,16 +75,16 @@ class Progress extends React.Component{
              <hr/>
              <div className="">
                <div className="row">
-                <div className="col s3 m3 l3">
+                <div className="col s12 m3 l3">
                   <button onClick={this.showMotivation} className="progress-button btn red darken-4 col s12">Motivation</button>
                 </div> 
-                <div className="col s3 m3 l3">
+                <div className="col s12 m3 l3">
                   <button onClick={this.chartBiometrics} className="progress-button btn red darken-4 col s12">Biometrics</button>
                 </div> 
-                <div className="col s3 m3 l3">
+                <div className="col s12 m3 l3">
                  <button onClick={this.chartCategories} className="progress-button btn red darken-4 col s12">Categories</button>
                 </div> 
-                <div className="col s3 m3 l3">
+                <div className="col s12 m3 l3">
                  <form onSubmit={this.chartProgress} className="">
                    <button type='submit' className="progress-button btn red darken-4 col s12" >Workouts</button>
                    {this.populateSelect()}
