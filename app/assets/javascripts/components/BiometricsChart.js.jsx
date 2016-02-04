@@ -10,7 +10,10 @@ class BiometricsChart extends React.Component{
       }).success(data => {
         if (data['date_labels']) {
           for(x = 0; x < data['date_labels'].length; x++){
-            chartData.labels.push(moment(new Date(data['date_labels'][x])).format("DD/MM/YYYY"));
+            let d = new Date(data['date_labels'][x]);
+            d = new Date(d.getTime() + d.getTimezoneOffset()*60000);
+            chartData.labels.push(moment(new Date(d)).format("DD/MM/YYYY"));
+            // chartData.labels.push(moment(new Date(data['date_labels'][x])).format("DD/MM/YYYY"));
           } 
           for(x= 0; x < Object.keys(data['data']).length; x++){
             let label = Object.keys(data['data'])[x];
