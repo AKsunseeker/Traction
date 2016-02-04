@@ -17,7 +17,7 @@ class Progress extends React.Component{
   chartProgress(e){
     e.preventDefault();
     console.log('Progress clicked')
-    this.setState({ chartType: 'workoutProgress' + this.refs.workout.value});
+    this.setState({ chartType: 'workoutProgress' + workoutValue});
   }
   chartBiometrics(e){
     e.preventDefault();
@@ -30,9 +30,14 @@ class Progress extends React.Component{
     this.setState({chartType: 'categoriesChart'})
   }
   buildChart(){
+    if (this.refs == true){
+      workoutValue = this.refs.workout.value
+    } else {
+      workoutValue = ""
+    }
     if(this.state.chartType == 'motivation'){
       return(< Motivation />);
-    }else if(this.state.chartType == 'workoutProgress' + this.refs.workout.value){
+    }else if(this.state.chartType == 'workoutProgress' + workoutValue){
       return(< WorkoutChart key={this.refs.workout.value} setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} creator_id={this.refs.workout.value}/>);
     } else if (this.state.chartType == 'biometricsProgress'){
       return(< BiometricsChart setColor={this.setColor} randNumber={this.randNumber} rgb={this.rgb} rgba={this.rgba} />);
