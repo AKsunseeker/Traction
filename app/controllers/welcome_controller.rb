@@ -26,7 +26,6 @@ class WelcomeController < ApplicationController
     @user_id = current_user.id
     @workouts = current_user.workouts
     @added_workouts ||= []
-    binding.pry
   end
 
   def about_us

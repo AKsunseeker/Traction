@@ -45,7 +45,7 @@ class WorkoutsController < ApplicationController
       @workout.save
       redirect_to workout_path(@workout)
     else
-      redirect_to :new
+      render :new
     end
   end
 
@@ -57,7 +57,7 @@ class WorkoutsController < ApplicationController
     if @workout.update(workout_params)
       redirect_to workout_path(@workout)
     else
-      redirect_to :edit
+      render :edit
     end
   end
 
@@ -70,11 +70,8 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    if @workout.destroy
-      redirect_to workout_path
-    else
-      redirect_to workout_path(@workout)
-    end
+    @workout.destroy
+    redirect_to workout_path
   end
 
   def add_workout
@@ -123,16 +120,12 @@ class WorkoutsController < ApplicationController
   def remove_workout
     workout = Workout.find(params[:id])
     workout.destroy
-    # workout.complete = true
-    # workout.save
     redirect_to root_path
   end
 
   def delete_workout
     workout = Workout.find(params[:id])
     workout.destroy
-    # workout.complete = true
-    # workout.save
     redirect_to workouts_path
   end
 
@@ -184,7 +177,6 @@ class WorkoutsController < ApplicationController
     end
     # @exercise_details.sort! { |a,b| a.name.downcase <=> b.name.downcase }
     # @exercises.group_by(&:name)
-    # binding.pry
   end
 
   private
