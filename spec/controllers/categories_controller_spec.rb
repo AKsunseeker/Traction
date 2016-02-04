@@ -108,12 +108,12 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'GET #get_categories_progress' do
     it 'creates hash of key:category and value:number of completed workouts in that category' do
-      user = FactoryGirl.create(:user)
       sign_in(user)
-      category = FactoryGirl.create(:category, name: 'New')
+      category
       workout = FactoryGirl.create(:workout, complete: true, category_id: category.id, user_id: user.id)
-      results = get :get_categories_progress  
-      expect(results.length).to eq(1)
+      get :get_categories_progress
+      expected = ([{"#{category.name}" => 1}]).to_json
+      expect(response.body).to eq(expected)
     end
   end
 end
