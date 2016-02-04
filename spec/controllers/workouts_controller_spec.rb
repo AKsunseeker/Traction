@@ -158,4 +158,15 @@ RSpec.describe WorkoutsController, type: :controller do
       expect(response).to have_http_status(:redirect)
     end
   end
+  describe 'get exercise progress for chart' do
+    it 'sums exercise weight*rep in same workout template' do
+      sign_in(user)
+      workout = user.workouts.create(name: "Beastmaker", complete: true)
+      workout.update(creator_id: workout.id)
+      exercise = workout.exercises.create(name: "larry", weight: 12, repetitions: 12)
+      get :get_exercise_progress, creator_id: workout
+      result = ([["#{exercise.name}" => [(exercise.weight*exercise.repetitions)]], [workout.updated_at]]).to_json
+      expect(response.body).to eq(result)
+    end
+  end
 end
