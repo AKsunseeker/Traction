@@ -5,7 +5,7 @@ class Motivation extends React.Component{
   render(){
     $("#no_data_message").empty();
     return(<div className="center">
-             <img src="//i.imgur.com/G7UWo.gif" />
+             <img className="responsive-img" src="//i.imgur.com/G7UWo.gif" />
             </div>);
   }
 }

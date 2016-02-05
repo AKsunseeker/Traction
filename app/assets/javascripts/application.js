@@ -22,7 +22,10 @@
 //= require_tree .
 
 $(document).ready(function(){
-      $('.slider').slider({indicators: false, full_width: true, height: 620, interval: 2000, transition: 500});
+      var navHeight = $('#nav_fixed').height()
+      var footerHeight = $('#footer_fixed').height()
+      var height = $(window).height() - (navHeight + footerHeight)
+      $('.slider').slider({indicators: false, full_width: true, height: height, interval: 2000, transition: 500});
       $(".button-collapse").sideNav();
       $('select').material_select();
     });
