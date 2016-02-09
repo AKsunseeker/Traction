@@ -13,11 +13,14 @@ class WelcomeController < ApplicationController
         uniq_list.each do |name|
           @unique_workout_names << @list_workouts.where(name: name).first
         end
+        @workouts_by_date = @workouts.group_by(&:updated_at)
+      
       else
         @list_workouts = []
         @unique_workout_names = []
         added_workouts ||= []
       end
+      @date = params[:date] ? Date.parse(params[:date]) : Date.today
       render :show
     end
   end

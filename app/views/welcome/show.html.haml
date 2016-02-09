@@ -55,4 +55,27 @@
       .card.grey.lighten-3.hoverable
         .card-content
           = react_component "Progress", {workouts: @unique_workout_names}        
-              
+         
+    .col.s12.m8.l8
+      .card.grey.lighten-3.hoverable
+        #calendar.card-content
+          .card-title.col.s12.l7.red-text.text-darken-4.center
+            Schedule
+          #month 
+            = link_to "<", date: @date.prev_month
+            = @date.strftime("%B %Y")
+            = link_to ">", date: @date.next_month
+          = calendar @date do |date|
+            .week-day-cell
+              = date.day
+            - if @workouts_by_date[date]
+              %ul
+                = @workouts_by_date[date].each do |workout|
+                  %li.day-cell = workout.name
+
+
+
+
+
+
+

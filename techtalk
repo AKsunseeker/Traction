@@ -1,0 +1,22 @@
+
+
+- What tools did we use to make Traction awesome?
+
+- We built the basic Traction app with Ruby on Rails
+- and made it easy for Amy to sign up and log in through Facebook omniauth
+
+- Since it was very important for Amy and her trainer Ander to be able to visualize her progress,
+- we chose to create charts using Chart JS 
+- and put them in a React component so Amy could click between multiple charts with no page reloads.
+
+- When refactoring the user flow for creating a workout with exercises,
+- we decided to use the ruby gem Cocoon for the nested forms.
+
+- We used Rspec for testing
+- and achieved 85% test coverage on our Controllers
+- and 100% !!!! coverage on our Models!
+
+- Traction is hosted on Heroku
+- with a Postgres Database
+
+- Now Derrick will tell you about Traction's future
