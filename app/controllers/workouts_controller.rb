@@ -101,6 +101,7 @@ class WorkoutsController < ApplicationController
     new_workout.name = @workout.name
     new_workout.creator_id = @workout.creator_id
     new_workout.category_id = @workout.category_id
+    new_workout.schedule_date = @workout.schedule_date
     new_workout.original = false
     new_workout.save
     new_exercises = @workout.exercises.all
@@ -182,7 +183,7 @@ class WorkoutsController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:name, :complete, :category_id, :group_id, exercises_attributes: [:id,:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id, :youtube_url, :_destroy])
+    params.require(:workout).permit(:name, :complete, :category_id, :group_id, :schedule_date, exercises_attributes: [:id,:name, :weight, :repetitions, :repetition_duration_seconds, :rest_duration_seconds, :complete, :workout_id, :youtube_url, :_destroy])
   end
 
   def find_workout

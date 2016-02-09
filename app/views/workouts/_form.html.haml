@@ -7,6 +7,10 @@
           = f.text_field :name, autofocus: true, :required => true
           %br
         .input-field
+          = f.label :name, "Schedule For:"
+          = f.date_field :schedule_date, required: true
+          %br
+        .input-field
           = f.label :category_id, "Category"
           %br
           %br

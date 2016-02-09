@@ -13,9 +13,10 @@ class WelcomeController < ApplicationController
         uniq_list.each do |name|
           @unique_workout_names << @list_workouts.where(name: name).first
         end
-        @workouts_by_date = @workouts.group_by(&:updated_at)
-      
+
+        @workouts_by_date = @workouts.where(original: false).group_by(&:schedule_date)
       else
+        @workouts_by_date = [].map {|day| day.to_date}
         @list_workouts = []
         @unique_workout_names = []
         added_workouts ||= []

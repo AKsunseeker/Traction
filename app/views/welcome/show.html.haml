@@ -68,10 +68,12 @@
           = calendar @date do |date|
             .week-day-cell
               = date.day
-            - if @workouts_by_date[date]
-              %ul
-                = @workouts_by_date[date].each do |workout|
-                  %li.day-cell = workout.name
+            -if @workouts_by_date.any?
+              - if @workouts_by_date[date]
+                %ul
+                  - @workouts_by_date[date].each do |workout|
+                    %li.day-cell 
+                      = link_to workout.name, workout_path(workout)
 
 
 
